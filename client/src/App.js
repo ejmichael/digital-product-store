@@ -3,10 +3,12 @@ import ViewProduct from './pages/ViewProduct';
 import Home from './pages/Home';
 import Navbar from './components/Navbar';
 import CreateProduct from './pages/admin/CreateProduct';
+import {CartProvider} from './context/CartContext'
 
 
 function App() {
   return (
+    <CartProvider>
     <div className="App">
       <Navbar/>
       <Routes>
@@ -15,6 +17,7 @@ function App() {
         <Route path='/product/create' element={<CreateProduct/>} />
       </Routes>
     </div>
+    </CartProvider>
   );
 }
 

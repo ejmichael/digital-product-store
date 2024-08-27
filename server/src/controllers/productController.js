@@ -1,4 +1,3 @@
-const { response } = require('express')
 const Product = require('../models/productModel')
 
 const getAllProduct = async (req, res) => {
@@ -12,8 +11,12 @@ const getAllProduct = async (req, res) => {
     res.status(200).json(products)
 }
 
+
 const getProductByID = async (req, res) => {
     const {productID} = req.params
+
+    console.log(productID);
+    
     
     let product = await Product.findById(productID)
 

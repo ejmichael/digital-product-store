@@ -3,10 +3,10 @@ const { getAllProduct, getProductByID, createProduct, deleteProductByID } = requ
 
 const productRouter = express.Router()
 
-productRouter.get('/products', getAllProduct)
+productRouter.get('/get-products', getAllProduct)
 
-productRouter.get('/products/:productID', getProductByID)
-productRouter.delete('/products/delete/:productID', deleteProductByID)
+productRouter.get('/:productID', getProductByID)
+productRouter.delete('/delete/:productID', deleteProductByID)
 
 productRouter.post('/create-product', createProduct)
 

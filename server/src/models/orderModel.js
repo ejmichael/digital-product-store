@@ -8,13 +8,11 @@ const OrderSchema = new Schema({
 //     required: true
 //   },
   products: [
-    {
-      product: {
-        type: Schema.Types.ObjectId,
+      {
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Product',
         required: true
       },
-    }
   ],
   totalAmount: {
     type: Number,
@@ -22,8 +20,8 @@ const OrderSchema = new Schema({
   },
   status: {
     type: String,
-    enum: ['pending', 'completed', 'failed'],
-    default: 'pending'
+    enum: ['placed', 'completed', 'canceled'],
+    default: 'placed'
   }
 }, {
     timestamps: true

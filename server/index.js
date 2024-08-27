@@ -3,6 +3,7 @@ const cors = require('cors')
 const dotenv = require('dotenv').config()
 
 const productRouter = require('./src/routes/productsRoute')
+const orderRouter = require('./src/routes/orderRoute')
 
 const connectToMongoDB = require('./src/db')
 
@@ -20,7 +21,8 @@ app.get('/', (req, res) => {
     res.send("Home Route")
 })
 
-app.use('/api/', productRouter)
+app.use('/api/products', productRouter)
+app.use('/api/order', orderRouter)
 
 
 const port = 5000;

@@ -7,7 +7,7 @@ const Home = () => {
   const [products, setProducts] = useState([])
 
   const getProducts = async() => {
-    const productsData = await axios.get('http://localhost:5000/api/products');
+    const productsData = await axios.get('http://localhost:5000/api/products/get-products');
 
     if(productsData?.data) {
       setProducts(productsData.data);
