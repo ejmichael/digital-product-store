@@ -45,7 +45,7 @@ const ViewProduct = () => {
                 <div className='col-span-2 px-4'>
                     <p className='text-xl my-4'>{productInfo.productName}</p>
                     <p className='text-slate-600 my-4'>{productInfo.productDescription}</p>
-                    <p className='my-4 text-lg'>R {productInfo.price}</p>
+                    <p className='my-4 text-lg'>R {productInfo.price.toFixed(2)}</p>
                     <button 
                         className='my-4 h-[50px] bg-[#28afe2] w-[100%] my-3 text-white'
                         onClick={handleCartAction}

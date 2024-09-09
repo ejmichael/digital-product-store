@@ -5,7 +5,8 @@ const dotenv = require('dotenv').config()
 const productRouter = require('./src/routes/productsRoute')
 const orderRouter = require('./src/routes/orderRoute')
 
-const connectToMongoDB = require('./src/db')
+const connectToMongoDB = require('./src/db');
+const userRoute = require('./src/routes/userRoute');
 
 const app = express()
 
@@ -23,6 +24,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/products', productRouter)
 app.use('/api/order', orderRouter)
+app.use('/api/user', userRoute)
 
 
 const port = 5000;

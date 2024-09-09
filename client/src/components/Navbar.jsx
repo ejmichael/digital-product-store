@@ -2,12 +2,11 @@ import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { FaCircleUser, FaCartShopping } from "react-icons/fa6";
 import { CartContext } from '../context/CartContext';
-import Cart from './Cart';
 
 
 const Navbar = () => {
 
-  const { cart, clearCart } = useContext(CartContext);
+  const { cart } = useContext(CartContext);
 
   console.log(cart);
   
@@ -24,9 +23,11 @@ const Navbar = () => {
             <Link to='/cart'>
               <button className='relative p-4 bg-white rounded-full hover:font-semibold hover:cursor-pointer'>
                   <FaCartShopping/>
-                  <div className='absolute right-2 bottom-1'>
-                    <p>{cart?.products.length}</p>
-                  </div>
+                  {cart.products.length !== 0  && (
+                    <div className='absolute right-[-5px] top-[-15%] m-1 rounded-full bg-blue-600 text-white'>
+                      <p className='rounded-full bg-blue-600 text-white py-1 px-2 text-xs'>{cart?.products.length}</p>
+                    </div>
+                  )}
               </button>
             </Link>
             <button className='p-4 bg-white rounded-full hover:font-semibold hover:cursor-pointer'>

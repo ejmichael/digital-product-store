@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { CartContext } from '../context/CartContext';
+import PaystackPayment from './PaystackButton';
 
 const Cart = () => {
 
@@ -17,15 +18,21 @@ const Cart = () => {
         {cart.products.length > 0 && cart.products.map(product => (
           <div className='flex gap-4 border border-slate-300 p-3 rounded-lg '>
             <div>
-              <img className='w-[300px]' src={product.imageUrl} alt={product.productName} />
+              <img className='max-w-[150px]' src={product.imageUrl} alt={product.productName} />
             </div>
-            <div className='flex justify-between'>
-              <div>
-                <p className='text-xl my-2'>{product.productName}</p>
-                <p className='text-gray-600 text-sm'>{product.productDescription}</p>
-                <p className='p-2 cursor-pointer' onClick={() => removeFromCart(product)}>Remove</p>
-              </div> 
-              <p className='w-full text-right text-xl my-2'>R {product.price.toFixed(2)}</p>
+            <div className='grid grid-cols-3'>
+              <div className='col-span-2 flex-col flex justify-between'>
+                <div className=''>
+                  <p className='text-xl my-2'>{product.productName}</p>
+                  <p className='text-gray-600 text-sm'>{product.productDescription}</p>
+                </div>
+                <div>
+                  <button className='my-2 text-sm cursor-pointer text-red-400 border border-red-300 w-content p-1 rounded-md' onClick={() => removeFromCart(product)}>Remove</button>
+                </div>
+              </div>
+              <div className='col-span-1'>
+                <p className='w-full text-right text-xl my-2'>R {product.price.toFixed(2)}</p>
+              </div>
             </div>
           </div>
         ))}
@@ -41,7 +48,10 @@ const Cart = () => {
              <p>Discount:</p>
              <p className='text-lg'>R 0</p>
           </div>
-          <button className='w-full p-3 my-2 rounded-full text-white font-medium bg-blue-400'>Checkout</button>
+          
+          <button className='w-full p-3 my-2 rounded-full text-white font-medium bg-blue-400'>
+            <PaystackPayment/>
+          </button>
         </div>
       </div>
     </div>

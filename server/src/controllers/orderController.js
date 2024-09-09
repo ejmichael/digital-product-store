@@ -1,35 +1,60 @@
 const Order = require('../models/orderModel')
 const Product = require('../models/productModel')
+const axios = require('axios')
 
 const createOrder = async (req, res) => {
-    const { products, totalAmount } = req.body;
+    const { orderRef } = req.params;
+    const { products, total } = req.body.cart;
 
-    if(!products || products.length === 0) {
-        res.status(404).json({ message: "No products in cart"})
-        return;
-    }
+    console.log(orderRef, total);
 
-    if(!totalAmount) {
-        res.status(404).json({ message: "No total amount in cart"})
-        return;
-    }
+    try {
 
-    for(let i = 0; i < products.length; i++) {
-        const productExists = await Product.findById(products[i]._id);
-
-        if(!productExists) {
-            res.status(404).json({ message: "Product not found:"  + products[i]._id})
-            return
+        if(!products || products.length === 0) {
+            res.status(404).json({ message: "No products in cart"})
+            return;
         }
-    }
+    
+        if(!total) {
+            res.status(404).json({ message: "No total amount in cart"})
+            return;
+        }
+    
+        for(let i = 0; i < products.length; i++) {
+            const productExists = await Product.findById(products[i]._id);
+    
+            if(!productExists) {
+                res.status(404).json({ message: "Product not found:"  + products[i]._id})
+                return
+            }
+        }
 
-    let newOrder = await Order.create({
-        products: products.map(product => product._id),
-        totalAmount,
-        status: 'placed'
-    })
+        const response = await axios.get(`https://api.paystack.co/transaction/verify/${orderRef}`, {
+          headers: {
+            Authorization: `Bearer sk_test_b11cf16dd54a800fa5cebdbd4e9eb293c1337eaf` // Replace with your Paystack secret key
+          }
+        });
 
-    res.status(200).json(newOrder)
+        console.log(response.data);
+    
+        if (response.data.status) {
+          // Payment verified, handle success logic here
+          let newOrder = await Order.create({
+            products: products.map(product => product._id),
+            totalAmount: total,
+            status: 'placed',
+            orderRef
+        })
+    
+          res.status(200).json(response.data)
+          //res.status(200).json({ success: true, data: response.data });
+        } else {
+          res.status(400).json({ success: false, message: 'Payment not verified' });
+        }
+      } catch (error) {
+        console.error(error);
+        res.status(500).json({ success: false, message: 'Something went wrong' });
+      }    
 }
 
 const getOrderById = async (req, res) => {
