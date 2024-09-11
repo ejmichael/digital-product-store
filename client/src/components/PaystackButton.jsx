@@ -60,26 +60,26 @@ const PaystackPayment = () => {
       <PaystackButton className='w-full' {...componentProps} />
 
       {showModal && (
-  <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-    <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
-      <p className="text-lg mb-4 text-center">{modalContent}</p>
-      {isSuccess && (
-        <button 
-          onClick={() => window.location.href = '/orders'}
-          className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300"
-        >
-          View Orders
-        </button>
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+          <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
+            <p className="text-lg mb-4 text-center">{modalContent}</p>
+            {isSuccess && (
+              <button 
+                onClick={() => window.location.href = '/orders'}
+                className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300"
+              >
+                View Orders
+              </button>
+            )}
+            <button 
+              onClick={() => setShowModal(false)}
+              className="w-full mt-4 bg-gray-500 text-white py-2 px-4 rounded-md hover:bg-gray-600 transition duration-300"
+            >
+              Close
+            </button>
+          </div>
+        </div>
       )}
-      <button 
-        onClick={() => setShowModal(false)}
-        className="w-full mt-4 bg-gray-500 text-white py-2 px-4 rounded-md hover:bg-gray-600 transition duration-300"
-      >
-        Close
-      </button>
-    </div>
-  </div>
-)}
 
     </div>
   );

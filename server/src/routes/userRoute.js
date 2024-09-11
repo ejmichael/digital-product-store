@@ -6,7 +6,7 @@ const userRoute = express.Router();
 
 userRoute.get('/get-user-data', getUserData)
 userRoute.post('/create-user', createUser)
-userRoute.get('/user-login', userLogin)
+userRoute.post('/user-login', userLogin)
 
 
 module.exports = userRoute

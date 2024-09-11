@@ -1,14 +1,22 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
-import { FaCircleUser, FaCartShopping } from "react-icons/fa6";
+import { FaCircleUser, FaCartShopping, FaArrowRightFromBracket, FaArrowRightToBracket } from "react-icons/fa6";
 import { CartContext } from '../context/CartContext';
+import { AuthContext } from '../context/AuthContext';
 
 
 const Navbar = () => {
 
   const { cart } = useContext(CartContext);
+  const { user, dispatch } = useContext(AuthContext);
 
   console.log(cart);
+
+  const logout = () => {
+    localStorage.removeItem('user')
+
+    dispatch({type: 'LOGOUT',})
+}
   
 
   return (
@@ -30,9 +38,23 @@ const Navbar = () => {
                   )}
               </button>
             </Link>
-            <button className='p-4 bg-white rounded-full hover:font-semibold hover:cursor-pointer'>
-                <FaCircleUser/>
-            </button>
+            <Link to="/profile">
+              <button className='p-4 bg-white rounded-full hover:font-semibold hover:cursor-pointer'>
+                  <FaCircleUser/>
+              </button>
+            </Link>
+              
+            {user ? (
+              <button onClick={logout} className='p-4 bg-white rounded-full hover:font-semibold hover:cursor-pointer'>
+                <FaArrowRightFromBracket />
+              </button>
+            ) : (
+              <Link to="/login">
+                <button className='p-4 bg-white rounded-full hover:font-semibold hover:cursor-pointer'>
+                <FaArrowRightToBracket />
+                </button>
+            </Link>
+            )}
         </div>
     </div>
   )

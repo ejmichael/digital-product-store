@@ -37,17 +37,39 @@ const createUser = async(req, res) => {
         res.status(201).json({
             _id: user.id,
             name: user.name,
+            surname: user.surname,
             email: user.email,
             phoneNumber: user.phoneNumber,
             token: generateToken(user._id)
         })
     } 
 
-    res.send('Creating user')
 }
 
-const userLogin = (req, res) => {
-    res.send('Login user')
+const userLogin = async(req, res) => {
+    const { email, password } = req.body;
+
+    const user = await User.findOne({ email });
+
+    if(!user) {
+        // Incorrect credentials
+        res.status(400).json({ message: 'User not found' });
+    }
+
+    if(user && (await bcrypt.compare(password, user.password))) {
+        res.status(200).json({
+            _id: user.id,
+            name: user.name,
+            surname: user.surname,
+            email: user.email,
+            token: generateToken(user._id),
+        })
+    }
+
+    if(!(await bcrypt.compare(password, user.password))) {
+        // Incorrect credentials
+        res.status(400).json({ message: 'Invalid user credentials' });
+    }
 }
 
 //generate token 
