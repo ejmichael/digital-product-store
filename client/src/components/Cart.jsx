@@ -1,10 +1,13 @@
 import React, { useContext } from 'react'
 import { CartContext } from '../context/CartContext';
 import PaystackPayment from './PaystackButton';
+import { AuthContext } from '../context/AuthContext';
+import { Link } from 'react-router-dom';
 
 const Cart = () => {
 
   const { cart, removeFromCart } = useContext(CartContext);
+  const { user } = useContext(AuthContext);
 
 
 
@@ -49,9 +52,19 @@ const Cart = () => {
              <p className='text-lg'>R 0</p>
           </div>
           
-          <button className='w-full p-3 my-2 rounded-full text-white font-medium bg-blue-400'>
-            <PaystackPayment/>
-          </button>
+          {user ? (
+            <Link to='/checkout'>
+                <button className='w-full p-3 my-2 rounded-full text-white font-medium bg-blue-400'>
+                Complete checkout
+              </button>
+            </Link>
+          ) : (
+            <Link to='/login'>
+              <button className='w-full p-3 my-2 rounded-full text-white font-medium bg-blue-400'>
+                Login to complete
+              </button>
+            </Link>
+          )}
         </div>
       </div>
     </div>

@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { Link, useParams } from 'react-router-dom';
+import OrderSection from '../components/OrderSection';
 
 const Profile = () => {
   const { user } = useContext(AuthContext);
@@ -10,13 +11,7 @@ const Profile = () => {
   const renderContent = () => {
     switch (section) {
       case 'orders':
-        return (
-          <div>
-            <p className='font-semibold'>Orders</p>
-            {/* Replace with actual orders information */}
-            <p>You have no orders yet.</p>
-          </div>
-        );
+        return <OrderSection />; ;
       case 'payment':
         return (
           <div>

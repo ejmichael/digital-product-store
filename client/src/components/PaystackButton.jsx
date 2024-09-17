@@ -2,10 +2,12 @@ import React, { useContext, useState } from 'react';
 import { PaystackButton } from 'react-paystack';
 import { CartContext } from '../context/CartContext';
 import axios from 'axios'
+import { AuthContext } from '../context/AuthContext';
 
-const PaystackPayment = () => {
+const PaystackPayment = ({deliveryAddress}) => {
   const publicKey = "pk_test_2c2ba5b58c11ca05c55a0d6ea3ba3e6f076c65b4"; // Replace with your Paystack public key
   const { cart } = useContext(CartContext);
+  const { user } = useContext(AuthContext);
   console.log(cart);
 
   const [showModal, setShowModal] = useState(false)
@@ -13,7 +15,7 @@ const PaystackPayment = () => {
   const [isSuccess, setIsSuccess] = useState(false); // Track payment success
 
   const amount = cart.total * 100; // Convert Rand to cents (e.g., R100 becomes 10000 cents)
-  const email = "customer-email@example.com"; // Replace with actual customer email
+  const email = user?.email; // Replace with actual customer email
   const reference = new Date().getTime().toString(); // Generate a unique reference
 
   const onSuccess = async (reference) => {
@@ -21,7 +23,11 @@ const PaystackPayment = () => {
     // Here, you can send the transaction details to your backend for verification
 
     try {
-        const response = await axios.post(`http://localhost:5000/api/order/create/${reference.reference}`,  {cart});
+        const response = await axios.post(`http://localhost:5000/api/order/create/${reference.reference}`,  {cart, deliveryAddress}, {
+          headers: {
+              'Authorization': `Bearer ${user.token}`
+            }
+      });
         if (response.data) {
           // Payment verified successfully
           console.log('Payment verified:', response.data);

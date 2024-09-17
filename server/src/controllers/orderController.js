@@ -4,6 +4,7 @@ const axios = require('axios')
 
 const createOrder = async (req, res) => {
     const { orderRef } = req.params;
+    const { streetAddress, city, postCode } = req.body.deliveryAddress;
     const { products, total } = req.body.cart;
 
     console.log(orderRef, total);
@@ -40,10 +41,14 @@ const createOrder = async (req, res) => {
         if (response.data.status) {
           // Payment verified, handle success logic here
           let newOrder = await Order.create({
+            user: req.user.id,
             products: products.map(product => product._id),
             totalAmount: total,
             status: 'placed',
-            orderRef
+            orderRef,
+            streetAddress,
+            city,
+            postCode
         })
     
           res.status(200).json(response.data)
@@ -70,7 +75,8 @@ const getOrderById = async (req, res) => {
 }
 
 const getAllOrders = async (req, res) => {
-    const orders = await Order.find()
+  const {userId} = req.params
+    const orders = await Order.find({ user: userId })
 
     if (!orders) {
         res.status(400).json({ message: "No orders found!"})
