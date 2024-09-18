@@ -1,5 +1,33 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Slider from 'react-slick';
+import { FaAngleLeft , FaAngleRight } from "react-icons/fa6";
+
+// Custom Previous Arrow
+const PrevArrow = ({ className, style, onClick }) => {
+  return (
+    <div
+      className={`${className} slick-prev`}
+      style={{ ...style, display: 'block', left: '-25px', zIndex: 1 }}
+      onClick={onClick}
+    >
+      <FaAngleLeft className="fas fa-chevron-left text-3xl text-pink-400"/>
+    </div>
+  );
+};
+
+// Custom Next Arrow
+const NextArrow = ({ className, style, onClick }) => {
+  return (
+    <div
+      className={`${className} slick-next`}
+      style={{ ...style, display: 'block', right: '-25px', zIndex: 1 }}
+      onClick={onClick}
+    >
+      <FaAngleRight className="fas fa-chevron-right text-3xl text-pink-400"/>
+    </div>
+  );
+};
 
 const productComp = (product) => {
 
@@ -24,13 +52,43 @@ const productComp = (product) => {
 
 const Products = ({ products }) => {
 
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        prevArrow: <PrevArrow />,  // Custom previous arrow
+        nextArrow: <NextArrow />,  // Custom next arrow
+        responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1,
+              infinite: true,
+              dots: true
+            }
+          },
+          {
+            breakpoint: 600,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          }
+        ]
+      };
+
   return (
-    <div className='grid lg:grid-cols-4 grid-cols-2 gap-4'>
+    <div className=''>
+        <Slider {...settings}>
         {products.map((product, index) => (
-            <div className='col-span-1' key={index}>
+            <div className='p-4' key={index}>
                 {productComp(product)}
             </div>
         ))}
+        </Slider>
     </div>
   );
 };

@@ -1,5 +1,7 @@
 import axios from 'axios'
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 const CreateProduct = () => {
 
@@ -9,6 +11,8 @@ const CreateProduct = () => {
         price: null,
         imageUrl: ''
     })
+
+    const navigate = useNavigate()
 
     const handleChange = (e) => {
         setProductInfo((prevState) => ({
@@ -20,8 +24,19 @@ const CreateProduct = () => {
     const createProduct = async (e) => {
         e.preventDefault()
 
-        const createNewProduct = await axios.post('http://localhost:5000/api/create-product', {productInfo} )
-        console.log(productInfo);
+        if(productInfo.productName === '' || productInfo.productDescription ==='' || productInfo.price === null || productInfo.imageUrl === '') {
+            toast.error("Enter all product information")
+        }
+
+        try {
+            const createNewProduct = await axios.post('http://localhost:5000/api/products/create-product', {productInfo} )
+            console.log(createNewProduct.data);
+            if(createNewProduct.data.message == 'Product created') {
+                navigate('/')
+            }
+        } catch (error) {
+            toast.error(error);
+        }
         
     }
 

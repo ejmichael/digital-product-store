@@ -10,10 +10,14 @@ import Profile from './pages/Profile';
 import PrivateRoute from './components/PrivateRoute';
 import Checkout from './pages/Checkout';
 import OrderDetails from './components/OrderDetails';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
+
 
 
 function App() {
   return (
+    <>
     <CartProvider>
     <div className="App">
       <Navbar/>
@@ -30,6 +34,19 @@ function App() {
       </Routes>
     </div>
     </CartProvider>
+    <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+    </>
   );
 }
 
