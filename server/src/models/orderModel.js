@@ -7,18 +7,18 @@ const OrderSchema = new Schema({
     ref: 'User',
     required: true
   },
-streetAddress: {
-  type: String,
-  required: true
-},
-city:{
-  type: String,
-  required: true
-},
-postCode:{
-  type: String,
-  required: true
-},
+// streetAddress: {
+//   type: String,
+//   required: true
+// },
+// city:{
+//   type: String,
+//   required: true
+// },
+// postCode:{
+//   type: String,
+//   required: true
+// },
 orderRef: {
   type: String,
   required: true

@@ -4,7 +4,7 @@ const axios = require('axios')
 
 const createOrder = async (req, res) => {
     const { orderRef } = req.params;
-    const { streetAddress, city, postCode } = req.body.deliveryAddress;
+    // const { streetAddress, city, postCode } = req.body.deliveryAddress;
     const { products, total } = req.body.cart;
 
     console.log(orderRef, total);
@@ -45,10 +45,10 @@ const createOrder = async (req, res) => {
             products: products.map(product => product._id),
             totalAmount: total,
             status: 'placed',
-            orderRef,
-            streetAddress,
-            city,
-            postCode
+            // orderRef,
+            // streetAddress,
+            // city,
+            // postCode
         })
     
           res.status(200).json(response.data)

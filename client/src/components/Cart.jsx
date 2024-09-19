@@ -1,8 +1,9 @@
 import React, { useContext } from 'react'
 import { CartContext } from '../context/CartContext';
-// import PaystackPayment from './PaystackButton';
+import PaystackPayment from './PaystackPayment';
 import { AuthContext } from '../context/AuthContext';
 import { Link } from 'react-router-dom';
+//import { PaystackButton } from 'react-paystack';
 
 const Cart = () => {
 
@@ -40,7 +41,7 @@ const Cart = () => {
         </div>
 
         <div className='col-span-2 border-slate-300 px-5 rounded-lg'>
-          <p>Payment Options</p>
+          <p className='text-xl'>Payment Information</p>
           <div className='flex justify-between my-2'>
              <p>Total:</p>
              <p className='text-lg'>R{cart.total.toFixed(2)}</p>
@@ -51,14 +52,17 @@ const Cart = () => {
           </div>
           
           {user ? (
-            <Link to='/checkout'>
-                <button className='w-full p-3 my-2 rounded-full text-white font-medium bg-blue-400'>
-                Complete checkout
-              </button>
-            </Link>
+            // <Link to='/checkout'>
+            //     <button className='w-full p-3 my-2 rounded-full text-white font-medium bg-blue-400'>
+            //     Complete checksout
+            //   </button>
+            // </Link>
+            <button className='w-full p-3 my-2 rounded-full text-white font-medium bg-gradient-to-r  from-purple-500 to-pink-500'>
+              <PaystackPayment/>
+            </button>
           ) : (
             <Link to='/login'>
-              <button className='w-full p-3 my-2 rounded-full text-white font-medium bg-blue-400'>
+              <button className='w-full p-3 my-2 rounded-full text-white font-medium bbg-gradient-to-r  from-purple-500 to-pink-500'>
                 Login to complete
               </button>
             </Link>

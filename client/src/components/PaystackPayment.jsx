@@ -4,7 +4,7 @@ import { CartContext } from '../context/CartContext';
 import axios from 'axios'
 import { AuthContext } from '../context/AuthContext';
 
-const PaystackPayment = ({deliveryAddress}) => {
+const PaystackPayment = () => {
   const publicKey = "pk_test_2c2ba5b58c11ca05c55a0d6ea3ba3e6f076c65b4"; // Replace with your Paystack public key
   const { cart } = useContext(CartContext);
   const { user } = useContext(AuthContext);
@@ -25,7 +25,7 @@ const PaystackPayment = ({deliveryAddress}) => {
     // Here, you can send the transaction details to your backend for verification
 
     try {
-        const response = await axios.post(domain + `/api/order/create/${reference.reference}`,  {cart, deliveryAddress}, {
+        const response = await axios.post(domain + `/api/order/create/${reference.reference}`,  {cart}, {
           headers: {
               'Authorization': `Bearer ${user.token}`
             }

@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { CartContext } from '../context/CartContext'
-import PaystackPayment from '../components/PaystackButton'
+import PaystackPayment from '../components/PaystackPayment'
 
 const Checkout = () => {
     const { cart } = useContext(CartContext)
