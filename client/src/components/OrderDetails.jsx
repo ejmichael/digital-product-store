@@ -4,10 +4,11 @@ import { useParams } from 'react-router-dom';
 const OrderDetails = () => {
   const { orderId } = useParams();
   const [order, setOrder] = useState(null);
+  const domain = window.location.href.includes('localhost') ? "http://localhost:5000" : "https://digital-product-store.onrender.com";
 
   useEffect(() => {
     const fetchOrderDetails = async () => {
-      const response = await fetch(`http://localhost:5000/api/order/get/${orderId}`);
+      const response = await fetch(domain + `/api/order/get/${orderId}`);
       const data = await response.json();
       setOrder(data);
     };

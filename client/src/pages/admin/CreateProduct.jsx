@@ -12,6 +12,8 @@ const CreateProduct = () => {
         imageUrl: ''
     })
 
+    const domain = window.location.href.includes('localhost') ? "http://localhost:5000" : "https://digital-product-store.onrender.com";
+
     const navigate = useNavigate()
 
     const handleChange = (e) => {
@@ -29,9 +31,9 @@ const CreateProduct = () => {
         }
 
         try {
-            const createNewProduct = await axios.post('http://localhost:5000/api/products/create-product', {productInfo} )
+            const createNewProduct = await axios.post(domain + '/api/products/create-product', {productInfo} )
             console.log(createNewProduct.data);
-            if(createNewProduct.data.message == 'Product created') {
+            if(createNewProduct.data.message === 'Product created') {
                 navigate('/')
             }
         } catch (error) {

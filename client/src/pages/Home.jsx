@@ -5,9 +5,10 @@ import { Link } from 'react-router-dom';
 
 const Home = () => {
   const [products, setProducts] = useState([]);
+  const domain = window.location.href.includes('localhost') ? "http://localhost:5000" : "https://digital-product-store.onrender.com";
 
   const getProducts = async () => {
-    const productsData = await axios.get('http://localhost:5000/api/products/get-products');
+    const productsData = await axios.get(domain + '/api/products/get-products');
 
     if (productsData?.data) {
       setProducts(productsData.data);
@@ -74,9 +75,9 @@ const Home = () => {
           <li>Nutrition guides that promote healthy and sustainable eating habits.</li>
           <li>Ongoing support to keep you motivated and on track.</li>
         </ul>
-        <button className="mt-6 px-6 py-3 bg-pink-600 text-white font-semibold rounded-lg hover:bg-pink-500">
+        {/* <button className="mt-6 px-6 py-3 bg-pink-600 text-white font-semibold rounded-lg hover:bg-pink-500">
           Get Your Plan Now
-        </button>
+        </button> */}
       </div>
 
       {/* Testimonials Section */}
@@ -96,7 +97,7 @@ const Home = () => {
 
       {/* Footer */}
       <div className="py-6 text-center bg-gray-800 text-white rounded-lg">
-        <p className="mb-4">© 2024 Your Business Toolkit. All rights reserved.</p>
+        <p className="mb-4">© 2024 Your Fitness Toolkit. All rights reserved.</p>
         <div className="flex justify-center space-x-4">
           <Link to="/" className="hover:text-pink-600">Privacy Policy</Link>
           <Link to="/" className="hover:text-pink-600">Terms of Service</Link>

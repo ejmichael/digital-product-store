@@ -37,21 +37,33 @@ const ViewProduct = () => {
 
     return (
         <div className='mx-10 my-4'>
-            <div className='text-xl my-4'>ViewProduct: {productInfo.productName}</div>
-            <div className='grid grid-cols-5 gap-4'>
+            {/* <div className='text-xl my-4'>ViewProduct: {productInfo.productName}</div> */}
+            <div className='grid grid-cols-5 gap-4 my-8'>
                 <div className='col-span-3 gap-4 px-4'>
-                    <img className='w-full' src={productInfo.imageUrl} alt={productInfo.productName} />
+                    <img className='w-[80%] m-auto' src={productInfo.imageUrl} alt={productInfo.productName} />
                 </div>
                 <div className='col-span-2 px-4'>
-                    <p className='text-xl my-4'>{productInfo.productName}</p>
+                    <p className='text-3xl my-4'>{productInfo.productName}</p>
                     <p className='text-slate-600 my-4'>{productInfo.productDescription}</p>
-                    <p className='my-4 text-lg'>R {productInfo.price.toFixed(2)}</p>
+                    <div className='flex items-end gap-2'>
+                        <p className='my-4 text-2xl text-green-600'>R {(productInfo.price/1.35).toFixed(2)}</p>
+                        <p className='my-4 text-slate-500 line-through'>R {productInfo.price.toFixed(2)}</p>
+                    </div>
                     <button 
-                        className='my-4 h-[50px] bg-[#28afe2] w-[100%] my-3 text-white'
+                        className='my-4 h-[50px] w-[100%] my-3 text-white rounded-full bg-gradient-to-r  from-purple-500 to-pink-500'
                         onClick={handleCartAction}
                     >
                         {isProductInCart(productInfo._id) ? 'Remove from Cart' : 'Add to Cart'}
                     </button>
+                    <div>
+                        <p className='my-4 font-semibold text-lg'>Delivery</p>
+                        <div>
+                            <p className='my-4'>Instant Download</p>
+                            <p className='my-4'>
+                                All files will be made available for download once payment has been made. 
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

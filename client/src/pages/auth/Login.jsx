@@ -9,6 +9,9 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const domain = window.location.href.includes('localhost') ? "http://localhost:5000" : "https://digital-product-store.onrender.com";
+
+
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -44,7 +47,7 @@ const Login = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:5000/api/user/user-login', { email, password });
+      const response = await axios.post(domain + '/api/user/user-login', { email, password });
       const user = response.data;
 
       // Save the user to localStorage

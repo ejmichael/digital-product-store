@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { CartContext } from '../context/CartContext';
-import PaystackPayment from './PaystackButton';
+// import PaystackPayment from './PaystackButton';
 import { AuthContext } from '../context/AuthContext';
 import { Link } from 'react-router-dom';
 
@@ -8,8 +8,6 @@ const Cart = () => {
 
   const { cart, removeFromCart } = useContext(CartContext);
   const { user } = useContext(AuthContext);
-
-
 
   return (
     <div className='m-10'>

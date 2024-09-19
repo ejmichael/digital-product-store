@@ -9,6 +9,8 @@ const PaystackPayment = ({deliveryAddress}) => {
   const { cart } = useContext(CartContext);
   const { user } = useContext(AuthContext);
   console.log(cart);
+  const domain = window.location.href.includes('localhost') ? "http://localhost:5000" : "https://digital-product-store.onrender.com";
+
 
   const [showModal, setShowModal] = useState(false)
   const [modalContent, setModalContent] = useState(''); // Modal message content
@@ -23,7 +25,7 @@ const PaystackPayment = ({deliveryAddress}) => {
     // Here, you can send the transaction details to your backend for verification
 
     try {
-        const response = await axios.post(`http://localhost:5000/api/order/create/${reference.reference}`,  {cart, deliveryAddress}, {
+        const response = await axios.post(domain + `/api/order/create/${reference.reference}`,  {cart, deliveryAddress}, {
           headers: {
               'Authorization': `Bearer ${user.token}`
             }
