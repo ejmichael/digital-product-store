@@ -7,10 +7,11 @@ const ViewProduct = () => {
     const { productID } = useParams();
     const { addToCart, removeFromCart, isProductInCart } = useContext(CartContext);
     const [productInfo, setProductInfo] = useState(null);
+    const domain = window.location.href.includes('localhost') ? "http://localhost:5000" : "https://digital-product-store.onrender.com";
 
     const getProduct = async () => {
         try {
-            const response = await axios.get(`http://localhost:5000/api/products/${productID}`);
+            const response = await axios.get(domain + `/api/products/${productID}`);
             if (response.data) {
                 setProductInfo(response.data);
             }
