@@ -69,7 +69,7 @@ const Login = () => {
     <div className='w-full h-[calc(100vh-80px)] bg-slate-100 py-12'>
       <div className="m-auto flex-col shadow rounded-md lg:w-[30%] md:w-[50%] p-4 bg-white">
         <div className="flex items-center gap-1 justify-center p-2">
-          <span className='font-medium text-3xl text-[#623BEC]'>Login</span>
+          <span className='font-medium text-3xl text-pink-500'>Login</span>
         </div>
         <div className="flex justify-center">
           <p className='font-medium text-gray-500 text-lg'>Sign in to your account</p>
@@ -98,8 +98,8 @@ const Login = () => {
                 onChange={handleChange}
               />
             </div>
-            <div className='my-4 w-full border text-center py-2 rounded hover:text-indigo-700 hover:shadow-sm bg-indigo-500 text-white font-semibold'>
-              <button type="submit" className="text-white">Login</button>
+            <div className='my-4 w-full border text-center py-2 rounded text-white font-semibold'>
+              <button type="submit" className="text-white bg-gradient-to-r from-purple-500 to-pink-500 w-full">Login</button>
             </div>
           </form>
         </div>
