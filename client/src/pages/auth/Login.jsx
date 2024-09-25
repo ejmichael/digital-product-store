@@ -98,8 +98,8 @@ const Login = () => {
                 onChange={handleChange}
               />
             </div>
-            <div className='my-4 w-full border text-center py-2 rounded text-white font-semibold'>
-              <button type="submit" className="text-white bg-gradient-to-r from-purple-500 to-pink-500 w-full">Login</button>
+            <div className='my-4 w-full border text-center rounded text-white font-semibold'>
+              <button type="submit" className="text-white py-2 hover:shadow-md bg-gradient-to-r from-purple-500 to-pink-500 w-full">Login</button>
             </div>
           </form>
         </div>

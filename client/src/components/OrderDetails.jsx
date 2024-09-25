@@ -20,6 +20,9 @@ const OrderDetails = () => {
     return <p>Loading order details...</p>;
   }
 
+  console.log(order);
+  
+
   return (
     <div className="max-w-4xl mx-auto my-8">
       <h2 className="text-2xl font-semibold mb-6 text-gray-800">Order Details</h2>

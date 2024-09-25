@@ -65,7 +65,7 @@ const createOrder = async (req, res) => {
 const getOrderById = async (req, res) => {
     const { orderId } = req.params;
 
-    const order = await Order.findById(orderId)
+    const order = await Order.findById(orderId).populate('products').exec();
 
     if(!order) {
         res.status(400).json({ message: "Order not found"})

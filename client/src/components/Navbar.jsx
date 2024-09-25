@@ -21,12 +21,12 @@ const Navbar = () => {
 
   return (
     <div className='w-full p-4 flex justify-between items-center bg-slate-200'>
-        <div className='border-sm py-2 px-4 font-semibold text-lg'>
-          <Link to='/' >Digital Products</Link>
+        <div className='border-sm py-2 px-4 font-semibold '>
+          <Link to='/' className='text-pink-600 text-xl italic' >Body & Mind</Link>
         </div>
-        <div className='border-sm '>
+        {/* <div className='border-sm '>
             <input className='rounded-full bg-white py-2 px-4 w-[300px]' type='text' placeholder='Search for item' />
-        </div>
+        </div> */}
         <div className='relative border-sm flex gap-4'>
             <Link to='/cart'>
               <button className='relative p-4 bg-white rounded-full hover:font-semibold hover:cursor-pointer hover:bg-gradient-to-r from-purple-600 to-pink-500 hover:text-white'>

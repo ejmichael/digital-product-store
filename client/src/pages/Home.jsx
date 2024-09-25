@@ -26,17 +26,17 @@ const Home = () => {
       {/* Hero Section */}
       <div className="my-8 rounded-lg w-full min-h-[300px] flex p-10 justify-center items-center bg-gradient-to-r from-purple-600 to-pink-500">
       <div className="text-center">
-        <h1 className="text-5xl font-bold text-white">
+        <h1 className="px-6 text-6xl font-bold text-white">
           Achieve Your Dream Body with Custom Fitness & Meal Plans
         </h1>
-        <p className="text-lg text-white mt-4 max-w-2xl mx-auto">
+        <p className="text-lg text-white mt-6 max-w-2xl mx-auto">
           Get personalized fitness and nutrition plans that fit your lifestyle. Start your transformation today with our proven programs and expert guidance.
         </p>
-        <Link to="/">
+        {/* <Link to="/catalogue">
           <button className="mt-6 px-6 py-3 bg-white text-pink-600 font-semibold rounded-lg hover:bg-gray-100">
-            Get Started Now
+            See all plans
           </button>
-        </Link>
+        </Link> */}
       </div>
     </div>
 
@@ -45,7 +45,7 @@ const Home = () => {
       {/* Featured Products Section */}
       <div className="my-12">
         <h2 className="text-3xl font-semibold mb-6 text-center text-pink-600">
-          Explore Our Fitness & Nutrition Plans
+          Popular Fitness & Nutrition Plans
         </h2>
         <Products products={products} />
       </div>
@@ -97,11 +97,12 @@ const Home = () => {
 
       {/* Footer */}
       <div className="py-6 text-center bg-gray-800 text-white rounded-lg">
-        <p className="mb-4">© 2024 Your Fitness Toolkit. All rights reserved.</p>
-        <div className="flex justify-center space-x-4">
-          <Link to="/" className="hover:text-pink-600">Privacy Policy</Link>
-          <Link to="/" className="hover:text-pink-600">Terms of Service</Link>
+        <div className="mb-4 flex justify-center space-x-4">
+          <Link to="/contact" className="hover:text-pink-600">Contact us</Link>
+          <Link to="/privacy-policy" className="hover:text-pink-600">Privacy Policy</Link>
+          <Link to="/terms" className="hover:text-pink-600">Terms of Service</Link>
         </div>
+        <p className=" italic">© 2024 Your Fitness Toolkit. All rights reserved.</p>
       </div>
     </div>
   );
