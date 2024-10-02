@@ -12,6 +12,7 @@ import Checkout from './pages/Checkout';
 import OrderDetails from './components/OrderDetails';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
+import UploadPDF from './pages/admin/UploadPDF';
 
 
 
@@ -29,6 +30,7 @@ function App() {
         <Route path='/login' element={<Login/>} />
         <Route path='/product/:productID' element={<ViewProduct/>} />
         <Route path='/product/create' element={<CreateProduct/>} />
+        <Route path='/product/upload' element={<UploadPDF/>} />
         <Route path='/cart' element={<Cart/>} />
         <Route path='/checkout' element={<PrivateRoute><Checkout/></PrivateRoute>} />
       </Routes>

@@ -43,7 +43,8 @@ const productComp = (product) => {
                 <p className='m-1 font-semibold text-md'>{product.productName}</p>
                 <p className='m-1 text-sm text-gray-600 h-[40px] overflow-hidden'>{product.productDescription}</p>
                 <p className="m-1 text-sm italicbn ">4.6 rating</p>
-                <p className='m-1 text-green-600 font-semibold'>R {product.price}</p>
+                <p className='m-1 text-green-600 font-semibold'>Coming Soon</p>
+                {/* <p className='m-1 text-green-600 font-semibold'>R {product.price}</p> */}
             </div>
         </div>
         </Link>

@@ -51,7 +51,7 @@ const ViewProduct = () => {
                         <p className='my-4 text-slate-500 line-through'>R {productInfo.price.toFixed(2)}</p>
                     </div>
                     <button 
-                        className='my-4 h-[50px] w-[100%] my-3 text-white rounded-full bg-gradient-to-r  from-purple-500 to-pink-500'
+                        className='my-4 h-[50px] w-[100%] my-3 text-white rounded-full bg-gradient-to-r from-purple-500 to-pink-500'
                         onClick={handleCartAction}
                     >
                         {isProductInCart(productInfo._id) ? 'Remove from Cart' : 'Add to Cart'}
