@@ -6,6 +6,7 @@ import CreateProduct from './pages/admin/CreateProduct';
 import {CartProvider} from './context/CartContext'
 import Cart from './components/Cart';
 import Login from './pages/auth/Login';
+import Register from './pages/auth/Register';
 import Profile from './pages/Profile';
 import PrivateRoute from './components/PrivateRoute';
 import Checkout from './pages/Checkout';
@@ -28,6 +29,7 @@ function App() {
         <Route path='/profile' element={<PrivateRoute><Profile/></PrivateRoute>} />
         <Route path="/orders/:orderId" element={<PrivateRoute><OrderDetails/></PrivateRoute>} />
         <Route path='/login' element={<Login/>} />
+        <Route path='/register' element={<Register/>} />
         <Route path='/product/:productID' element={<ViewProduct/>} />
         <Route path='/product/create' element={<CreateProduct/>} />
         <Route path='/product/upload' element={<UploadPDF/>} />

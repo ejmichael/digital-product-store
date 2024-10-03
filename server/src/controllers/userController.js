@@ -9,9 +9,9 @@ const getUserData = async (req, res) => {
 
 
 const createUser = async(req, res) => {
-    const {name, surname, email, phoneNumber, password} = req.body;
+    const {firstName, surname, email, phoneNumber, password} = req.body;
 
-    if(!name || !surname || !email || !phoneNumber || !password) {
+    if(!firstName || !surname || !email || !phoneNumber || !password) {
         res.status(400).json({message: 'Please enter all the required fields.'})
     }
 
@@ -23,10 +23,10 @@ const createUser = async(req, res) => {
 
     // Hash password
     const salt = await bcrypt.genSalt(10)
-    const hashedPW = await bcrypt.hash(password, salt)
+    const hashedPW = await bcrypt.hash(password, salt) 
 
     const user = await User.create({
-        name, 
+        name: firstName, 
         surname, 
         email, 
         phoneNumber, 
