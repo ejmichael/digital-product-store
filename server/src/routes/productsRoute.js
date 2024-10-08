@@ -1,14 +1,29 @@
 const express = require('express');
+const multer = require('multer');
 const { getAllProduct, getProductByID, createProduct, deleteProductByID } = require('../controllers/productController');
+const { uploadPDF, downloadPDF } = require('../controllers/uploadPDFController');
 
-const productRouter = express.Router()
+const productRouter = express.Router();
 
-productRouter.get('/get-products', getAllProduct)
+// Set up multer storage to handle file uploads
+const storage = multer.memoryStorage(); // Using memory storage for simplicity
+const upload = multer({ storage });
 
-productRouter.get('/:productID', getProductByID)
-productRouter.delete('/delete/:productID', deleteProductByID)
+// Product Routes
 
-productRouter.post('/create-product', createProduct)
+// Get all products
+productRouter.get('/get-products', getAllProduct);
 
-module.exports = productRouter
+// Get product by ID
+productRouter.get('/:productID', getProductByID);
 
+// Delete product by ID
+productRouter.delete('/delete/:productID', deleteProductByID);
+
+// Create a new product with PDF upload
+productRouter.post('/create-product', upload.single('file'), createProduct);
+
+// Download a PDF associated with a product
+productRouter.get('/download-pdf/:fileId', downloadPDF);
+
+module.exports = productRouter;

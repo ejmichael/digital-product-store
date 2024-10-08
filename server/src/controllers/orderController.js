@@ -45,7 +45,7 @@ const createOrder = async (req, res) => {
             products: products.map(product => product._id),
             totalAmount: total,
             status: 'placed',
-            // orderRef,
+            orderRef,
             // streetAddress,
             // city,
             // postCode
@@ -66,7 +66,7 @@ const getOrderById = async (req, res) => {
     const { orderId } = req.params;
 
     const order = await Order.findById(orderId).populate('products').exec();
-
+ 
     if(!order) {
         res.status(400).json({ message: "Order not found"})
     }

@@ -7,28 +7,16 @@ const OrderSchema = new Schema({
     ref: 'User',
     required: true
   },
-// streetAddress: {
-//   type: String,
-//   required: true
-// },
-// city:{
-//   type: String,
-//   required: true
-// },
-// postCode:{
-//   type: String,
-//   required: true
-// },
-orderRef: {
-  type: String,
-  required: true
-},
+  orderRef: {
+    type: String,
+    required: true
+  },
   products: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Product',
-        required: true
-      },
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Product',
+      required: true
+    },
   ],
   totalAmount: {
     type: Number,
@@ -38,9 +26,13 @@ orderRef: {
     type: String,
     enum: ['placed', 'completed', 'canceled'],
     default: 'placed'
+  },
+  pdfUrl: {  // New field for the PDF file URL
+    type: String,
+    required: true
   }
 }, {
-    timestamps: true
+  timestamps: true
 });
 
 module.exports = mongoose.model('Order', OrderSchema);

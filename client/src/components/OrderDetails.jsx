@@ -1,5 +1,7 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const OrderDetails = () => {
   const { orderId } = useParams();
@@ -22,6 +24,29 @@ const OrderDetails = () => {
 
   console.log(order);
   
+  const downloadPDF = async (fileId, fileName) => {
+    try {
+        const response = await axios.get(`${domain}/api/products/download-pdf/${fileId}`, {
+            responseType: 'blob', // Important for handling file downloads
+        });
+
+        console.log(response.data);
+        
+
+        // Create a link element to trigger the download
+        const url = window.URL.createObjectURL(new Blob([response.data]));
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', `${fileName}.pdf`); 
+        //link.setAttribute('download', `file_${fileId}.pdf`); // You can set the file name here
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+    } catch (error) {
+        toast.error('Error downloading the PDF');
+        console.error(error);
+    }
+};
 
   return (
     <div className="max-w-4xl mx-auto my-8">
@@ -38,13 +63,18 @@ const OrderDetails = () => {
           <h3 className="text-xl font-semibold mb-4">Products</h3>
           <ul className="space-y-4">
             {order.products.map((product) => (
-              <li key={product._id} className="flex items-center space-x-4">
-                <img src={product.imageUrl} alt={product.name} className="w-20 h-20 object-cover rounded-lg" />
-                <div>
-                  <p className="font-semibold">{product.name}</p>
-                  {/* <p>Price: R {product.price.toFixed(2)}</p> */}
-                  <p>Quantity: {product.quantity}</p>
+              <li key={product._id} className="flex items-center justify-between space-x-4">
+                <div className="flex items-center space-x-4">
+                  <img src={product.imageUrl} alt={product.name} className="w-20 h-20 object-cover rounded-lg" />
+                  <div>
+                    <p className="font-semibold">{product.productName}</p>
+                    <p className="font-thin">{product.productDescription}</p>
+                    <p>Price: R {product.price.toFixed(2)}</p>
+                  </div>
                 </div>
+                <div>
+                    <button onClick={() => downloadPDF(product.pdfFileId, product.productName)}>Download</button>
+                  </div>
               </li>
             ))}
           </ul>

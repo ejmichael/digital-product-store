@@ -17,9 +17,9 @@ const productSchema = mongoose.Schema({
         type: String,
         default: ''
     },
-    fileUrl: {
-        type: String,
-        default: ''
+    pdfFileId: { 
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'PDFFile' 
     },
     rating:{
         type: Number,
