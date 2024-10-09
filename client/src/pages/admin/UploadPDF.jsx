@@ -5,6 +5,11 @@ const UploadPDF = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadStatus, setUploadStatus] = useState('');
 
+  const domain = window.location.href.includes('localhost')
+  ? 'http://localhost:5000'
+  : 'https://digital-product-store-1.onrender.com';
+
+
   // Handle file selection
   const handleFileChange = (e) => {
     setSelectedFile(e.target.files[0]);
@@ -23,7 +28,7 @@ const UploadPDF = () => {
     formData.append('file', selectedFile);
 
     try {
-      const res = await axios.post('http://localhost:5000/api/pdf/upload', formData, {
+      const res = await axios.post(domain + '/api/pdf/upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
