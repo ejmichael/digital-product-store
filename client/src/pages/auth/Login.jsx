@@ -9,7 +9,7 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const domain = window.location.href.includes('localhost') ? "http://localhost:5000" : "https://digital-product-store.onrender.com";
+  const domain = window.location.href.includes('localhost') ? "http://localhost:5000" : "https://digital-product-store-1.onrender.com";
 
 
   const [formData, setFormData] = useState({

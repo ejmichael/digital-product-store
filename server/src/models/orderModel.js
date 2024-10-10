@@ -27,10 +27,10 @@ const OrderSchema = new Schema({
     enum: ['placed', 'completed', 'canceled'],
     default: 'placed'
   },
-  pdfUrl: {  // New field for the PDF file URL
-    type: String,
-    required: true
-  }
+  // pdfUrl: {  // New field for the PDF file URL
+  //   type: String,
+  //   required: true
+  // }
 }, {
   timestamps: true
 });

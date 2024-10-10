@@ -9,7 +9,7 @@ const PaystackPayment = () => {
   const { cart, clearCart } = useContext(CartContext);
   const { user } = useContext(AuthContext);
   
-  const domain = window.location.href.includes('localhost') ? "http://localhost:5000" : "https://digital-product-store.onrender.com";
+  const domain = window.location.href.includes('localhost') ? "http://localhost:5000" : "https://digital-product-store-1.onrender.com";
 
   const [showModal, setShowModal] = useState(false);
   const [modalContent, setModalContent] = useState(''); // Modal message content
