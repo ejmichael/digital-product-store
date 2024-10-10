@@ -62,7 +62,7 @@ const Cart = () => {
             </button>
           ) : (
             <Link to='/login'>
-              <button className='w-full p-3 my-2 rounded-full text-white font-medium bbg-gradient-to-r  from-purple-500 to-pink-500'>
+              <button className='w-full p-3 my-2 rounded-full text-white font-medium bg-gradient-to-r  from-purple-500 to-pink-500'>
                 Login to complete
               </button>
             </Link>
