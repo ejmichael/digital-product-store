@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import axios from 'axios';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 const Login = () => {
@@ -100,6 +100,12 @@ const Login = () => {
             </div>
             <div className='my-4 w-full border text-center rounded text-white font-semibold'>
               <button type="submit" className="text-white py-2 hover:shadow-md bg-gradient-to-r from-purple-500 to-pink-500 w-full">Login</button>
+            </div>
+            <div className='my-4 w-full flex gap-1 justify-center items-center text-sm'>
+              <p>Don't have an account yet? </p>
+              <Link to='/register' className='text-purple-500'>
+               Create an account
+              </Link>
             </div>
           </form>
         </div>
