@@ -20,7 +20,7 @@ const Navbar = () => {
   
 
   return (
-    <div className='w-full p-4 flex justify-between items-center bg-slate-200'>
+    <div className='w-full p-4 flex justify-between items-center '>
         <div className='border-sm py-2 px-4 font-semibold '>
           <Link to='/' className='text-pink-600 text-xl italic'>Start Your Hustle</Link>
         </div>

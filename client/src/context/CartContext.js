@@ -21,7 +21,7 @@ export const CartReducer = (state, action) => {
         case 'ADD_TO_CART':
             return {
                 ...state,
-                products: [...state.products, action.payload],
+                products: [...state.products, action.payload], 
                 total: state.total + action.payload.price
             };
         case 'REMOVE_FROM_CART':
