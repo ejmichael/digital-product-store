@@ -33,10 +33,10 @@ const productComp = (product) => {
 
     return (
         <Link to={`/product/${product._id}`}>
-        <div  className='flex flex-col rounded-md border border-slate-200  p-2'>
+        <div  className='flex flex-col rounded-md border border-slate-200 h-full p-2'>
             {/* Image container with fixed dimensions and cover styling */}
-            <div className='w-full h-[200px]'>
-                <img className="w-full h-[200px] object-cover rounded-md" src={product.imageUrl} alt='placeholder' />
+            <div className='w-full h-[300px]'>
+                <img className="w-full h-full object-cover rounded-md" src={product.imageUrl} alt='placeholder' />
             </div>
             {/* Content container with space between elements */}
             <div className='flex flex-col justify-between flex-grow'>
@@ -57,7 +57,7 @@ const Products = ({ products }) => {
         dots: true,
         infinite: true,
         speed: 500,
-        slidesToShow: 3,
+        slidesToShow: 4,
         slidesToScroll: 1,
         prevArrow: <PrevArrow />,  // Custom previous arrow
         nextArrow: <NextArrow />,  // Custom next arrow

@@ -73,7 +73,9 @@ const OrderDetails = () => {
                   </div>
                 </div>
                 <div>
-                    <button onClick={() => downloadPDF(product.pdfFileId, product.productName)}>Download</button>
+                    <button 
+                      className='border p-2 flex-1 rounded border-pink-200'
+                      onClick={() => downloadPDF(product.pdfFileId, product.productName)}>Download</button>
                   </div>
               </li>
             ))}

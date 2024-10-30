@@ -30,7 +30,7 @@ const Home = () => {
           </h1> */}   
 
           <h1 className="text-transparent inline-block px-6 text-7xl font-bold bg-clip-text bg-gradient-to-r from-purple-600 to-pink-400">
-            Start Your Journey with Our Side Hustle Guides
+            Start Your Journey with Our Side Hustle Starter Packs
           </h1>
           
           <p className="text-lg mt-8 max-w-2xl mx-auto">
@@ -47,7 +47,7 @@ const Home = () => {
       {/* Featured Products Section */}
       <div className="m-12">
         <h2 className="text-3xl font-semibold mb-6 text-center text-pink-600">
-          Explore Our Popular Digital Products
+          Explore Our Popular Guides
         </h2>
         <Products products={products} />
       </div>
