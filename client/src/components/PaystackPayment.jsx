@@ -5,7 +5,7 @@ import axios from 'axios';
 import { AuthContext } from '../context/AuthContext';
 
 const PaystackPayment = () => {
-  const publicKey = "pk_test_2c2ba5b58c11ca05c55a0d6ea3ba3e6f076c65b4"; // Replace with your Paystack public key
+  const publicKey = "pk_test_30c814522484f6d29fa315fa7ea534eee429db1e"; // Replace with your Paystack public key
   const { cart, clearCart } = useContext(CartContext);
   const { user } = useContext(AuthContext);
   

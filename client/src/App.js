@@ -14,6 +14,8 @@ import OrderDetails from './components/OrderDetails';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 import UploadPDF from './pages/admin/UploadPDF';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsOfService from './pages/TermsOfService';
 
 
 
@@ -35,6 +37,8 @@ function App() {
         <Route path='/product/upload' element={<UploadPDF/>} />
         <Route path='/cart' element={<Cart/>} />
         <Route path='/checkout' element={<PrivateRoute><Checkout/></PrivateRoute>} />
+        <Route path='/privacy-policy' element={<PrivacyPolicy/>} />
+        <Route path='/terms' element={<TermsOfService/>} />
       </Routes>
     </div>
     </CartProvider>

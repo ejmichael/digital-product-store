@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
-import { FaAngleLeft , FaAngleRight } from "react-icons/fa6";
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 
 // Custom Previous Arrow
 const PrevArrow = ({ className, style, onClick }) => {
@@ -29,67 +29,86 @@ const NextArrow = ({ className, style, onClick }) => {
   );
 };
 
-const productComp = (product) => {
+const ProductCard = ({ product }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
 
-    return (
-        <Link to={`/product/${product._id}`}>
-        <div  className='flex flex-col rounded-md border border-slate-200 h-full p-2'>
-            {/* Image container with fixed dimensions and cover styling */}
-            <div className='w-full h-[300px]'>
-                <img className="w-full h-full object-cover rounded-md" src={product.imageUrl} alt='placeholder' />
-            </div>
-            {/* Content container with space between elements */}
-            <div className='flex flex-col justify-between flex-grow'>
-                <p className='m-1 font-semibold text-md'>{product.productName}</p>
-                <p className='m-1 text-sm text-gray-600 h-[40px] overflow-hidden'>{product.productDescription}</p>
-                <p className="m-1 text-sm italicbn ">4.6 rating</p>
-                <p className='m-1 text-green-600 font-semibold'>Coming Soon</p>
-                {/* <p className='m-1 text-green-600 font-semibold'>R {product.price}</p> */}
-            </div>
+  const toggleDescription = () => {
+    setIsExpanded(prev => !prev);
+  };
+
+  return (
+    <Link to={`/product/${product._id}`}>
+      <div className='flex flex-col rounded-md border border-slate-200 h-full p-2'>
+        {/* Image container with fixed dimensions and cover styling */}
+        <div className='w-full h-[300px]'>
+          <img className="w-full h-full object-cover rounded-md" src={product.imageUrl} alt={product.productName} />
         </div>
-        </Link>
-    );
+
+        {/* Content container with space between elements */}
+        <div className='flex flex-col justify-between flex-grow'>
+          <p className='m-1 font-semibold text-md'>{product.productName}</p>
+
+          {/* Description with fixed height, expanding when clicked */}
+          <div 
+            className={`m-1 text-sm text-gray-600 overflow-hidden transition-all duration-300 ${isExpanded ? 'h-auto' : 'h-[200px]'}`}
+          >
+            {product.productDescription}
+          </div>
+
+          {/* Toggle button to expand/collapse description */}
+          <button
+            className="text-pink-500 mt-2 text-sm"
+            onClick={toggleDescription}
+          >
+            {isExpanded ? "Show Less" : "Show More"}
+          </button>
+
+          <p className="m-1 text-sm italic">4.6 rating</p>
+          <p className='m-1 text-green-600 font-semibold'>R {product.price}</p>
+        </div>
+      </div>
+    </Link>
+  );
 };
 
 const Products = ({ products }) => {
-
-    const settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        prevArrow: <PrevArrow />,  // Custom previous arrow
-        nextArrow: <NextArrow />,  // Custom next arrow
-        responsive: [
-          {
-            breakpoint: 1024,
-            settings: {
-              slidesToShow: 2,
-              slidesToScroll: 1,
-              infinite: true,
-              dots: true
-            }
-          },
-          {
-            breakpoint: 600,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1
-            }
-          }
-        ]
-      };
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    prevArrow: <PrevArrow />,  // Custom previous arrow
+    nextArrow: <NextArrow />,  // Custom next arrow
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
+  };
 
   return (
     <div className=''>
-        <Slider {...settings}>
+      {/* <Slider {...settings}> */}
         {products.map((product, index) => (
-            <div className='p-4' key={index}>
-                {productComp(product)}
-            </div>
+          <div className='p-4' key={index}>
+            <ProductCard product={product} />
+          </div>
         ))}
-        </Slider>
+      {/* </Slider> */}
     </div>
   );
 };
