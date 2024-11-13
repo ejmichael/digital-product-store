@@ -7,7 +7,7 @@ const ViewProduct = () => {
     const { productID } = useParams();
     const { addToCart, removeFromCart, isProductInCart } = useContext(CartContext);
     const [productInfo, setProductInfo] = useState(null);
-    const domain = window.location.href.includes('localhost') ? "http://localhost:5000" : "https://digital-product-store-1.onrender.com";
+    const domain = window.location.href.includes('localhost') ? "http://localhost:5000" : "https://blood-sugar-backend.onrender.com";
 
     const getProduct = async () => {
         try {
