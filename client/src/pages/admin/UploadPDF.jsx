@@ -7,7 +7,7 @@ const UploadPDF = () => {
 
   const domain = window.location.href.includes('localhost')
   ? 'http://localhost:5000'
-  : 'https://digital-product-store-1.onrender.com';
+  : 'https://blood-sugar-backend.onrender.com';
 
 
   // Handle file selection
