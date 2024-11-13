@@ -16,6 +16,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import UploadPDF from './pages/admin/UploadPDF';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
+import RefundPolicy from './pages/RefundPolicy';
 
 
 
@@ -39,6 +40,7 @@ function App() {
         <Route path='/checkout' element={<PrivateRoute><Checkout/></PrivateRoute>} />
         <Route path='/privacy-policy' element={<PrivacyPolicy/>} />
         <Route path='/terms' element={<TermsOfService/>} />
+        <Route path='/refunds' element={<RefundPolicy/>} />
       </Routes>
     </div>
     </CartProvider>
