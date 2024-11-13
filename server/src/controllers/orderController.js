@@ -32,7 +32,7 @@ const createOrder = async (req, res) => {
 
         const response = await axios.get(`https://api.paystack.co/transaction/verify/${orderRef}`, {
           headers: {
-            Authorization: `Bearer sk_test_b11cf16dd54a800fa5cebdbd4e9eb293c1337eaf` // Replace with your Paystack secret key
+            Authorization: `Bearer sk_test_d1080e5d316feaa1a0c0e42f8a7a1c116cc6e292` // Replace with your Paystack secret key
           }
         });
 

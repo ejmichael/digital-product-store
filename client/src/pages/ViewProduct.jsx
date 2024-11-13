@@ -47,8 +47,8 @@ const ViewProduct = () => {
                     <p className='text-3xl my-4 font-semibold'>{productInfo.productName}</p>
                     <p className='text-slate-600 my-4'>{productInfo.productDescription}</p>
                     <div className='flex items-end gap-2'>
-                        <p className='my-4 text-2xl text-green-600'>R {(productInfo.price/1.35).toFixed(2)}</p>
-                        <p className='my-4 text-slate-500 line-through'>R {productInfo.price.toFixed(2)}</p>
+                        <p className='my-4 text-2xl text-green-600'>R {(productInfo.price).toFixed(2)}</p>
+                        <p className='my-4 text-slate-500 line-through'>R {(productInfo.price/2.21667).toFixed(2)}</p>
                     </div>
                     <button 
                         className='my-4 h-[50px] w-[100%] my-3 text-white rounded-full bg-gradient-to-r from-purple-500 to-pink-500'
