@@ -10,7 +10,7 @@ const Navbar = () => {
   const { cart } = useContext(CartContext);
   const { user, dispatch } = useContext(AuthContext);
 
-  console.log(cart);
+  // console.log(cart);
 
   const logout = () => {
     localStorage.removeItem('user')

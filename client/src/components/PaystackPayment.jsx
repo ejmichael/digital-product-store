@@ -3,11 +3,13 @@ import { PaystackButton } from 'react-paystack';
 import { CartContext } from '../context/CartContext';
 import axios from 'axios';
 import { AuthContext } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const PaystackPayment = () => {
   const publicKey = "pk_test_30c814522484f6d29fa315fa7ea534eee429db1e"; // Replace with your Paystack public key
   const { cart, clearCart } = useContext(CartContext);
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate()
   
   const domain = window.location.href.includes('localhost') ? "http://localhost:5000" : "https://blood-sugar-backend.onrender.com";
 
@@ -20,14 +22,14 @@ const PaystackPayment = () => {
   const reference = new Date().getTime().toString(); // Generate a unique reference
 
   // Log the modal content after it has been updated
-  useEffect(() => {
-    if (modalContent) {
-      console.log('Updated modal content:', modalContent);
-    }
-  }, [modalContent]);
+  // useEffect(() => {
+  //   if (modalContent) {
+  //     console.log('Updated modal content:', modalContent);
+  //   }
+  // }, [modalContent]);
 
   const onSuccess = async (reference) => {
-    console.log('Payment successful!', reference);
+    // console.log('Payment successful!', reference);
     try {
       const response = await axios.post(domain + `/api/order/create/${reference.reference}`, { cart }, {
         headers: {
@@ -36,7 +38,7 @@ const PaystackPayment = () => {
       });
 
       if (response.data) {
-        console.log('Payment verified:', response.data);
+        // console.log('Payment verified:', response.data);
         setModalContent('Payment was successful! Your order has been placed with reference number: ' + response.data.data.reference); // Set reference number in the content
         clearCart();
         setIsSuccess(true);
@@ -44,7 +46,7 @@ const PaystackPayment = () => {
       }
 
     } catch (error) {
-      console.error('Payment verification failed', error);
+      // console.error('Payment verification failed', error);
       setModalContent('Payment verification failed. Please try again.');
       setIsSuccess(false);
     }
@@ -52,7 +54,7 @@ const PaystackPayment = () => {
   };
 
   const onClose = () => {
-    console.log('Transaction was not completed.');
+    // console.log('Transaction was not completed.');
     setModalContent('Transaction was not completed.');
     setIsSuccess(false);
     setShowModal(true); 
@@ -83,10 +85,10 @@ const PaystackPayment = () => {
             <p className="text-lg mb-4 text-center">{modalContent}</p>
             {isSuccess && (
               <button 
-                onClick={() => window.location.href = '/profile/orders'}
+                onClick={() => navigate('/profile/orders')}
                 className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300"
               >
-                View Orders
+                Go to download
               </button>
             )}
             <button 

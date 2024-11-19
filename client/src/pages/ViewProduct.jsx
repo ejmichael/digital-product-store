@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
 
 const ViewProduct = () => {
@@ -8,6 +8,7 @@ const ViewProduct = () => {
     const { addToCart, removeFromCart, isProductInCart } = useContext(CartContext);
     const [productInfo, setProductInfo] = useState(null);
     const domain = window.location.href.includes('localhost') ? "http://localhost:5000" : "https://blood-sugar-backend.onrender.com";
+    const navigate = useNavigate()
 
     const getProduct = async () => {
         try {
@@ -36,6 +37,15 @@ const ViewProduct = () => {
 
     if (!productInfo) return <div>Loading...</div>;
 
+    const goToCheckout = async () => {
+        if (productInfo) {
+            if (!isProductInCart(productInfo._id)) {
+                await addToCart(productInfo); // Ensure addToCart completes
+            }
+            navigate('/cart'); // Navigate after ensuring the cart is updated
+        }
+    };
+
     return (
         <div className='mx-10 my-4'>
             {/* <div className='text-xl my-4'>ViewProduct: {productInfo.productName}</div> */}
@@ -50,12 +60,17 @@ const ViewProduct = () => {
                         <p className='my-4 text-2xl text-green-600'>R {(productInfo.price).toFixed(2)}</p>
                         <p className='my-4 text-slate-500 line-through'>R {(productInfo.price*2.21667).toFixed(2)}</p>
                     </div>
-                    <button 
+                    <div className='flex'>
+                       <button 
                         className='my-4 h-[50px] w-[100%] my-3 text-white rounded-full bg-gradient-to-r from-purple-500 to-pink-500'
-                        onClick={handleCartAction}
-                    >
-                        {isProductInCart(productInfo._id) ? 'Remove from Cart' : 'Add to Cart'}
-                    </button>
+                        onClick={goToCheckout}
+                        >
+                            {/* {isProductInCart(productInfo._id) ? 'Remove from Cart' : 'Add to Cart'} */}
+                            Buy Now
+                        </button>
+                        
+                    </div>
+                    
                     <div>
                         <p className='my-4 font-semibold text-lg'>Delivery</p>
                         <div>

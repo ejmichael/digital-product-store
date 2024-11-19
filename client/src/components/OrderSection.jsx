@@ -30,15 +30,15 @@ const OrderSection = () => {
   }
 
   return (
-    <div className="max-w-4xl mx-auto my-8">
-      <p className="text-2xl font-semibold mb-6 text-gray-800">Your Orders</p>
+    <div className="max-w-4xl mx-auto my-8 ">
+      <p className="text-2xl font-semibold mb-6 text-gray-800">Orders:</p>
       <ul className="space-y-4">
         {orders.map((order) => (
           <li key={order._id} className="bg-white shadow-md hover:bg-gray-100 rounded-lg p-5 border border-gray-200">
             <Link to={`/orders/${order._id}`} className="block  transition">
               <div className="flex justify-between items-center mb-3">
                 <p className="text-lg font-medium text-gray-900">
-                  Order ID: <span className="text-blue-600">{order.id}</span>
+                  Order ID: <span className="">{order._id}</span>
                 </p>
                 <p className="text-sm text-gray-500">
                   Order Date: {new Date(order.createdAt).toLocaleDateString()}
@@ -46,7 +46,7 @@ const OrderSection = () => {
               </div>
               <div className="text-gray-700">
                 <p>Total: <span className="font-semibold text-green-600">R {order.totalAmount.toFixed(2)}</span></p>
-                <p>Status: <span className={`font-semibold ${order.status === 'Completed' ? 'text-green-500' : 'text-red-500'}`}>{order.status}</span></p>
+                {/* <p>Status: <span className={`font-semibold ${order.status === 'Completed' ? 'text-green-500' : 'text-red-500'}`}>{order.status}</span></p> */}
               </div>
             </Link>
           </li>

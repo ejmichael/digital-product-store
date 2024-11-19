@@ -30,7 +30,7 @@ const OrderDetails = () => {
             responseType: 'blob', // Important for handling file downloads
         });
 
-        console.log(response.data);
+        //console.log(response.data);
         
 
         // Create a link element to trigger the download
@@ -49,13 +49,13 @@ const OrderDetails = () => {
 };
 
   return (
-    <div className="max-w-4xl mx-auto my-8">
-      <h2 className="text-2xl font-semibold mb-6 text-gray-800">Order Details</h2>
+      <div className="max-w-4xl mx-auto my-8 ">
+      <h2 className="text-2xl font-semibold mb-6 text-gray-800">Purchase Details</h2>
       <div className="bg-white shadow-md rounded-lg p-5 border border-gray-200">
         <div className="mb-4">
-          <p className="text-lg font-medium">Order ID: {order.id}</p>
+          <p className="text-lg font-medium">Order ID: {order._id}</p>
           <p>Date: {new Date(order.createdAt).toLocaleDateString()}</p>
-          <p>Status: {order.status}</p>
+          {/* <p>Status: {order.status}</p> */}
           <p>Total: R {order.totalAmount.toFixed(2)}</p>
         </div>
 
@@ -68,13 +68,13 @@ const OrderDetails = () => {
                   <img src={product.imageUrl} alt={product.name} className="w-20 h-20 object-cover rounded-lg" />
                   <div>
                     <p className="font-semibold">{product.productName}</p>
-                    <p className="font-thin">{product.productDescription}</p>
-                    <p>Price: R {product.price.toFixed(2)}</p>
+                    {/* <p className="font-thin">{product.productDescription}</p> */}
+                    {/* <p>Price: R {product.price.toFixed(2)}</p> */}
                   </div>
                 </div>
                 <div>
                     <button 
-                      className='border p-2 flex-1 rounded border-pink-200'
+                      className='border p-3 flex-1 rounded-full text-white font-medium bg-gradient-to-r  from-purple-500 to-pink-500'
                       onClick={() => downloadPDF(product.pdfFileId, product.productName)}>Download</button>
                   </div>
               </li>
