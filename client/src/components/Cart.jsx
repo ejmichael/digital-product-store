@@ -48,7 +48,7 @@ const Cart = () => {
           </div>
           <div className='flex justify-between  my-2'>
              <p>Discount:</p>
-             <p className='text-lg'>R 0</p>
+             <p className='text-lg text-green'>R 219.00</p>
           </div>
           
           {user ? (

@@ -27,17 +27,20 @@ const Home = () => {
       {/* Hero Section */}
       <div className="rounded-lg w-full min-h-[300px] relative pb-0 p-10 justify-center items-center bg-slate-100">
         <div className="text-center">
-          <h1 className="text-transparent inline-block py-6 text-7xl font-bold bg-clip-text bg-gradient-to-r bg-gradient-to-r from-purple-500 to-pink-500">
+          <h1 className="text-transparent inline-block lg:py-6 text-4xl md:text-5xl lg:text-7xl font-bold bg-clip-text bg-gradient-to-r bg-gradient-to-r from-purple-500 to-pink-500">
             Effortlessly track and manage your blood sugar levels.
           </h1>
           
           <p className="text-lg mt-8 max-w-2xl mx-auto text-center text-slate-700">
             Monitor and manage your blood sugar levels easily with our comprehensive Blood Sugar Tracker. Stay in control of your health journey and track your progress daily.
           </p>
+          <p className="text-lg mt-8 max-w-2xl mx-auto text-center text-slate-600 italic">
+            Limited offer. Get 55% off now. Valid unitl midnight.
+          </p>
           {products[0] && (
             <Link to={`/product/${products[0]._id}`}>
-            <button className="mt-8 px-6 py-3 text-white font-semibold rounded-lg hover:bg-gray-100 bg-gradient-to-r bg-gradient-to-r from-purple-500 to-pink-500">
-              Get Tracker
+            <button className="mt-6 px-6 py-3 text-white font-semibold rounded-lg hover:bg-gray-100 bg-gradient-to-r bg-gradient-to-r from-purple-500 to-pink-500">
+              Get 55% Off Now!
             </button>
           </Link>
           )}
@@ -73,7 +76,7 @@ const Home = () => {
 
      {/* Why Choose Us Section */}
 <div className="my-14 flex flex-col items-center bg-gray-100 py-10 px-6 rounded-lg">
-  <h2 className="text-3xl font-semibold text-pink-600 mb-4">Why Track Your Blood Sugar?</h2>
+  <h2 className="text-3xl font-semibold text-pink-600 mb-4 text-center">Why Track Your Blood Sugar?</h2>
   <div className="list-disc text-gray-700 space-y-4 text-center">
     <p>Understand how your daily choices impact your blood sugar levels for a healthier lifestyle.</p>
     <p>Spot trends over time to make proactive adjustments that support balanced glucose levels.</p>
@@ -99,15 +102,8 @@ const Home = () => {
 
 
       {/* Footer */}
-      <div className="py-6 text-center bg-gray-800 text-white rounded-lg">
-        <div className="mb-4 flex justify-center space-x-4">
-          <Link to="/contact" className="hover:text-green-600">Contact us</Link>
-          <Link to="/privacy-policy" className="hover:text-green-600">Privacy Policy</Link>
-          <Link to="/refunds" className="hover:text-green-600">Refund Policy</Link>
-          <Link to="/terms" className="hover:text-green-600">Terms of Service</Link>
-        </div>
-        <p className="italic">© 2024 Blood Sugar Companion. All rights reserved.</p>
-      </div>
+      
+
     </div>
   );
 };
