@@ -19,11 +19,17 @@ import TermsOfService from './pages/TermsOfService';
 import RefundPolicy from './pages/RefundPolicy';
 import ContactUs from './pages/ContactUs';
 
-
+import ReactGA from 'react-ga4';
+import AnalyticsTracker from './AnalyticsTracker';
 
 function App() {
+
+  ReactGA.initialize('G-HLWNWMQH98'); // Replace with your Measurement ID
+  ReactGA.send('pageview'); // Tracks the initial pageview
+
   return (
     <>
+    <AnalyticsTracker/>
     <CartProvider>
     <div className="App">
       <Navbar/>
