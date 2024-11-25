@@ -21,6 +21,8 @@ import ContactUs from './pages/ContactUs';
 
 import ReactGA from 'react-ga4';
 import AnalyticsTracker from './AnalyticsTracker';
+import PaymentSuccess from './pages/PaymentSuccess';
+import PaymentCancelled from './pages/PaymentCancelled';
 
 function App() {
 
@@ -49,6 +51,8 @@ function App() {
         <Route path='/terms' element={<TermsOfService/>} />
         <Route path='/refunds' element={<RefundPolicy/>} />
         <Route path='/contact' element={<ContactUs/>} />
+        <Route path="/payment-success" element={<PaymentSuccess />} />
+        <Route path="/payment-cancelled" element={<PaymentCancelled />} />
       </Routes>
     </div>
     <div className="py-6 text-center bg-gray-800 text-white rounded-lg">

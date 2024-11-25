@@ -8,6 +8,7 @@ const PDFRouter = require('./src/routes/uploadPDFRoute');
 const userRoute = require('./src/routes/userRoute');
 
 const connectToMongoDB = require('./src/db');
+const payfastRouter = require('./src/routes/payfastRoute');
 
 const app = express();
 
@@ -27,9 +28,21 @@ const app = express();
         });
 
         app.use('/api/products', productRouter);
+        app.use('/payfast', payfastRouter);
         app.use('/api/order', orderRouter);
         app.use('/api/user', userRoute);
         app.use('/api/pdf', PDFRouter);
+
+        app.post('/payment-notify', (req, res) => {
+            const paymentData = req.body;
+          
+            console.log('Payment Notification Received:', paymentData);
+          
+            // TODO: Validate payment and update your database accordingly
+          
+            res.status(200).send('Notification received');
+          });
+          
 
         // Start the server
         const port = process.env.PORT || 5000; // Use the port from .env or default to 5000

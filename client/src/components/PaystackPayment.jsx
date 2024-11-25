@@ -4,6 +4,7 @@ import { CartContext } from '../context/CartContext';
 import axios from 'axios';
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import PayfastButton from './PayfastButton';
 
 const PaystackPayment = () => {
   const publicKey = "pk_test_30c814522484f6d29fa315fa7ea534eee429db1e"; // Replace with your Paystack public key
@@ -77,8 +78,8 @@ const PaystackPayment = () => {
 
   return (
     <div>
-      <PaystackButton className='w-full' {...componentProps} />
-
+      {/* <PaystackButton className='w-full' {...componentProps} /> */}
+      <PayfastButton />
       {showModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
           <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
