@@ -2,42 +2,75 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
+import { AuthContext } from "../context/AuthContext";
 
 const PayfastButton = () => {
   const [loading, setLoading] = useState(false);
   const { cart, clearCart } = useContext(CartContext);
+  const { user } = useContext(AuthContext);
 
-  console.log(cart);
-  const domain = window.location.href.includes('localhost') ? "http://localhost:5000" : "https://blood-sugar-backend.onrender.com";
-  
+  // Determine backend URL dynamically
+  const domain = window.location.href.includes("localhost")
+    ? "http://localhost:5000"
+    : "https://blood-sugar-backend.onrender.com";
 
-  const initiatePayment = async () => {
-    setLoading(true);
-    try {
-      const response = await axios.post(domain + "/payfast/payfast-initiate", {
-        amount: cart.total, // Example amount
-        item_name: "Blood Sugar Tracker",
-        email: "customer@example.com",
-      });
-
-      console.log(response.data);
-      
-
-      if (response.data.redirectUrl) {
-        window.location.href = response.data.redirectUrl; // Redirect to PayFast
+    const initiatePayment = async () => {
+      setLoading(true);
+      try {
+        // Step 1: Initiate Payment with PayFast
+        const paymentResponse = await axios.post(`${domain}/payfast/payfast-initiate`, {
+          amount: cart.total,
+          item_name: "Blood Sugar Tracker",
+          email: user.email, // Replace with the actual email of the user
+        });
+    
+        if (paymentResponse.data.redirectUrl) {
+          const { redirectUrl, paymentReference } = paymentResponse.data; // Get paymentReference
+    
+          // Step 2: Create the Order in your system
+          const orderResponse = await axios.post(
+            domain + `/api/order/create/${paymentReference}`, 
+            {
+              cart, // Pass the cart details
+              paymentReference, // Use the paymentReference from PayFast
+            },
+            {
+              headers: {
+                Authorization: `Bearer ${user.token}`, // Authentication token
+              },
+            }
+          );
+    
+          console.log(orderResponse);
+          
+          if (orderResponse.status === 201) {
+            console.log("Order created successfully:", orderResponse.data);
+            clearCart(); // Clear the cart if order is successfully created
+    
+            // Step 3: Redirect to PayFast for payment
+            window.location.href = redirectUrl;
+          } else {
+            console.error("Failed to create order:", orderResponse.data);
+            alert("Order creation failed. Please try again.");
+          }
+        } else {
+          console.error("No redirect URL received from PayFast.");
+          alert("Payment initiation failed. Please try again.");
+        }
+      } catch (error) {
+        console.error("Error during payment initiation or order creation:", error);
+        alert("An error occurred. Please try again.");
+      } finally {
+        setLoading(false);
       }
-    } catch (error) {
-      console.error("Payment initiation failed:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
+    };
+    
 
   return (
     <button
       onClick={initiatePayment}
       disabled={loading}
-      className="bg-blue-500 text-white p-2 rounded"
+      className="bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
     >
       {loading ? "Processing..." : "Pay with PayFast"}
     </button>

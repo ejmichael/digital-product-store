@@ -1,18 +1,21 @@
 const express = require("express");
 const crypto = require("crypto"); // For checksum validation
 const payfastRouter = express.Router();
+const { v4: uuidv4 } = require('uuid');
 
 
 payfastRouter.post("/payfast-initiate", (req, res) => {
     const { amount, item_name, email } = req.body;
+    const orderReference = uuidv4();
+    const paymentReference = uuidv4(); 
   
     // Your PayFast merchant credentials
     const payfastUrl = "https://sandbox.payfast.co.za/eng/process"; // Testing URL
     const merchantId = "10000100"; // Replace with actual Merchant ID
     const merchantKey = "46f0cd694581a"; // Replace with actual Merchant Key
-    const returnUrl = "https://blood-sugar-backend.onrender.com/success";
-    const cancelUrl = "https://blood-sugar-backend.onrender.com/cancel";
-    //const notifyUrl = "https://blood-sugar-backend.onrender.com/notify";
+    const returnUrl = "https://www.bloodsugartracker.co.za/success";
+    const cancelUrl = "https://www.bloodsugartracker.co.za/cancel";
+    const notifyUrl = "https://www.bloodsugartracker.co.za/notify";
   
     // Construct the query string
     const queryParams = new URLSearchParams({
@@ -20,34 +23,50 @@ payfastRouter.post("/payfast-initiate", (req, res) => {
       merchant_key: merchantKey,
       return_url: returnUrl,
       cancel_url: cancelUrl,
-      //notify_url: notifyUrl,
+      notify_url: notifyUrl,
       amount: amount, // Example: "100.00"
       item_name: item_name,
       email_address: email,
+      m_payment_id: paymentReference, // Include the reference as PayFast's custom field
     });
   
-    // Send back the redirect URL to the frontend
-    res.json({ redirectUrl: `${payfastUrl}?${queryParams.toString()}` });
+    const redirectUrl = `${payfastUrl}?${queryParams.toString()}`;
+
+    // Send the reference and redirect URL back to the client
+    res.status(200).json({
+      redirectUrl,
+      paymentReference,
+      orderReference, // Include the reference for use in order creation
+    });
   });
 
-payfastRouter.post("/payfast-notify", (req, res) => {
-    const { body } = req;
-  
-    // Validate the signature or checksum (optional but recommended)
-    const checksum = crypto
-      .createHash("md5")
-      .update(Object.values(body).join(""))
-      .digest("hex");
-  
-    if (checksum === body.signature) {
-      // Process the payment
-      console.log("Payment verified:", body);
-      res.status(200).send("Payment verified");
+payfastRouter.post("/notify", (req, res) => {
+  // PayFast will send a notification with payment details
+  const { paymentReference } = req.body; // This will be sent by PayFast
+
+  // Verify the transaction by calling PayFast's transaction verification API
+  axios.post('https://sandbox.payfast.co.za/eng/query/validate', {
+    m_payment_id: paymentReference,
+    // Other parameters like merchant_id, merchant_key, etc. should also be sent
+  })
+  .then(response => {
+    // Validate the payment status here
+    const paymentStatus = response.data; // Parse PayFast response
+
+    // Update order status based on payment verification result
+    if (paymentStatus.status === 'COMPLETE') {
+      // Update the order status in your database
+      console.log(`Payment successful for order ${paymentReference}`);
     } else {
-      console.error("Payment verification failed");
-      res.status(400).send("Invalid signature");
+      console.log(`Payment failed for order ${paymentReference}`);
     }
+  })
+  .catch(error => {
+    console.error('Error during payment verification:', error);
   });
+
+  res.send("Payment verification received");
+});
   
 
 module.exports = payfastRouter;

@@ -30,32 +30,45 @@ const createOrder = async (req, res) => {
             }
         }
 
-        const response = await axios.get(`https://api.paystack.co/transaction/verify/${orderRef}`, {
-          headers: {
-            Authorization: `Bearer sk_test_d1080e5d316feaa1a0c0e42f8a7a1c116cc6e292` // Replace with your Paystack secret key
-          }
-        });
+        // const response = await axios.get(`https://api.paystack.co/transaction/verify/${orderRef}`, {
+        //   headers: {
+        //     Authorization: `Bearer sk_test_d1080e5d316feaa1a0c0e42f8a7a1c116cc6e292` // Replace with your Paystack secret key
+        //   }
+        // });
 
-        console.log(response.data);
+        // console.log(response.data);
+
+        let newOrder = await Order.create({
+          user: req.user.id,
+          products: products.map(product => product._id),
+          totalAmount: total,
+          status: 'placed',
+          orderRef,
+          // streetAddress,
+          // city,
+          // postCode
+      })
+
+      res.status(201).json(newOrder)
     
-        if (response.data.status) {
-          // Payment verified, handle success logic here
-          let newOrder = await Order.create({
-            user: req.user.id,
-            products: products.map(product => product._id),
-            totalAmount: total,
-            status: 'placed',
-            orderRef,
-            // streetAddress,
-            // city,
-            // postCode
-        })
+        // if (response.data.status) {
+        //   // Payment verified, handle success logic here
+        //   let newOrder = await Order.create({
+        //     user: req.user.id,
+        //     products: products.map(product => product._id),
+        //     totalAmount: total,
+        //     status: 'placed',
+        //     orderRef,
+        //     // streetAddress,
+        //     // city,
+        //     // postCode
+        // })
     
-          res.status(200).json(response.data)
-          //res.status(200).json({ success: true, data: response.data });
-        } else {
-          res.status(400).json({ success: false, message: 'Payment not verified' });
-        }
+        //   res.status(200).json(response.data)
+        //   //res.status(200).json({ success: true, data: response.data });
+        // } else {
+        //   res.status(400).json({ success: false, message: 'Payment not verified' });
+        // }
       } catch (error) {
         console.error(error);
         res.status(500).json({ success: false, message: 'Something went wrong' });
