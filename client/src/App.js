@@ -51,8 +51,8 @@ function App() {
         <Route path='/terms' element={<TermsOfService/>} />
         <Route path='/refunds' element={<RefundPolicy/>} />
         <Route path='/contact' element={<ContactUs/>} />
-        <Route path="/payment-success" element={<PaymentSuccess />} />
-        <Route path="/payment-cancelled" element={<PaymentCancelled />} />
+        <Route path="/success" element={<PaymentSuccess />} />
+        <Route path="/cancel" element={<PaymentCancelled />} />
       </Routes>
     </div>
     <div className="py-6 text-center bg-gray-800 text-white rounded-lg">

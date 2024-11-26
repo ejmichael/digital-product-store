@@ -3,6 +3,7 @@ import { CartContext } from '../context/CartContext';
 import PaystackPayment from './PaystackPayment';
 import { AuthContext } from '../context/AuthContext';
 import { Link } from 'react-router-dom';
+import PayfastButton from './PayfastButton';
 //import { PaystackButton } from 'react-paystack';
 
 const Cart = () => {
@@ -73,7 +74,8 @@ const Cart = () => {
             //   </button>
             // </Link>
             <button className='w-full p-3 my-2 rounded-full text-white font-medium bg-gradient-to-r  from-purple-500 to-pink-500'>
-              <PaystackPayment/>
+              {/* <PaystackPayment/> */}
+              <PayfastButton />
             </button>
           ) : (
             <Link to='/login'>

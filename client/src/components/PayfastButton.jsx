@@ -1,17 +1,26 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
 
 const PayfastButton = () => {
   const [loading, setLoading] = useState(false);
+  const { cart, clearCart } = useContext(CartContext);
+
+  console.log(cart);
+  
 
   const initiatePayment = async () => {
     setLoading(true);
     try {
       const response = await axios.post("http://localhost:5000/payfast/payfast-initiate", {
-        amount: "100.00", // Example amount
+        amount: cart.total, // Example amount
         item_name: "Blood Sugar Tracker",
         email: "customer@example.com",
       });
+
+      console.log(response.data);
+      
 
       if (response.data.redirectUrl) {
         window.location.href = response.data.redirectUrl; // Redirect to PayFast

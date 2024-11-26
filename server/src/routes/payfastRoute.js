@@ -8,11 +8,11 @@ payfastRouter.post("/payfast-initiate", (req, res) => {
   
     // Your PayFast merchant credentials
     const payfastUrl = "https://sandbox.payfast.co.za/eng/process"; // Testing URL
-    const merchantId = "26051467"; // Replace with actual Merchant ID
-    const merchantKey = "xty3ticuu2gup"; // Replace with actual Merchant Key
-    const returnUrl = "http:localhost:3000/success";
-    const cancelUrl = "http:localhost:3000/cancel";
-    const notifyUrl = "http:localhost:3000/notify";
+    const merchantId = "10000100"; // Replace with actual Merchant ID
+    const merchantKey = "46f0cd694581a"; // Replace with actual Merchant Key
+    const returnUrl = "https://blood-sugar-backend.onrender.com/success";
+    const cancelUrl = "https://blood-sugar-backend.onrender.com/cancel";
+    //const notifyUrl = "https://blood-sugar-backend.onrender.com/notify";
   
     // Construct the query string
     const queryParams = new URLSearchParams({
@@ -20,7 +20,7 @@ payfastRouter.post("/payfast-initiate", (req, res) => {
       merchant_key: merchantKey,
       return_url: returnUrl,
       cancel_url: cancelUrl,
-      notify_url: notifyUrl,
+      //notify_url: notifyUrl,
       amount: amount, // Example: "100.00"
       item_name: item_name,
       email_address: email,
