@@ -8,12 +8,13 @@ const PayfastButton = () => {
   const { cart, clearCart } = useContext(CartContext);
 
   console.log(cart);
+  const domain = window.location.href.includes('localhost') ? "http://localhost:5000" : "https://blood-sugar-backend.onrender.com";
   
 
   const initiatePayment = async () => {
     setLoading(true);
     try {
-      const response = await axios.post("http://localhost:5000/payfast/payfast-initiate", {
+      const response = await axios.post(domain + "/payfast/payfast-initiate", {
         amount: cart.total, // Example amount
         item_name: "Blood Sugar Tracker",
         email: "customer@example.com",
