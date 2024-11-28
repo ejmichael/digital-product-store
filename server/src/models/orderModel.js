@@ -24,7 +24,7 @@ const OrderSchema = new Schema({
   },
   status: {
     type: String,
-    enum: ['placed', 'completed', 'canceled'],
+    enum: ['placed', 'pending', 'completed', 'canceled'],
     default: 'placed'
   },
   // pdfUrl: {  // New field for the PDF file URL

@@ -29,7 +29,7 @@ const Cart = () => {
       <div className='grid grid-cols-5 gap-4'>
         <div className='col-span-5 lg:col-span-3 flex flex-col gap-4'>
         {cart.products.length > 0 && cart.products.map(product => (
-          <div className='flex flex-wrap gap-4 border border-slate-300 p-3 rounded-lg '>
+          <div key={product._id} className='flex flex-wrap gap-4 border border-slate-300 p-3 rounded-lg '>
             <div>
               <img className='lg:max-w-[150px]' src={product.imageUrl} alt={product.productName} />
             </div>
@@ -73,10 +73,13 @@ const Cart = () => {
             //     Complete checksout
             //   </button>
             // </Link>
+            <>
+            <div className='w-full p-3 my-2 rounded-full text-white font-medium bg-gradient-to-r  from-purple-500 to-pink-500'>
+              <PaystackPayment/>
+            </div>
             <button className='w-full p-3 my-2 rounded-full text-white font-medium bg-gradient-to-r  from-purple-500 to-pink-500'>
-              {/* <PaystackPayment/> */}
               <PayfastButton />
-            </button>
+            </button></>
           ) : (
             <Link to='/login'>
               <button className='w-full p-3 my-2 rounded-full text-white font-medium bg-gradient-to-r  from-purple-500 to-pink-500'>

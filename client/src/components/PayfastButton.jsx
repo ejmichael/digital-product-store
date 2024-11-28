@@ -45,11 +45,12 @@ const PayfastButton = () => {
           
           if (orderResponse.status === 201) {
             console.log("Order created successfully:", orderResponse.data);
-            clearCart(); // Clear the cart if order is successfully created
+            setLoading(true)
     
             // Step 3: Redirect to PayFast for payment
-            window.location.href = redirectUrl;
+            window.location.href = redirectUrl
           } else {
+            setLoading(false);
             console.error("Failed to create order:", orderResponse.data);
             alert("Order creation failed. Please try again.");
           }
@@ -70,9 +71,9 @@ const PayfastButton = () => {
     <button
       onClick={initiatePayment}
       disabled={loading}
-      className="bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
+      className=""
     >
-      {loading ? "Processing..." : "Pay with PayFast"}
+      {loading ? "Processing..." : "PayFast Test"}
     </button>
   );
 };
