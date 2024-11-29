@@ -28,11 +28,11 @@ const Home = () => {
       <div className="rounded-lg w-full min-h-[300px] relative pb-0 p-10 justify-center items-center bg-slate-100">
         <div className="text-center">
           <h1 className="text-transparent inline-block lg:py-6 text-4xl md:text-5xl lg:text-7xl font-bold bg-clip-text bg-gradient-to-r bg-gradient-to-r from-purple-500 to-pink-500">
-            Effortlessly track and manage your blood sugar levels.
+            Effortlessly track and manage your weightloss and fitness journey.
           </h1>
           
           <p className="text-lg mt-8 max-w-2xl mx-auto text-center text-slate-700">
-            Monitor and manage your blood sugar levels easily with our comprehensive Blood Sugar Tracker. Stay in control of your health journey and track your progress daily.
+            Monitor and manage your weight easily with our comprehensive Weight loss journal. Stay in control of your health journey and track your progress daily.
           </p>
           <p className="text-lg mt-8 max-w-2xl mx-auto text-center text-slate-600 italic">
             Limited offer. Get 55% off now. Valid unitl midnight.
@@ -60,18 +60,20 @@ const Home = () => {
       
       {/* Benefits Section */}
       <div className="m-16 grid grid-cols-1 md:grid-cols-3 gap-10">
-        <div className="bg-gray-100 p-6 rounded-lg">
-          <h3 className="text-xl font-semibold text-pink-600 mb-4">Daily Blood Sugar Logs</h3>
-          <p>Keep a daily record of your blood sugar levels to understand patterns and gain insights into your health.</p>
-        </div>
-        <div className="bg-gray-100 p-6 rounded-lg">
-          <h3 className="text-xl font-semibold text-pink-600 mb-4">Customizable Tracking</h3>
-          <p>Personalize your tracker with additional notes and reminders to help stay consistent and organized.</p>
-        </div>
-        <div className="bg-gray-100 p-6 rounded-lg">
-          <h3 className="text-xl font-semibold text-pink-600 mb-4">Easy-to-Understand Charts</h3>
-          <p>Visualize your health journey with simple, easy-to-read charts that show your progress over time.</p>
-        </div>
+  <div className="bg-green-100 p-6 rounded-lg">
+    <h3 className="text-xl font-semibold text-green-600 mb-4">Daily Workout Logs</h3>
+    <p>Track your daily workouts to monitor progress, stay consistent, and achieve your fitness goals.</p>
+  </div>
+  <div className="bg-green-100 p-6 rounded-lg">
+    <h3 className="text-xl font-semibold text-green-600 mb-4">Meal Tracking and Plans</h3>
+    <p>Log your meals and follow customized plans to ensure a balanced diet for effective weight loss.</p>
+  </div>
+  <div className="bg-green-100 p-6 rounded-lg">
+    <h3 className="text-xl font-semibold text-green-600 mb-4">Progress Visualization</h3>
+    <p>Stay motivated with visual charts showcasing your weight loss, fitness milestones, and health improvements over time.</p>
+  </div>
+</div>
+
       </div>
 
      {/* Why Choose Us Section */}
