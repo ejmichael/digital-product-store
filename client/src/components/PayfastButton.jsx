@@ -17,6 +17,7 @@ const PayfastButton = () => {
     const initiatePayment = async () => {
       setLoading(true);
       try {
+         console.log("Initiating payment")
         // Step 1: Initiate Payment with PayFast
         const paymentResponse = await axios.post(`${domain}/payfast/payfast-initiate`, {
           amount: cart.total,
@@ -25,9 +26,13 @@ const PayfastButton = () => {
         });
     
         if (paymentResponse.data.redirectUrl) {
+
+           console.log("Response recieved")
           const { redirectUrl, paymentReference } = paymentResponse.data; // Get paymentReference
     
           // Step 2: Create the Order in your system
+          console.log("Creating Order");
+          
           const orderResponse = await axios.post(
             domain + `/api/order/create/${paymentReference}`, 
             {
@@ -46,7 +51,7 @@ const PayfastButton = () => {
           if (orderResponse.status === 201) {
             console.log("Order created successfully:", orderResponse.data);
             setLoading(true)
-    
+            clearCart();
             // Step 3: Redirect to PayFast for payment
             window.location.href = redirectUrl
           } else {
