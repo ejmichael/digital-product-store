@@ -17,7 +17,6 @@ const PayfastButton = () => {
     const initiatePayment = async () => {
       setLoading(true);
       try {
-         console.log("Initiating payment")
         // Step 1: Initiate Payment with PayFast
         const paymentResponse = await axios.post(`${domain}/payfast/payfast-initiate`, {
           amount: cart.total,
@@ -27,11 +26,10 @@ const PayfastButton = () => {
     
         if (paymentResponse.data.redirectUrl) {
 
-           console.log("Response recieved")
+          //  console.log("Response recieved")
           const { redirectUrl, paymentReference } = paymentResponse.data; // Get paymentReference
     
           // Step 2: Create the Order in your system
-          console.log("Creating Order");
           
           const orderResponse = await axios.post(
             domain + `/api/order/create/${paymentReference}`, 
@@ -46,7 +44,7 @@ const PayfastButton = () => {
             }
           );
     
-          console.log(orderResponse);
+          // console.log(orderResponse);
           
           if (orderResponse.status === 201) {
             console.log("Order created successfully:", orderResponse.data);
@@ -56,15 +54,15 @@ const PayfastButton = () => {
             window.location.href = redirectUrl
           } else {
             setLoading(false);
-            console.error("Failed to create order:", orderResponse.data);
+            // console.error("Failed to create order:", orderResponse.data);
             alert("Order creation failed. Please try again.");
           }
         } else {
-          console.error("No redirect URL received from PayFast.");
+          // console.error("No redirect URL received from PayFast.");
           alert("Payment initiation failed. Please try again.");
         }
       } catch (error) {
-        console.error("Error during payment initiation or order creation:", error);
+        // console.error("Error during payment initiation or order creation:", error);
         alert("An error occurred. Please try again.");
       } finally {
         setLoading(false);
@@ -78,7 +76,7 @@ const PayfastButton = () => {
       disabled={loading}
       className=""
     >
-      {loading ? "Processing..." : "PayFast Test"}
+      {loading ? "Processing..." : "Pay Now"}
     </button>
   );
 };

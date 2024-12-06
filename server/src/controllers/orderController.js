@@ -3,7 +3,9 @@ const Product = require('../models/productModel')
 const axios = require('axios')
 
 const createOrder = async (req, res) => {
-    const { orderRef } = req.params;
+    
+  console.log("Creating order backend");
+  const { orderRef } = req.params;
     // const { streetAddress, city, postCode } = req.body.deliveryAddress;
     const { products, total } = req.body.cart;
 
