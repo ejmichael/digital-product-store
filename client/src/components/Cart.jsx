@@ -74,9 +74,9 @@ const Cart = () => {
             //   </button>
             // </Link>
             <>
-            <div className='w-full p-3 my-2 rounded-full text-white font-medium bg-gradient-to-r  from-purple-500 to-pink-500'>
+            {/* <div className='w-full p-3 my-2 rounded-full text-white font-medium bg-gradient-to-r  from-purple-500 to-pink-500'>
               <PaystackPayment/>
-            </div>
+            </div> */}
             <button className='w-full p-3 my-2 rounded-full text-white font-medium bg-gradient-to-r  from-purple-500 to-pink-500'>
               <PayfastButton />
             </button></>
