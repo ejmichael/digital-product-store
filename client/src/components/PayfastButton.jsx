@@ -26,7 +26,7 @@ const PayfastButton = () => {
     
         if (paymentResponse.data.redirectUrl) {
 
-          //  console.log("Response recieved")
+            console.log("Response recieved")
           const { redirectUrl, paymentReference } = paymentResponse.data; // Get paymentReference
     
           // Step 2: Create the Order in your system

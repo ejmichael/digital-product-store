@@ -13,9 +13,9 @@ const productSchema = mongoose.Schema({
         type: Number,
         required: true
     },
-    imageUrl: {
-        type: String,
-        default: ''
+    imageUrls: {
+        type: [String],
+        default: []
     },
     pdfFileId: { 
         type: mongoose.Schema.Types.ObjectId, 

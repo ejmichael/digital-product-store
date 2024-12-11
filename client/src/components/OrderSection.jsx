@@ -31,14 +31,14 @@ const OrderSection = () => {
 
   return (
     <div className="max-w-4xl mx-auto my-8 ">
-      <p className="text-2xl font-semibold mb-6 text-gray-800">Orders:</p>
+      <p className="text-xl font-semibold mb-6 text-pink-6e00">Orders:</p>
       <ul className="space-y-4">
         {orders.map((order) => (
           <li key={order._id} className="bg-white shadow-md hover:bg-gray-100 rounded-lg p-5 border border-gray-200">
             <Link to={`/orders/${order._id}`} className="block  transition">
-              <div className="flex justify-between items-center mb-3">
-                <p className="text-lg font-medium text-gray-900">
-                  Order ID: <span className="">{order._id}</span>
+              <div className="md:flex justify-between items-center mb-3">
+                <p className="md:text-lg font-medium text-gray-900 ">
+                  Order ID: <span className="font-normal">{order._id}</span>
                 </p>
                 <p className="text-sm text-gray-500">
                   Order Date: {new Date(order.createdAt).toLocaleDateString()}

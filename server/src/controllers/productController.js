@@ -34,12 +34,18 @@ const getProductByID = async (req, res) => {
 } 
 
 const createProduct = async (req, res) => {
-    const { productName, productDescription, price, imageUrl } = req.body;
+    const { productName, productDescription, price, imageUrls } = req.body;
+
+    console.log(imageUrls);
+    
   
     if (!productName || !productDescription || !price) {
       res.status(400).json({ message: "Provide all product details." });
       return;
     }
+
+    // Check if `imageUrls` is an array and sanitize input
+    const parsedImageUrls = typeof imageUrls === 'string' ? JSON.parse(imageUrls) : imageUrls;
   
     // If there's no file uploaded, return an error
     if (!req.file) {
@@ -64,7 +70,7 @@ const createProduct = async (req, res) => {
         productName,
         productDescription,
         price,
-        imageUrl,
+        imageUrls: parsedImageUrls,
         pdfFileId: savedFile._id, // Storing the PDF file ID or URL in the product
       });
   

@@ -10,16 +10,22 @@ const ViewProduct = () => {
     const domain = window.location.href.includes('localhost') ? "http://localhost:5000" : "https://blood-sugar-backend.onrender.com";
     const navigate = useNavigate()
 
+    const [selectedImg, setSelectedImg] = useState(null)
+
     const getProduct = async () => {
         try {
             const response = await axios.get(domain + `/api/products/${productID}`);
             if (response.data) {
                 setProductInfo(response.data);
+                setSelectedImg(productInfo.imageUrls[0])
             }
         } catch (error) {
             console.error('Error fetching product:', error);
         }
     };
+
+    console.log(productInfo);
+    
 
     useEffect(() => {
         getProduct();
@@ -51,7 +57,12 @@ const ViewProduct = () => {
             {/* <div className='text-xl my-4'>ViewProduct: {productInfo.productName}</div> */}
             <div className='grid grid-cols-5 gap-4 my-8'>
                 <div className='col-span-5 lg:col-span-3 gap-4 px-2'>
-                    <img className='w-[80%] m-auto border border-2 rounded-md' src={productInfo.imageUrl} alt={productInfo.productName} />
+                    <img className='md:w-[80%] m-auto border border-2 rounded-md' src={selectedImg ||  productInfo.imageUrls[0]} alt={productInfo.productName} />
+                    <div className='flex justify-center gap-1 m-2'>
+                        {productInfo.imageUrls.map((imgUrl) => (
+                            <img className='h-[100px] m-2 border border-2 rounded-md hover:border-red-500' onClick={() => setSelectedImg(imgUrl)} src={imgUrl} alt={productInfo.productName} />
+                        ))} 
+                    </div>
                 </div>
                 <div className='col-span-5 lg:col-span-2 px-4'>
                     <p className='text-3xl my-4 font-semibold'>{productInfo.productName}</p>

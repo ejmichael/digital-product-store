@@ -38,11 +38,15 @@ const Navbar = () => {
                   )}
               </button>
             </Link>
-            <Link to="/profile">
+            
+            {user && (
+              <Link to="/profile">
               <button className='p-4 bg-white rounded-full hover:font-semibold hover:cursor-pointer hover:bg-gradient-to-r from-purple-600 to-pink-500 hover:text-white'>
                   <FaCircleUser/>
               </button>
             </Link>
+            )}
+            
               
             {user ? (
               <button onClick={logout} className='p-4 bg-white rounded-full hover:font-semibold hover:cursor-pointer hover:bg-gradient-to-r from-purple-600 to-pink-500 hover:text-white'>
