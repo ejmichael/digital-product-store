@@ -40,8 +40,16 @@ const ProductCard = ({ product }) => {
     <Link to={`/product/${product._id}`}>
       <div className='flex flex-col rounded-md border border-slate-200 h-full p-2'>
         {/* Image container with fixed dimensions and cover styling */}
-        <div className='w-full h-[300px]'>
-          <img className="w-full h-full object-cover rounded-md" src={product.imageUrl} alt={product.productName} />
+        {/* <div className='w-full h-[300px]'>
+          <img className="w-full h-full object-cover rounded-md" src={product.imageUrls[0]} alt={product.productName} />
+        </div> */}
+
+        <div className="bg-gray-100 p-8 relative h-[300px]  ">
+          <img src={product.imageUrls[0]} alt="" className='absolute top-0 left-0 w-full h-full object-cover' />
+          <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-40"></div>
+          <div className='relative h-full z-10 flex flex-col items-center justify-center'>
+            <h3 className="lg:text-3xl sm:text-xl font-bold text-white uppercase mb-4 text-center">{product.productName}</h3>
+          </div>
         </div>
 
         {/* Content container with space between elements */}
@@ -50,18 +58,12 @@ const ProductCard = ({ product }) => {
 
           {/* Description with fixed height, expanding when clicked */}
           <div 
-            className={`m-1 text-sm text-gray-600 overflow-hidden transition-all duration-300 ${isExpanded ? 'h-auto' : 'h-[200px]'}`}
+            className={`m-1 text-sm text-gray-600 overflow-hidden transition-all duration-300 ${isExpanded ? 'h-auto' : 'h-[180px]'}`}
           >
             {product.productDescription}
           </div>
 
-          {/* Toggle button to expand/collapse description */}
-          <button
-            className="text-pink-500 mt-2 text-sm"
-            onClick={toggleDescription}
-          >
-            {isExpanded ? "Show Less" : "Show More"}
-          </button>
+          
 
           <p className="m-1 text-sm italic">4.6 rating</p>
           <p className='m-1 text-green-600 font-semibold'>R {product.price}</p>
@@ -84,7 +86,7 @@ const Products = ({ products }) => {
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 3,
           slidesToScroll: 1,
           infinite: true,
           dots: true
@@ -102,13 +104,13 @@ const Products = ({ products }) => {
 
   return (
     <div className=''>
-      {/* <Slider {...settings}> */}
+      <Slider {...settings}> 
         {products.map((product, index) => (
           <div className='p-4' key={index}>
             <ProductCard product={product} />
           </div>
         ))}
-      {/* </Slider> */}
+     </Slider> 
     </div>
   );
 };
