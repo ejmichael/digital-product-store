@@ -56,7 +56,7 @@ const ViewProduct = () => {
         <div className='mx-10 my-4'>
             {/* <div className='text-xl my-4'>ViewProduct: {productInfo.productName}</div> */}
             <div className='grid grid-cols-5 gap-4 my-8'>
-                <div className='col-span-5 lg:col-span-3 gap-4 px-2'>
+                <div className='col-span-5 lg:col-span-3 gap-4 px-2 '>
                     <img className='md:w-[80%] m-auto border border-2 rounded-md' src={selectedImg ||  productInfo.imageUrls[0]} alt={productInfo.productName} />
                     <div className='flex justify-center gap-1 m-2'>
                         {productInfo.imageUrls.map((imgUrl) => (

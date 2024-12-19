@@ -4,7 +4,12 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'dancing-script': ['"Dancing Script"', 'serif'],
+        'bebas-neue': ['"Bebas Neue", serif '],
+      },
+    },
   },
   plugins: [],
 }

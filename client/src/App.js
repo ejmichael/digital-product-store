@@ -55,14 +55,14 @@ function App() {
         <Route path="/cancel" element={<PaymentCancelled />} />
       </Routes>
     </div>
-    <div className="py-6 text-center bg-gray-800 text-white rounded-lg">
+    <div className="py-6 text-center bg-gray-900 text-white ">
         <div className="mb-4 flex flex-wrap justify-center space-x-4">
-          <Link to="/contact" className="hover:text-green-600">Contact us</Link>
+          <Link to="/contact" className="hover:text-green-600">Contact</Link>
           <Link to="/privacy-policy" className="hover:text-green-600">Privacy Policy</Link>
           <Link to="/refunds" className="hover:text-green-600">Refund Policy</Link>
           <Link to="/terms" className="hover:text-green-600">Terms of Service</Link>
         </div>
-        <p className="italic">© 2024 Blood Sugar Companion. All rights reserved.</p>
+        <p className="italic">© 2024 MLG Fitness. All rights reserved.</p>
       </div>
     </CartProvider>
     <ToastContainer

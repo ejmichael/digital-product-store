@@ -2,6 +2,12 @@ import React, { useEffect, useState } from 'react';
 import Products from '../components/products/Products';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import Video from '../assets/hero.mp4'
+import Muscle from '../assets/muscle2.jpg'
+import Transfrom from '../assets/transform.jpg'
+import Weight from '../assets/weightloss.jpg'
+import Flexible from '../assets/flexibility.jpg'
+import Subscribe from '../components/Subscribe';
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -24,85 +30,111 @@ const Home = () => {
 
   return (
     <div className="">
-      {/* Hero Section */}
-      <div className="rounded-lg w-full min-h-[300px] relative pb-0 p-10 justify-center items-center bg-slate-100">
-        <div className="text-center">
-          <h1 className="text-transparent inline-block lg:py-6 text-4xl md:text-5xl lg:text-7xl font-bold bg-clip-text bg-gradient-to-r bg-gradient-to-r from-purple-500 to-pink-500">
-            Effortlessly track and manage your blood sugar levels.
+      <div className="relative w-full h-screen overflow-hidden">
+        {/* Background Video */}
+        <video
+          className="absolute top-0 left-0 w-full h-full object-cover"
+          autoPlay
+          loop
+          muted
+        >
+          <source src={Video} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+
+        {/* Overlay */}
+        <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-20"></div>
+
+        {/* Content */}
+        <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
+          <h1 className="text-white md:text-6xl font-bold mb-6">
+            <span className='font-bebas-neue text-7xl'>BUILD YOUR BEST BODY. </span>
+            <br /> 
+            <span className='font-dancing-script font-extralight'>Transform your life.</span>
           </h1>
-          
-          <p className="text-lg mt-8 max-w-2xl mx-auto text-center text-slate-700">
-            Monitor and manage your blood sugar levels easily with our comprehensive Blood Sugar Tracker. Stay in control of your health journey and track your progress daily.
+          <p className="text-gray-300 text-lg md:text-xl max-w-2xl mb-8">
+            Proven fitness plans, meal guides, and planners designed to get you stronger, leaner, and more confident—starting today.
           </p>
-          <p className="text-lg mt-8 max-w-2xl mx-auto text-center text-slate-600 italic">
-            Limited offer. Get 55% off now. Valid unitl midnight.
-          </p>
-          {products[0] && (
-            <Link to={`/product/${products[0]._id}`}>
-            <button className="mt-6 px-6 py-3 text-white font-semibold rounded-lg hover:bg-gray-100 bg-gradient-to-r bg-gradient-to-r from-purple-500 to-pink-500">
-              Get 55% Off Now!
+          <div className="flex space-x-4">
+            {/* <button className="bg-white text-black font-semibold px-6 py-3 rounded hover:bg-gray-200">
+              Shop Now
+            </button> */}
+            <button className="bg-transparent border  text-white font-semibold px-6 py-3 rounded hover:bg-gradient-to-r from-purple-600 to-pink-500 hover:text-white">
+              Explore More
             </button>
-          </Link>
-          )}
-        </div>
-        <div className="w-full mt-8" >
-          <img className='mx-auto' src="https://i.postimg.cc/6qXNFZR9/Black-and-White-Silhouette-Motivational-Quotes-Facebook-Cover-2.png" alt="Tracker Preview"/>
+          </div>
         </div>
       </div>
 
-      {/* Featured Products Section */}
-      {/* <div className="m-12">
-        <h2 className="text-3xl font-semibold mb-6 text-center text-green-600">
-          Discover Our Popular Health Tools
-        </h2>
-        <Products products={products} />
-      </div> */}
-      
-      {/* Benefits Section */}
-      <div className="m-16 grid grid-cols-1 md:grid-cols-3 gap-10">
-        <div className="bg-gray-100 p-6 rounded-lg">
-          <h3 className="text-xl font-semibold text-pink-600 mb-4">Daily Blood Sugar Logs</h3>
-          <p>Keep a daily record of your blood sugar levels to understand patterns and gain insights into your health.</p>
+      <div className='m-14'>
+        <div className='mb-8'>
+          <h2 className="text-3xl font-bold uppercase mb-4 text-center">Explore Fitness programs</h2>
         </div>
-        <div className="bg-gray-100 p-6 rounded-lg">
-          <h3 className="text-xl font-semibold text-pink-600 mb-4">Customizable Tracking</h3>
-          <p>Personalize your tracker with additional notes and reminders to help stay consistent and organized.</p>
-        </div>
-        <div className="bg-gray-100 p-6 rounded-lg">
-          <h3 className="text-xl font-semibold text-pink-600 mb-4">Easy-to-Understand Charts</h3>
-          <p>Visualize your health journey with simple, easy-to-read charts that show your progress over time.</p>
+        <div className=" grid grid-cols-1 md:grid-cols-4 gap-6">
+          <div className="bg-gray-100 p-8 relative min-h-[300px]  border-8 border-indigo-600 ">
+            <img src={Transfrom} alt="" className='absolute top-0 left-0 w-full h-full object-cover' />
+            <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-40"></div>
+            <div className='relative h-full z-10 flex flex-col items-center justify-center'>
+              <h3 className="lg:text-3xl sm:text-xl font-bold text-white uppercase mb-4 text-center">Body Transformation</h3>
+            </div>
+          </div>
+          <div className="bg-gray-100 p-8 relative border-8 border-lime-500">
+            <img src={Weight} alt="" className='absolute top-0 left-0 w-full h-full object-cover' />
+            <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50"></div>
+            <div className='relative h-full z-10 flex flex-col items-center justify-center'>
+              <h3 className="text-3xl font-bold text-white mb-4 text-center">WEIGHT LOSS</h3>
+            </div>
+          </div>
+          <div className="bg-gray-100 p-8  relative border-8 border-fuchsia-500">
+            <img src={Muscle} alt="" className='absolute top-0 left-0 w-full h-full object-cover' />
+            <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50"></div>
+            <div className='relative h-full z-10 flex flex-col items-center justify-center'>
+              <h3 className="text-3xl font-bold text-white mb-4 text-center">BUILD MUSCLE</h3>
+            </div>
+          </div>
+          <div className="bg-gray-100 p-8 relative border-8 border-cyan-400">
+            <img src={Flexible} alt="" className='absolute top-0 left-0 w-full h-full object-cover' />
+            <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50"></div>
+            <div className='relative h-full z-10 flex flex-col items-center justify-center'>
+              <h3 className="text-3xl font-bold text-white mb-4 text-center">FLEXIBILITY & MOBILITIY</h3>
+            </div>
+          </div>
         </div>
       </div>
+      
+
 
      {/* Why Choose Us Section */}
-<div className="my-14 flex flex-col items-center bg-gray-100 py-10 px-6 rounded-lg">
-  <h2 className="text-3xl font-semibold text-pink-600 mb-4 text-center">Why Track Your Blood Sugar?</h2>
-  <div className="list-disc text-gray-700 space-y-4 text-center">
-    <p>Understand how your daily choices impact your blood sugar levels for a healthier lifestyle.</p>
-    <p>Spot trends over time to make proactive adjustments that support balanced glucose levels.</p>
-    <p>Stay consistent with easy-to-set reminders and personalized tracking insights.</p>
-    <p>Access all your records securely and effortlessly in one organized dashboard.</p>
-  </div>
-</div>
+     <div className="my-14 flex flex-col items-center bg-gray-100 py-10 px-6 rounded-lg">
+        <h2 className="text-3xl font-bold  mb-4 text-center uppercase">WHY THESE WORK</h2>
+        <div className="list-disc text-gray-700 space-y-4 text-center">
+          <p>Transform your fitness journey with proven workout plans, meal guides, and tools that deliver real results.</p>
+          <p>Save time and eliminate guesswork with step-by-step plans tailored to your goals—whether it’s fat loss, muscle gain, or staying active.</p>
+          <p>Stay motivated and consistent with easy-to-follow trackers and planners designed to keep you on track every day.</p>
+          <p>Access your fitness toolkit anytime, anywhere—everything you need to succeed is just a click away.</p>
+        </div>
+      </div>
 
-{/* Testimonials Section */}
-<div className="m-12">
-  <h2 className="text-3xl font-semibold text-center text-pink-600 mb-6">What Our Users Are Saying</h2>
-  <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-    <div className="p-6 bg-gray-100 rounded-lg">
-      <p className="text-gray-700">"The tracker has been a game-changer. I can finally see how my food choices affect my glucose, making healthy changes easier than ever!"</p>
-      <p className="mt-4 text-sm font-semibold">- Alex, Wellness Advocate</p>
+
+
+
+    {/* Testimonials Section */}
+    <div className="m-12">
+      <h2 className="text-3xl font-bold uppercase text-center mb-6">What Our Users Are Saying</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div className="p-6 bg-gray-100 rounded-lg">
+          <p className="text-gray-700">"The tracker has been a game-changer. I can finally see how my food choices affect my glucose, making healthy changes easier than ever!"</p>
+          <p className="mt-4 text-sm font-semibold">- Alex, Wellness Advocate</p>
+        </div>
+        <div className="p-6 bg-gray-100 rounded-lg">
+          <p className="text-gray-700">"Such a easy tracker to use! Tracking my sugar levels feels less like a chore and more like a step toward a healthier me."</p>
+          <p className="mt-4 text-sm font-semibold">- Maria, Happy User</p>
+        </div>
+      </div>
     </div>
-    <div className="p-6 bg-gray-100 rounded-lg">
-      <p className="text-gray-700">"Such a easy tracker to use! Tracking my sugar levels feels less like a chore and more like a step toward a healthier me."</p>
-      <p className="mt-4 text-sm font-semibold">- Maria, Happy User</p>
-    </div>
-  </div>
-</div>
 
-
-      {/* Footer */}
-      
+    {/* Why Choose Us Section */}
+    <Subscribe />
 
     </div>
   );

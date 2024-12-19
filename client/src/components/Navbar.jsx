@@ -20,16 +20,16 @@ const Navbar = () => {
   
 
   return (
-    <div className='w-full p-4 flex justify-between items-center border-b sticky top-0 z-10 bg-white'>
-        <div className='border-sm py-2 px-4 font-semibold '>
-          <Link to='/' className='text-pink-600 text-xl italic'>Blood Sugar Companion</Link>
+    <div className='absolute w-full p-4 flex justify-between items-center top-0 z-20 '>
+        <div className='border-sm py-2 px-4 font-bold '>
+          <Link to='/' className='text-white text-xl'>MLG Fitness</Link>
         </div>
         {/* <div className='border-sm '>
             <input className='rounded-full bg-white py-2 px-4 w-[300px]' type='text' placeholder='Search for item' />
         </div> */}
         <div className='relative border-sm flex gap-4'>
             <Link to='/cart'>
-              <button className='relative p-4 bg-white rounded-full hover:font-semibold hover:cursor-pointer hover:bg-gradient-to-r from-purple-600 to-pink-500 hover:text-white'>
+              <button className='relative p-3 bg-white rounded-full hover:font-semibold hover:cursor-pointer hover:bg-gradient-to-r from-purple-600 to-pink-500 hover:text-white'>
                   <FaCartShopping/>
                   {cart.products.length !== 0  && (
                     <div className='absolute right-[-5px] top-[-15%] m-1 rounded-full bg-blue-600 text-white'>
@@ -41,7 +41,7 @@ const Navbar = () => {
             
             {user && (
               <Link to="/profile">
-              <button className='p-4 bg-white rounded-full hover:font-semibold hover:cursor-pointer hover:bg-gradient-to-r from-purple-600 to-pink-500 hover:text-white'>
+              <button className='p-3 bg-white rounded-full hover:font-semibold hover:cursor-pointer hover:bg-gradient-to-r from-purple-600 to-pink-500 hover:text-white'>
                   <FaCircleUser/>
               </button>
             </Link>
@@ -49,12 +49,12 @@ const Navbar = () => {
             
               
             {user ? (
-              <button onClick={logout} className='p-4 bg-white rounded-full hover:font-semibold hover:cursor-pointer hover:bg-gradient-to-r from-purple-600 to-pink-500 hover:text-white'>
+              <button onClick={logout} className='p-3 bg-white rounded-full hover:font-semibold hover:cursor-pointer hover:bg-gradient-to-r from-purple-600 to-pink-500 hover:text-white'>
                 <FaArrowRightFromBracket />
               </button>
             ) : (
               <Link to="/login">
-                <button className='p-4 bg-white rounded-full hover:font-semibold hover:cursor-pointer hover:bg-gradient-to-r from-purple-600 to-pink-500 hover:text-white'>
+                <button className='p-3 bg-white rounded-full hover:font-semibold hover:cursor-pointer hover:bg-gradient-to-r from-purple-600 to-pink-500 hover:text-white'>
                 <FaArrowRightToBracket />
                 </button>
             </Link>
