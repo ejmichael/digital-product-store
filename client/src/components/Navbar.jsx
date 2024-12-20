@@ -20,9 +20,9 @@ const Navbar = () => {
   
 
   return (
-    <div className='absolute w-full p-4 flex justify-between items-center top-0 z-20 '>
+    <div className=' w-full p-4 flex justify-between  absolute  items-center top-0 z-20 '>
         <div className='border-sm py-2 px-4 font-bold '>
-          <Link to='/' className='text-white text-xl'>MLG Fitness</Link>
+          <Link to='/' className=' text-xl text-pink-600'>MLG Fitness</Link>
         </div>
         {/* <div className='border-sm '>
             <input className='rounded-full bg-white py-2 px-4 w-[300px]' type='text' placeholder='Search for item' />

@@ -24,7 +24,7 @@ const Hero = () => {
               <h1 className="text-white md:text-6xl font-bold mb-6">
                 <span className='font-bebas-neue text-7xl'>BUILD YOUR BEST BODY. </span>
                 <br /> 
-                <span className='font-dancing-script font-extralight'>Transform your life.</span>
+                <span className='font-dancing-script font-extralight text-4xl lg:text-6xl'>Transform your life.</span>
               </h1>
               <p className="text-gray-300 text-lg md:text-xl max-w-2xl mb-8">
                 Proven fitness plans, meal guides, and planners designed to get you stronger, leaner, and more confident—starting today.

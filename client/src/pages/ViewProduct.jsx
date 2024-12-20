@@ -53,7 +53,7 @@ const ViewProduct = () => {
     };
 
     return (
-        <div className='mx-10 my-4'>
+        <div className='mx-10 my-10 mt-[100px]'>
             {/* <div className='text-xl my-4'>ViewProduct: {productInfo.productName}</div> */}
             <div className='grid grid-cols-5 gap-4 my-8'>
             <div className="col-span-5 lg:col-span-3 gap-4 px-2">
@@ -68,11 +68,11 @@ const ViewProduct = () => {
     </div>
 
     {/* Thumbnails */}
-    <div className="flex lg:flex-col lg:ml-4 justify-center gap-2 mt-2 lg:mt-0">
+    <div className="flex lg:flex-col flex-wrap lg:ml-4 justify-center gap-2 mt-2 lg:mt-0">
       {productInfo.imageUrls.map((imgUrl, index) => (
         <img
           key={index}
-          className="h-[80px] w-[80px] border border-2 rounded-md hover:border-red-500 cursor-pointer"
+          className="md:h-[80px] md:w-[80px] object-cover w-[50px] h-[50px] border border-2 rounded-md hover:border-red-500 cursor-pointer"
           onClick={() => setSelectedImg(imgUrl)}
           src={imgUrl}
           alt={productInfo.productName}

@@ -15,7 +15,7 @@ const Cart = () => {
   
 
   return (
-    <div className='m-10 min-h-[75vh]'>
+    <div className='m-10 min-h-[75vh] mt-[100px]'>
     {cart.products.length === 0 ? (
       <div className='w-full text-center'>
         <p className="text-4xl font-semibold mb-6 text-pink-600">Oops!</p>
@@ -26,7 +26,7 @@ const Cart = () => {
       </div>
     ) : (
       
-      <div className='grid grid-cols-5 gap-4'>
+      <div className='grid grid-cols-5 gap-4 mt-[100px]'>
         <div className='col-span-5 lg:col-span-3 flex flex-col gap-4'>
         {cart.products.length > 0 && cart.products.map(product => (
           <div key={product._id} className='flex flex-wrap gap-4 border border-slate-300 p-3 rounded-lg '>

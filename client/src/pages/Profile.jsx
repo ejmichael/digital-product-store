@@ -53,7 +53,7 @@ const Profile = () => {
   };
 
   return (
-    <div className='w-full min-h-[75vh]'>
+    <div className='w-full min-h-[75vh] mt-[100px]'>
       <div className='w-[85%] md:w-[60%] mx-auto my-2'>
         <div className='flex justify-around py-4 my-2'>
           <Link to='/profile/information'><button className={`font-semibold ${section === 'information' ? 'underline text-pink-600' : ''} `}>Personal Information</button></Link>
