@@ -12,7 +12,7 @@ import Hero from '../components/Hero';
 
 const Home = () => {
   const [products, setProducts] = useState([]);
-  const domain = window.location.href.includes('localhost') ? "http://localhost:5000" : "https://blood-sugar-backend.onrender.com";
+  const domain = window.location.href.includes('localhost') ? "http://localhost:5000" : "https://miranda-fitness-backend.onrender.com";
 
   const getProducts = async () => {
     const productsData = await axios.get(domain + '/api/products/get-products');
@@ -43,7 +43,7 @@ const Home = () => {
         <div className='mb-8'>
           <h2 className="text-3xl font-bold uppercase mb-4 text-center">Explore Fitness programs</h2>
         </div>
-        
+
         <Products products={products}/>
 
         <div className=" grid grid-cols-1 md:grid-cols-4 gap-6">

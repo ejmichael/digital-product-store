@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const OrderSection = () => {
   const { user } = useContext(AuthContext);
   const [orders, setOrders] = useState([]);
-  const domain = window.location.href.includes('localhost') ? "http://localhost:5000" : "https://blood-sugar-backend.onrender.com";
+  const domain = window.location.href.includes('localhost') ? "http://localhost:5000" : "https://miranda-fitness-backend.onrender.com";
 
   useEffect(() => {
     const fetchOrders = async () => {

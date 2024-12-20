@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 const OrderDetails = () => {
   const { orderId } = useParams();
   const [order, setOrder] = useState(null);
-  const domain = window.location.href.includes('localhost') ? "http://localhost:5000" : "https://blood-sugar-backend.onrender.com";
+  const domain = window.location.href.includes('localhost') ? "http://localhost:5000" : "https://miranda-fitness-backend.onrender.com";
 
   useEffect(() => {
     const fetchOrderDetails = async () => {

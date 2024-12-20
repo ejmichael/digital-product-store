@@ -12,7 +12,7 @@ const PayfastButton = () => {
   // Determine backend URL dynamically
   const domain = window.location.href.includes("localhost")
     ? "http://localhost:5000"
-    : "https://blood-sugar-backend.onrender.com";
+    : "https://miranda-fitness-backend.onrender.com";
 
     const initiatePayment = async () => {
       setLoading(true);
