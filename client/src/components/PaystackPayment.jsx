@@ -6,14 +6,14 @@ import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 const PaystackPayment = () => {
-  const publicKey = "pk_test_5b288b5e8b8b8756f5cbd8a12a4db7699522b794"; // Replace with your Paystack public key
+  const publicKey = "pk_test_2948cea94bc110ca5f135bebeffbd0e7d606dde7"; // Replace with your Paystack public key
   const { cart, clearCart } = useContext(CartContext);
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const domain = window.location.href.includes("localhost")
     ? "http://localhost:5000"
-    : "https://blood-sugar-backend.onrender.com";
+    : "https://miranda-fitness.onrender.com/";
 
   const [showModal, setShowModal] = useState(false);
   const [modalContent, setModalContent] = useState(''); // Modal message content

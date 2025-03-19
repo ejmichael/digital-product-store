@@ -37,8 +37,10 @@ const createOrder = async (req, res) => {
         //     Authorization: `Bearer sk_test_fb24be38e84cb21a19390d38ae1441af4cbd5aa6` // Replace with your Paystack secret key
         //   }
         // });
-
         // console.log(response.data);
+
+        console.log(req.user);
+        
 
         let pendingOrder = await Order.create({
           user: req.user.id,

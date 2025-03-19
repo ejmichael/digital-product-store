@@ -29,15 +29,15 @@ const Cart = () => {
       <div className='grid grid-cols-5 gap-4 mt-[100px]'>
         <div className='col-span-5 lg:col-span-3 flex flex-col gap-4'>
         {cart.products.length > 0 && cart.products.map(product => (
-          <div key={product._id} className='flex flex-wrap gap-4 border border-slate-300 p-3 rounded-lg '>
+          <div key={product._id} className='flex  gap-4 border border-slate-300 p-3 rounded-lg '>
             <div>
-              <img className='lg:max-w-[150px]' src={product.imageUrl} alt={product.productName} />
+              <img className='lg:max-w-[150px]' src={product.imageUrls[0]} alt={product.productName} />
             </div>
             <div className='grid grid-cols-3'>
               <div className='col-span-2 flex-col flex justify-between'>
                 <div className=''>
                   <p className='text-xl my-2'>{product.productName}</p>
-                  {/* <p className='text-gray-600 text-sm'>{product.productDescription}</p> */}
+                  <p className='text-gray-600 text-sm'>{product.productDescription}</p>
                 </div>
                 {/* <div>
                   <button className='my-2 text-sm cursor-pointer text-red-400 border border-red-300 w-content p-1 rounded-md' onClick={() => removeFromCart(product)}>Remove</button>
@@ -60,7 +60,7 @@ const Cart = () => {
           </div>
           <div className='flex justify-between  my-2'>
              <p>Discount:</p>
-             <p className='text-lg text-green-500'>- R 219.00</p>
+             <p className='text-lg text-green-500'>- R {399.00 - cart.total.toFixed(2)}</p>
           </div>
           <div className='flex justify-between my-2'>
              <p>Total:</p>
@@ -74,12 +74,13 @@ const Cart = () => {
             //   </button>
             // </Link>
             <>
-            {/* <div className='w-full p-3 my-2 rounded-full text-white font-medium bg-gradient-to-r  from-purple-500 to-pink-500'>
-              <PaystackPayment/>
-            </div> */}
-            <button className='w-full p-3 my-2 rounded-full text-white font-medium bg-gradient-to-r  from-purple-500 to-pink-500'>
-              <PayfastButton />
-            </button></>
+              <div className='w-full p-3 my-2 rounded-full text-white font-medium bg-gradient-to-r  from-purple-500 to-pink-500'>
+                <PaystackPayment/>
+              </div>
+              {/* <button className='w-full p-3 my-2 rounded-full text-white font-medium bg-gradient-to-r  from-purple-500 to-pink-500'>
+                <PayfastButton />
+              </button> */}
+            </>
           ) : (
             <Link to='/login'>
               <button className='w-full p-3 my-2 rounded-full text-white font-medium bg-gradient-to-r  from-purple-500 to-pink-500'>

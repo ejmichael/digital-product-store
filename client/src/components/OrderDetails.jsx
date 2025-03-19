@@ -49,11 +49,11 @@ const OrderDetails = () => {
 };
 
   return (
-      <div className="max-w-4xl mx-auto my-8 ">
-      <h2 className="text-2xl font-semibold mb-6 text-gray-800">Purchase Details</h2>
+      <div className="max-w-4xl mx-auto my-8 mt-[100px] min-h-[75vh]">
+      <h2 className="text-2xl font-semibold mb-6 text-gray-800">Order Details</h2>
       <div className="bg-white shadow-md rounded-lg p-5 border border-gray-200">
         <div className="mb-4">
-          <p className="text-lg font-medium">Order ID: {order._id}</p>
+          <p className="">Order ID: {order._id}</p>
           <p>Date: {new Date(order.createdAt).toLocaleDateString()}</p>
           {/* <p>Status: {order.status}</p> */}
           <p>Total: R {order.totalAmount.toFixed(2)}</p>
@@ -65,7 +65,7 @@ const OrderDetails = () => {
             {order.products.map((product) => (
               <li key={product._id} className="flex items-center justify-between space-x-4">
                 <div className="flex items-center space-x-4">
-                  <img src={product.imageUrl} alt={product.name} className="w-20 h-20 object-cover rounded-lg" />
+                  <img src={product.imageUrls[0]} alt={product.name} className="w-20 h-20 object-cover rounded-lg" />
                   <div>
                     <p className="font-semibold">{product.productName}</p>
                     {/* <p className="font-thin">{product.productDescription}</p> */}

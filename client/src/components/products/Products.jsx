@@ -38,7 +38,7 @@ const ProductCard = ({ product }) => {
 
   return (
     <Link to={`/product/${product._id}`}>
-      <div className='flex flex-col rounded-md border border-slate-200 h-full p-2'>
+      <div className='flex flex-col rounded-md border border-fuchsia-500 h-full p-2'>
         {/* Image container with fixed dimensions and cover styling */}
         {/* <div className='w-full h-[300px]'>
           <img className="w-full h-full object-cover rounded-md" src={product.imageUrls[0]} alt={product.productName} />
@@ -54,7 +54,7 @@ const ProductCard = ({ product }) => {
 
         {/* Content container with space between elements */}
         <div className='flex flex-col justify-between flex-grow'>
-          <p className='m-1 font-semibold text-md'>{product.productName}</p>
+          <p className='m-1 font-semibold text-md '>{product.productName}</p>
 
           {/* Description with fixed height, expanding when clicked */}
           <div 
@@ -106,7 +106,7 @@ const Products = ({ products }) => {
     <div className=''>
       <Slider {...settings}> 
         {products.map((product, index) => (
-          <div className='p-4' key={index}>
+          <div className='p-4 ' key={index}>
             <ProductCard product={product} />
           </div>
         ))}

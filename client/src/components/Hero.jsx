@@ -33,11 +33,11 @@ const Hero = () => {
                 {/* <button className="bg-white text-black font-semibold px-6 py-3 rounded hover:bg-gray-200">
                   Shop Now
                 </button> */}
-                <Link to="/products">
+                {/* <Link to="/products">
                     <button className="bg-transparent border  text-white font-semibold px-6 py-3 rounded hover:bg-gradient-to-r from-purple-600 to-pink-500 hover:text-white">
                     Explore More
                     </button>
-                </Link>
+                </Link> */}
               </div>
             </div>
           </div>

@@ -41,12 +41,12 @@ const Home = () => {
 
       <div className='m-14'>
         <div className='mb-8'>
-          <h2 className="text-3xl font-bold uppercase mb-4 text-center">Explore Fitness programs</h2>
+          <h2 className="text-3xl font-bold uppercase mb-4 text-center">Explore My Fitness Program</h2>
         </div>
 
         <Products products={products}/>
 
-        <div className=" grid grid-cols-1 md:grid-cols-4 gap-6">
+        {/* <div className=" grid grid-cols-1 md:grid-cols-4 gap-6">
           <div className="bg-gray-100 p-8 relative min-h-[300px]  border-8 border-indigo-600 ">
             <img src={Transfrom} alt="" className='absolute top-0 left-0 w-full h-full object-cover' />
             <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-40"></div>
@@ -75,12 +75,12 @@ const Home = () => {
               <h3 className="text-3xl font-bold text-white mb-4 text-center">FLEXIBILITY & MOBILITIY</h3>
             </div>
           </div>
-        </div>
-      </div>
+        </div>*/}
+      </div> 
 
      {/* Why Choose Us Section */}
      <div className="my-14 flex flex-col items-center bg-gray-100 py-10 px-6 rounded-lg">
-        <h2 className="text-3xl font-bold  mb-4 text-center uppercase">WHY THESE WORK</h2>
+        <h2 className="text-3xl font-bold  mb-4 text-center uppercase">WANT YOUR DREAM BODY?</h2>
         <div className="list-disc text-gray-700 space-y-4 text-center">
           <p>Transform your fitness journey with proven workout plans, meal guides, and tools that deliver real results.</p>
           <p>Save time and eliminate guesswork with step-by-step plans tailored to your goals—whether it’s fat loss, muscle gain, or staying active.</p>
