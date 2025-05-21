@@ -22,7 +22,7 @@ const Navbar = () => {
   return (
     <div className=' w-full p-4 flex justify-between  absolute  items-center top-0 z-20 '>
         <div className='border-sm py-2 px-4 font-bold '>
-          <Link to='/' className=' text-xl text-pink-600'>MLG Fitness</Link>
+          <Link to='/' className=' text-2xl text-shadow-md' style={{ color: '#ffff' }}>Train Your Puppy</Link>
         </div>
         {/* <div className='border-sm '>
             <input className='rounded-full bg-white py-2 px-4 w-[300px]' type='text' placeholder='Search for item' />

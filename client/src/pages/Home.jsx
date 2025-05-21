@@ -1,113 +1,97 @@
-import React, { useEffect, useState } from 'react';
-import Products from '../components/products/Products';
-import axios from 'axios';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import Video from '../assets/hero.mp4'
-import Muscle from '../assets/muscle2.jpg'
-import Transfrom from '../assets/transform.jpg'
-import Weight from '../assets/weightloss.jpg'
-import Flexible from '../assets/flexibility.jpg'
 import Subscribe from '../components/Subscribe';
 import Hero from '../components/Hero';
 
 const Home = () => {
-  const [products, setProducts] = useState([]);
-  const domain = window.location.href.includes('localhost') ? "http://localhost:5000" : "https://miranda-fitness-backend.onrender.com";
-
-  const getProducts = async () => {
-    const productsData = await axios.get(domain + '/api/products/get-products');
-
-    if (productsData?.data) {
-      setProducts(productsData.data);
-    }
-  };
-
-  useEffect(() => {
-    getProducts();
-  }, []);
-
-  // console.log(products[0]?._id);
-
-  console.log(products);
-  
-  
-
   return (
     <div className="">
+      <Hero />
 
-      <Hero/>
-
-          
-
-      <div className='m-14'>
-        <div className='mb-8'>
-          <h2 className="text-3xl font-bold uppercase mb-4 text-center">Explore My Fitness Program</h2>
+      {/* Benefits Section */}
+      <div className="m-14">
+        <div className="mb-8">
+          <h2 className="text-3xl font-bold uppercase mb-4 text-center">
+            Teach Your Puppy the Right Way
+          </h2>
+          <p className="text-center text-gray-600 max-w-3xl mx-auto">
+            Get instant access to our step-by-step puppy training guide designed to build good behavior, prevent bad habits, and strengthen your bond with your furry friend.
+          </p>
         </div>
 
-        <Products products={products}/>
-
-        {/* <div className=" grid grid-cols-1 md:grid-cols-4 gap-6">
-          <div className="bg-gray-100 p-8 relative min-h-[300px]  border-8 border-indigo-600 ">
-            <img src={Transfrom} alt="" className='absolute top-0 left-0 w-full h-full object-cover' />
-            <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-40"></div>
-            <div className='relative h-full z-10 flex flex-col items-center justify-center'>
-              <h3 className="lg:text-3xl sm:text-xl font-bold text-white uppercase mb-4 text-center">Body Transformation</h3>
-            </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="bg-white p-8 relative min-h-[450px] border-8 border-[#03989e] rounded-lg shadow-lg overflow-hidden">
+            <img
+              src="https://i.postimg.cc/7YTSpxZ3/004.png"
+              alt="Training Module 1"
+              className="absolute top-0 left-0 w-full h-full object-cover"
+            />
           </div>
-          <div className="bg-gray-100 p-8 relative border-8 border-lime-500">
-            <img src={Weight} alt="" className='absolute top-0 left-0 w-full h-full object-cover' />
-            <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50"></div>
-            <div className='relative h-full z-10 flex flex-col items-center justify-center'>
-              <h3 className="text-3xl font-bold text-white mb-4 text-center">WEIGHT LOSS</h3>
-            </div>
+          <div className="bg-white p-8 relative border-8 border-[#03989e] rounded-lg shadow-lg overflow-hidden">
+            <img
+              src="https://i.postimg.cc/52d8JZXZ/Capas-PLR-3.png"
+              alt="Training Module 2"
+              className="absolute top-0 left-0 w-full h-full object-cover"
+            />
           </div>
-          <div className="bg-gray-100 p-8  relative border-8 border-fuchsia-500">
-            <img src={Muscle} alt="" className='absolute top-0 left-0 w-full h-full object-cover' />
-            <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50"></div>
-            <div className='relative h-full z-10 flex flex-col items-center justify-center'>
-              <h3 className="text-3xl font-bold text-white mb-4 text-center">BUILD MUSCLE</h3>
-            </div>
+          <div className="bg-white p-8 relative border-8 border-[#03989e] rounded-lg shadow-lg overflow-hidden">
+            <img
+              src="https://i.postimg.cc/BnTHnMDt/Capas-PLR-4.png"
+              alt="Training Module 3"
+              className="absolute top-0 left-0 w-full h-full object-cover"
+            />
           </div>
-          <div className="bg-gray-100 p-8 relative border-8 border-cyan-400">
-            <img src={Flexible} alt="" className='absolute top-0 left-0 w-full h-full object-cover' />
-            <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50"></div>
-            <div className='relative h-full z-10 flex flex-col items-center justify-center'>
-              <h3 className="text-3xl font-bold text-white mb-4 text-center">FLEXIBILITY & MOBILITIY</h3>
-            </div>
-          </div>
-        </div>*/}
-      </div> 
-
-     {/* Why Choose Us Section */}
-     <div className="my-14 flex flex-col items-center bg-gray-100 py-10 px-6 rounded-lg">
-        <h2 className="text-3xl font-bold  mb-4 text-center uppercase">WANT YOUR DREAM BODY?</h2>
-        <div className="list-disc text-gray-700 space-y-4 text-center">
-          <p>Transform your fitness journey with proven workout plans, meal guides, and tools that deliver real results.</p>
-          <p>Save time and eliminate guesswork with step-by-step plans tailored to your goals—whether it’s fat loss, muscle gain, or staying active.</p>
-          <p>Stay motivated and consistent with easy-to-follow trackers and planners designed to keep you on track every day.</p>
-          <p>Access your fitness toolkit anytime, anywhere—everything you need to succeed is just a click away.</p>
         </div>
       </div>
 
-    {/* Testimonials Section */}
-    <div className="m-12">
-      <h2 className="text-3xl font-bold uppercase text-center mb-6">What Our Users Are Saying</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-        <div className="p-6 bg-gray-100 rounded-lg">
-          <p className="text-gray-700">"The tracker has been a game-changer. I can finally see how my food choices affect my glucose, making healthy changes easier than ever!"</p>
-          <p className="mt-4 text-sm font-semibold">- Alex, Wellness Advocate</p>
-        </div>
-        <div className="p-6 bg-gray-100 rounded-lg">
-          <p className="text-gray-700">"Such a easy tracker to use! Tracking my sugar levels feels less like a chore and more like a step toward a healthier me."</p>
-          <p className="mt-4 text-sm font-semibold">- Maria, Happy User</p>
+      {/* Why Choose This Book */}
+      <div className="my-14 flex flex-col items-center bg-gray-100 py-10 px-6 rounded-lg">
+        <h2 className="text-3xl font-bold mb-4 text-center uppercase">
+          Why This Puppy Training Book?
+        </h2>
+        <div className="text-gray-700 space-y-4 text-center max-w-3xl">
+          <p>✅ Simple, expert-backed methods that actually work—even if it’s your first pup.</p>
+          <p>✅ Covers potty training, leash manners, biting, barking, and socialization.</p>
+          <p>✅ Builds trust and obedience using positive reinforcement techniques.</p>
+          <p>✅ Suitable for all breeds, ages 8 weeks and up.</p>
         </div>
       </div>
-    </div>
 
-    {/* Why Choose Us Section */}
-    <Subscribe />
+      <div className='w-full flex justify-center my-4'>
+        <div className="flex space-x-4 mb-3">
+          <Link to="https://www.digistore24.com/redir/434590/ejmichael/">
+            <button className="bg-[#03989e] text-white font-semibold px-10 py-3 rounded-lg hover:bg-[#027a80] transition">
+              Get the Training Guide Now
+            </button>
+          </Link>
+        </div>
+      </div>
+
+      {/* Testimonials */}
+      <div className="m-12">
+        <h2 className="text-3xl font-bold uppercase text-center mb-6">
+          What Dog Parents Are Saying
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+          <div className="p-6 bg-gray-100 rounded-lg shadow">
+            <p className="text-gray-700">
+              “This guide helped me potty train and teach basic commands in just a few weeks. My puppy listens to me now!”
+            </p>
+            <p className="mt-4 text-sm font-semibold">- Sarah, Golden Retriever Mom</p>
+          </div>
+          <div className="p-6 bg-gray-100 rounded-lg shadow">
+            <p className="text-gray-700">
+              “Such a lifesaver. I had no clue how to stop the biting and chewing—this book gave me real solutions that work.”
+            </p>
+            <p className="mt-4 text-sm font-semibold">- Jason, New Puppy Owner</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Call-to-Action / Lead Capture */}
+      {/* <Subscribe /> */}
     </div>
   );
 };
 
-export default Home;
+export default Home
