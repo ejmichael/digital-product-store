@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Subscribe from '../components/Subscribe';
 import Hero from '../components/Hero';
 
 const Home = () => {
@@ -8,60 +7,70 @@ const Home = () => {
     <div className="">
       <Hero />
 
-      {/* Benefits Section */}
+      {/* Services Section */}
       <div className="m-14">
         <div className="mb-8">
           <h2 className="text-3xl font-bold uppercase mb-4 text-center">
-            Teach Your Puppy the Right Way
+            What We Clean
           </h2>
           <p className="text-center text-gray-600 max-w-3xl mx-auto">
-            Get instant access to our step-by-step puppy training guide designed to build good behavior, prevent bad habits, and strengthen your bond with your furry friend.
+            Restore your property's shine with professional pressure washing for driveways, walls, roofs, patios, and more. We handle residential and commercial projects with care and precision.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-white p-8 relative min-h-[450px] border-8 border-[#03989e] rounded-lg shadow-lg overflow-hidden">
+          <div className="bg-white p-8 relative min-h-[300px] border-8 border-[#03989e] rounded-lg shadow-lg overflow-hidden">
             <img
-              src="https://i.postimg.cc/7YTSpxZ3/004.png"
-              alt="Training Module 1"
+              src="https://i.postimg.cc/LXH2mmPQ/commercial-power-washing.jpg"
+              alt="Driveway Cleaning"
               className="absolute top-0 left-0 w-full h-full object-cover"
             />
+            <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+              <h3 className="text-white text-2xl font-bold text-center">Walls & Windows</h3>
+            </div>
           </div>
-          <div className="bg-white p-8 relative border-8 border-[#03989e] rounded-lg shadow-lg overflow-hidden">
+          <div className="relative bg-white p-8 relative min-h-[300px] border-8 border-[#03989e] rounded-lg shadow-lg overflow-hidden">
             <img
-              src="https://i.postimg.cc/52d8JZXZ/Capas-PLR-3.png"
-              alt="Training Module 2"
+              src="https://i.postimg.cc/TwCGwBqd/person-wearing-yellow-rubber-boots-with-high-pressure-water-nozzle-cleaning-dirt-tiles.jpg"
+              alt="Roof Cleaning"
               className="absolute top-0 left-0 w-full h-full object-cover"
             />
+            <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+              <h3 className="text-white text-2xl font-bold text-center">Driveways & Sidewalks</h3>
+            </div>
           </div>
-          <div className="bg-white p-8 relative border-8 border-[#03989e] rounded-lg shadow-lg overflow-hidden">
+          <div className="bg-white p-8 relative min-h-[300px] border-8 border-[#03989e] rounded-lg shadow-lg overflow-hidden">
             <img
-              src="https://i.postimg.cc/BnTHnMDt/Capas-PLR-4.png"
-              alt="Training Module 3"
+              src="https://i.postimg.cc/6QVBs88G/ROOF-CLEANING.jpg"
+              alt="Patio Cleaning"
               className="absolute top-0 left-0 w-full h-full object-cover"
             />
+            <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+              <h3 className="text-white text-2xl font-bold text-center">Roofs & Gutters</h3>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Why Choose This Book */}
+      {/* Why Choose Us Section */}
       <div className="my-14 flex flex-col items-center bg-gray-100 py-10 px-6 rounded-lg">
         <h2 className="text-3xl font-bold mb-4 text-center uppercase">
-          Why This Puppy Training Book?
+          Why Choose Us?
         </h2>
         <div className="text-gray-700 space-y-4 text-center max-w-3xl">
-          <p>✅ Simple, expert-backed methods that actually work—even if it’s your first pup.</p>
-          <p>✅ Covers potty training, leash manners, biting, barking, and socialization.</p>
-          <p>✅ Builds trust and obedience using positive reinforcement techniques.</p>
-          <p>✅ Suitable for all breeds, ages 8 weeks and up.</p>
+          <p>✅ Local, reliable team that arrives on time and gets the job done right.</p>
+          <p>✅ Affordable rates with no hidden fees—get a free quote instantly.</p>
+          <p>✅ Top-rated pressure washing equipment for deep and lasting results.</p>
+          <p>✅ We clean up after ourselves—no mess left behind!</p>
         </div>
       </div>
 
+      {/* Call-to-Action Button */}
       <div className='w-full flex justify-center my-4'>
         <div className="flex space-x-4 mb-3">
-          <Link to="https://www.digistore24.com/redir/434590/ejmichael/">
+          <Link to="/contact">
             <button className="bg-[#03989e] text-white font-semibold px-10 py-3 rounded-lg hover:bg-[#027a80] transition">
-              Get the Training Guide Now
+              Get a Free Quote Now
             </button>
           </Link>
         </div>
@@ -70,28 +79,28 @@ const Home = () => {
       {/* Testimonials */}
       <div className="m-12">
         <h2 className="text-3xl font-bold uppercase text-center mb-6">
-          What Dog Parents Are Saying
+          What Our Clients Say
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           <div className="p-6 bg-gray-100 rounded-lg shadow">
             <p className="text-gray-700">
-              “This guide helped me potty train and teach basic commands in just a few weeks. My puppy listens to me now!”
+              “My driveway looks brand new! Fast and professional service—highly recommend.”
             </p>
-            <p className="mt-4 text-sm font-semibold">- Sarah, Golden Retriever Mom</p>
+            <p className="mt-4 text-sm font-semibold">- Amanda, Homeowner</p>
           </div>
           <div className="p-6 bg-gray-100 rounded-lg shadow">
             <p className="text-gray-700">
-              “Such a lifesaver. I had no clue how to stop the biting and chewing—this book gave me real solutions that work.”
+              “Excellent job on our storefront walls and sidewalk. They were in and out with no disruption to business.”
             </p>
-            <p className="mt-4 text-sm font-semibold">- Jason, New Puppy Owner</p>
+            <p className="mt-4 text-sm font-semibold">- Trevor, Shop Owner</p>
           </div>
         </div>
       </div>
 
-      {/* Call-to-Action / Lead Capture */}
+      {/* Optional: Lead capture or Subscribe */}
       {/* <Subscribe /> */}
     </div>
   );
 };
 
-export default Home
+export default Home;

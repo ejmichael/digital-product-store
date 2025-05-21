@@ -34,7 +34,7 @@ function App() {
     <AnalyticsTracker/>
     <CartProvider>
     <div className="App ">
-      {/* <Navbar/> */}
+      <Navbar/>
       <Routes>
         <Route exact path='/' element={<Home/>} />
         {/* <Route path="/profile/:section" element={<PrivateRoute><Profile/></PrivateRoute>} /> Dynamic section */}
@@ -50,9 +50,10 @@ function App() {
         {/* <Route path='/privacy-policy' element={<PrivacyPolicy/>} /> */}
         {/* <Route path='/terms' element={<TermsOfService/>} />
         <Route path='/refunds' element={<RefundPolicy/>} />
-        <Route path='/contact' element={<ContactUs/>} />
+        
         <Route path="/success" element={<PaymentSuccess />} />
         <Route path="/cancel" element={<PaymentCancelled />} /> */}
+        <Route path='/contact' element={<ContactUs/>} />
       </Routes>
     </div>
     <div className="py-6 text-center bg-gray-900 text-white ">
@@ -62,7 +63,7 @@ function App() {
           <Link to="/refunds" className="hover:text-green-600">Refund Policy</Link>
           <Link to="/terms" className="hover:text-green-600">Terms of Service</Link>
         </div> */}
-        <p className="italic">© 2025 Train Your Dog. All rights reserved.</p>
+        <p className="italic">© 2025 Curb Cleaners. All rights reserved.</p>
       </div>
     </CartProvider>
     <ToastContainer
