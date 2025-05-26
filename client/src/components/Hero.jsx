@@ -53,11 +53,12 @@ const Hero = () => {
           service:'pressure-washing'
         })
       }
+
+      console.log(addLead.data.message);
+      navigate('/thank-you')
     } catch (error) {
       console.log(error.message)
-    } finally{
-      navigate('/thank-you')
-    }
+    } 
   }
 
   return (
