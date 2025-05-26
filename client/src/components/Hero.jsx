@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Hero = () => {
 
@@ -12,6 +12,8 @@ const Hero = () => {
     description: '',
     service:'pressure-washing'
   })
+
+  const navigate = useNavigate()
 
   const [leadCaptured, setLeadCaptured] = useState(false)
 
@@ -53,6 +55,8 @@ const Hero = () => {
       }
     } catch (error) {
       console.log(error.message)
+    } finally{
+      navigate('/thank-you')
     }
   }
 

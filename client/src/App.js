@@ -23,6 +23,7 @@ import ReactGA from 'react-ga4';
 import AnalyticsTracker from './AnalyticsTracker';
 import PaymentSuccess from './pages/PaymentSuccess';
 import PaymentCancelled from './pages/PaymentCancelled';
+import LeadSubmitted from './pages/LeadSubmitted';
 
 function App() {
 
@@ -37,6 +38,7 @@ function App() {
       <Navbar/>
       <Routes>
         <Route exact path='/' element={<Home/>} />
+        <Route exact path='/thank-you' element={<LeadSubmitted/>} />
         {/* <Route path="/profile/:section" element={<PrivateRoute><Profile/></PrivateRoute>} /> Dynamic section */}
         {/* <Route path='/profile' element={<PrivateRoute><Profile/></PrivateRoute>} /> */}
         {/* <Route path="/orders/:orderId" element={<PrivateRoute><OrderDetails/></PrivateRoute>} /> */}
