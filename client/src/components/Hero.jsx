@@ -1,7 +1,61 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const Hero = () => {
+
+  const [leadForm, setLeadForm] = useState({
+    firstName: '',
+    surname: '',
+    emailAddress: '',
+    phoneNumber: '',
+    description: '',
+    service:'pressure-washing'
+  })
+
+  const [leadCaptured, setLeadCaptured] = useState(false)
+
+  const handleFormChange = (e) => {
+    setLeadForm((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }))
+  }
+
+  const domain = window.location.href.includes('localhost')
+  ? 'http://localhost:5000'
+  : 'https://lead-generation-backend-np2g.onrender.com';
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if(
+      leadForm.firstName === '' ||
+      leadForm.emailAddress === '' ||
+      leadForm.phoneNumber === '' ||
+      leadForm.description === ''
+    ) {return}
+    
+    try {
+      const addLead = await axios.post(domain + '/api/lead/create-lead', leadForm)
+      if(addLead.data.message === 'Lead captured') {
+        //show success message
+        setLeadCaptured(true)
+        //clear form 
+        setLeadForm({
+          firstName: '',
+          surname: '',
+          emailAddress: '',
+          phoneNumber: '',
+          description: '',
+          service:'pressure-washing'
+        })
+      }
+    } catch (error) {
+      console.log(error.message)
+    }
+  }
+
   return (
     <div className="relative w-full h-screen overflow-hidden">
       {/* Background Image */}
@@ -39,32 +93,56 @@ const Hero = () => {
         {/* Form Section */}
         <div className="bg-white bg-opacity-90 p-6 rounded-lg shadow-lg w-full max-w-md">
           <h3 className="text-2xl font-bold mb-4 text-gray-800 text-center">Request a Free Quote</h3>
-          <form id="lead-form" className="space-y-4">
+          <form onSubmit={handleSubmit} id="lead-form" className="space-y-4">
             <input
               type="text"
-              placeholder="Full Name"
+              placeholder="First Name"
+              required="true"
+              name='firstName'
+              onChange={handleFormChange}
+              value={leadForm.firstName}
+              className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#03989e]"
+            />
+            <input
+              type="text"
+              placeholder="Surname"
+              name='surname'
+              onChange={handleFormChange}
+              value={leadForm.surname}
               className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#03989e]"
             />
             <input
               type="email"
               placeholder="Email Address"
+              required="true"
+              name='emailAddress'
+              onChange={handleFormChange}
+              value={leadForm.emailAddress}
               className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#03989e]"
             />
             <input
               type="tel"
               placeholder="Phone Number"
+              name='phoneNumber'
+              required="true"
+              onChange={handleFormChange}
+              value={leadForm.phoneNumber}
               className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#03989e]"
             />
             <textarea
               placeholder="Describe what you need cleaned..."
               rows="3"
+              name="description"
+              onChange={handleFormChange}
+              value={leadForm.description}
               className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#03989e]"
             ></textarea>
             <button
               type="submit"
+              disabled={leadCaptured}
               className="w-full bg-[#03989e] text-white font-semibold py-2 rounded hover:bg-[#027a80] transition"
             >
-              Submit Request
+              {leadCaptured ? 'Thank you. We will be in contact soon.' : 'Submit Request'}
             </button>
           </form>
         </div>

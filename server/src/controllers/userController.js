@@ -8,6 +8,7 @@ const getUserData = async (req, res) => {
 }
 
 
+
 const createUser = async(req, res) => {
     const {firstName, surname, email, phoneNumber, password} = req.body;
 

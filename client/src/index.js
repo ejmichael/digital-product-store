@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { HelmetProvider } from 'react-helmet-async';
 
 import { BrowserRouter } from 'react-router-dom'
 import { AuthContextProvider } from './context/AuthContext';
@@ -13,7 +14,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
   <AuthContextProvider>
-    <App />    
+    <HelmetProvider>
+      <App />      
+    </HelmetProvider>
   </AuthContextProvider>
   </BrowserRouter>
 );

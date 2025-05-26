@@ -2,8 +2,8 @@ import React from 'react'
 
 const ContactUs = () => {
   return (
-    <div className="px-6 py-20 max-w-3xl  flex flex-col md:flex-row items-center justify-between gap-8">
-      <div className='w-full'>
+    <div className="px-20 py-20  h-[90vh] flex flex-col md:flex-row items-center justify-around gap-8">
+      <div className='w-full '>
         <div className="bg-white bg-opacity-90 p-6 rounded-lg shadow-lg w-full max-w-md">
           <h3 className="text-2xl font-bold mb-4 text-gray-800 text-center">Request a Free Quote</h3>
           <form id="lead-form" className="space-y-4">

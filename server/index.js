@@ -9,6 +9,7 @@ const userRoute = require('./src/routes/userRoute');
 
 const connectToMongoDB = require('./src/db');
 const payfastRouter = require('./src/routes/payfastRoute');
+const leadRoute = require('./src/routes/leadRoute');
 
 const app = express();
 
@@ -27,21 +28,22 @@ const app = express();
             res.send("Home Route");
         });
 
-        app.use('/api/products', productRouter);
-        app.use('/payfast', payfastRouter);
-        app.use('/api/order', orderRouter);
-        app.use('/api/user', userRoute);
-        app.use('/api/pdf', PDFRouter);
+        // app.use('/api/products', productRouter);
+        // app.use('/payfast', payfastRouter);
+        // app.use('/api/order', orderRouter);
+        // app.use('/api/user', userRoute);
+        app.use('/api/lead', leadRoute);
+        // app.use('/api/pdf', PDFRouter);
 
-        app.post('/payment-notify', (req, res) => {
-            const paymentData = req.body;
+        // app.post('/payment-notify', (req, res) => {
+        //     const paymentData = req.body;
           
-            console.log('Payment Notification Received:', paymentData);
+        //     console.log('Payment Notification Received:', paymentData);
           
-            // TODO: Validate payment and update your database accordingly
+        //     // TODO: Validate payment and update your database accordingly
           
-            res.status(200).send('Notification received');
-          });
+        //     res.status(200).send('Notification received');
+        //   });
           
 
         // Start the server
