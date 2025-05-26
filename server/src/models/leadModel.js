@@ -19,12 +19,24 @@ const leadSchema = mongoose.Schema({
         required: [true, "Please enter a valid phone number."],
         unique: true
     },
+    propertyType: {
+        type: String,
+        required: true
+    },
+    surfaceType: {
+        type: String,
+        required: true
+    },
+    location:{
+        type: String,
+        required: true
+    },
     service: {
         type: String,
     },
     description: {
         type: String,
-        required: true
+        // required: true
     }
 }, {
     timestamps: true

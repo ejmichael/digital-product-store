@@ -65,7 +65,7 @@ function App() {
           <Link to="/refunds" className="hover:text-green-600">Refund Policy</Link>
           <Link to="/terms" className="hover:text-green-600">Terms of Service</Link>
         </div> */}
-        <p className="italic">© 2025 Curb Cleaners. All rights reserved.</p>
+        <p className="italic">© 2025 SA Pressure Washers. All rights reserved.</p>
       </div>
     </CartProvider>
     <ToastContainer

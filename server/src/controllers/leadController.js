@@ -3,9 +3,9 @@ const Lead = require('../models/leadModel');
 
 
 const createLead = async (req, res) => {
-    const {firstName, surname, emailAddress, phoneNumber, service, description } = req.body;
+    const {firstName, surname, emailAddress, location, propertyType, surfaceType, phoneNumber, service, description } = req.body;
     
-    if(!firstName || !emailAddress || !phoneNumber || !service || !description) {
+    if(!firstName || !emailAddress || !phoneNumber || !service || !description || !location || !propertyType || !surfaceType) {
         res.status(400).json({message: 'Please enter all the required fields.'})
     }
 
@@ -15,7 +15,10 @@ const createLead = async (req, res) => {
         emailAddress, 
         service,
         phoneNumber,
-        description 
+        description,
+        location,
+        propertyType,
+        surfaceType
     })
 
     if (lead) {

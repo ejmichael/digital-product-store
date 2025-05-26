@@ -21,33 +21,35 @@ const Navbar = () => {
 
   return (
     <div className=' w-full p-4 flex justify-between  absolute  items-center top-0 z-20 '>
-        <div className='border-sm py-2 px-4 font-bold bg-white rounded-lg'>
-          <Link to='/' className=' text-2xl text-shadow-md text-[#03989e] p-2 ' >Curb Cleaners</Link>
-        </div>
+      <div className='flex items-center border-sm py-2 px-4 font-bold rounded-lg'>
+        <Link to='/' className='flex items-center'>
+          <img
+            className='h-20 text-shadow-md text-shadow-white w-auto object-contain'
+            src="https://i.postimg.cc/gkFhhDj0/Blue-Simple-Cleaning-Services-Initials-Logo-5.png"
+            alt="SA Pressure Washing Logo"
+          />
+        </Link>
+      </div>
         {/* <div className='border-sm '>
             <input className='rounded-full bg-white py-2 px-4 w-[300px]' type='text' placeholder='Search for item' />
         </div> */}
         <div className='relative border-sm flex gap-4'>
-            <Link to='/contact'>
-              <button className='relative p-3 bg-white rounded-full hover:font-semibold hover:cursor-pointer hover:bg-gradient-to-r from-purple-600 to-pink-500 hover:text-white'>
-                  <FaPhone/>
-                  {cart.products.length !== 0  && (
-                    <div className='absolute right-[-5px] top-[-15%] m-1 rounded-full bg-blue-600 text-white'>
-                      <p className='rounded-full bg-blue-600 text-white py-1 px-2 text-xs'>{cart?.products.length}</p>
-                    </div>
-                  )}
-              </button>
-            </Link>
-            <Link to='/contact'>
-              <button className='relative p-3 bg-white rounded-full hover:font-semibold hover:cursor-pointer hover:bg-gradient-to-r from-purple-600 to-pink-500 hover:text-white'>
-                  <FaEnvelope/>
-                  {cart.products.length !== 0  && (
-                    <div className='absolute right-[-5px] top-[-15%] m-1 rounded-full bg-blue-600 text-white'>
-                      <p className='rounded-full bg-blue-600 text-white py-1 px-2 text-xs'>{cart?.products.length}</p>
-                    </div>
-                  )}
-              </button>
-            </Link>
+          <Link to='/contact'>
+            <button className='relative p-3 bg-white rounded-full hover:font-semibold hover:cursor-pointer hover:bg-[#03989e] hover:text-white transition-all'>
+                <FaPhone/>
+            </button>
+          </Link>
+
+          <Link to='/contact'>
+            <button className='relative p-3 bg-white rounded-full hover:font-semibold hover:cursor-pointer hover:bg-[#03989e] hover:text-white transition-all'>
+                <FaEnvelope/>
+                {cart.products.length !== 0 && (
+                  <div className='absolute right-[-5px] top-[-15%] m-1 rounded-full bg-blue-600 text-white'>
+                    <p className='rounded-full bg-blue-600 text-white py-1 px-2 text-xs'>{cart?.products.length}</p>
+                  </div>
+                )}
+            </button>
+          </Link>
 {/*             
             {user && (
               <Link to="/profile">
