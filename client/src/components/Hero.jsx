@@ -71,7 +71,7 @@ const Hero = () => {
   const prevStep = () => setCurrentStep((prev) => Math.max(prev - 1, 1));
 
   return (
-    <div className="relative w-full h-screen overflow-hidden">
+    <div className="relative py-24 w-full md:h-screen overflow-hidden">
       {/* Background Image */}
       <img
         className="absolute top-0 left-0 w-full h-full object-cover"
@@ -84,7 +84,7 @@ const Hero = () => {
       <div className="relative z-10 flex flex-col md:flex-row items-center justify-between h-full px-6 lg:px-[10%] py-10">
         {/* Text Section */}
         <div className="text-white max-w-xl mb-10 md:mb-0 text-center">
-          <h1 className="text-4xl lg:text-7xl font-bold mb-6 leading-tight">
+          <h1 className="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
             <span className="font-bebas-neue tracking-wide">Make Your Property Look New Again</span><br />
             <span className="font-dancing-script font-light text-3xl lg:text-5xl text-white">
               Fast. Affordable. Professional.

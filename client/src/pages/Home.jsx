@@ -24,7 +24,7 @@ const Home = () => {
 
       {/* Services Section */}
       <section>
-        <div className="m-14">
+        <div className="m-8 md:m-14">
           <div className="mb-8">
             <h2 className="text-3xl font-bold uppercase mb-4 text-center">
               What We Clean
