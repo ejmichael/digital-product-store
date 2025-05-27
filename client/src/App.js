@@ -24,6 +24,8 @@ import AnalyticsTracker from './AnalyticsTracker';
 import PaymentSuccess from './pages/PaymentSuccess';
 import PaymentCancelled from './pages/PaymentCancelled';
 import LeadSubmitted from './pages/LeadSubmitted';
+import ViewLeads from './pages/ViewLeads';
+import About from './pages/About';
 
 function App() {
 
@@ -55,7 +57,9 @@ function App() {
         
         <Route path="/success" element={<PaymentSuccess />} />
         <Route path="/cancel" element={<PaymentCancelled />} /> */}
+        <Route path='/about' element={<About/>} />
         <Route path='/contact' element={<ContactUs/>} />
+        <Route path='/leads/:service' element={<ViewLeads/>} />
       </Routes>
     </div>
     <div className="py-6 text-center bg-gray-900 text-white ">

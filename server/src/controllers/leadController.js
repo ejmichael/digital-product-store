@@ -1,6 +1,24 @@
 const express = require('express');
 const Lead = require('../models/leadModel');
 
+const getLeads = async(req, res) => {
+    const {service} = req.params;
+
+    try {
+        const leads = await Lead.find({ service });
+    
+        if (!leads || leads.length === 0) {
+          return res.status(404).json({ message: 'No leads found for this service.' });
+        }
+    
+        res.status(200).json(leads);
+        console.log(leads);
+        
+      } catch (error) {
+        console.error('Error fetching leads:', error);
+        res.status(500).json({ message: 'Server error fetching leads.' });
+      }
+}
 
 const createLead = async (req, res) => {
     const {firstName, surname, emailAddress, location, propertyType, surfaceType, phoneNumber, service, description } = req.body;
@@ -30,4 +48,4 @@ const createLead = async (req, res) => {
     }
 }
 
-module.exports = { createLead }
+module.exports = { createLead, getLeads }

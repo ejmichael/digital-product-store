@@ -206,7 +206,7 @@ const ContactUs = () => {
           Should you have any questions or queries, please feel free to contact our support person at the email address listed below.
         </p>
         <ul className="list-disc pl-5 text-gray-700 space-y-2">
-          <li>Email: <strong>ethanj.michael03@gmail.com</strong></li>
+          <li>Email: <strong>info@sapressurewashers.co.za</strong></li>
           {/* <li>Mailing Address: <strong>[Your Business Address, if applicable]</strong></li> */}
         </ul>
       </div>
