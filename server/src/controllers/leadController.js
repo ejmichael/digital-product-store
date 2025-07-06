@@ -4,6 +4,7 @@ const Lead = require('../models/leadModel');
 const getLeads = async(req, res) => {
     const {service} = req.params;
 
+
     try {
         const leads = await Lead.find({ service });
     

@@ -34,6 +34,9 @@ payfastRouter.post("/payfast-initiate", (req, res) => {
       item_name: item_name,
       email_address: email,
       m_payment_id: paymentReference, // Include the reference as PayFast's custom field
+      subscription_type: '1',  // 1 for recurring
+      frequency: '3',  // Frequency: 3 = monthly
+      cycles: '0',  // 0 for indefinite
     });
   
     const redirectUrl = `${payfastUrl}?${queryParams.toString()}`;

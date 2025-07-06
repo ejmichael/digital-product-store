@@ -68,10 +68,10 @@ const ContactUs = () => {
   const prevStep = () => setCurrentStep((prev) => Math.max(prev - 1, 1));
 
   return (
-    <div className="px-20 py-20 h-[90vh] flex flex-col md:flex-row items-center justify-around gap-8">
+    <div className="px-8 py-24 md:px-20 md:py-20 h-[90vh] flex flex-col md:flex-row items-center justify-around gap-8">
       <div className="w-full">
-        <div className="bg-white bg-opacity-90 p-6 rounded-lg shadow-lg w-full max-w-md">
-          <h3 className="text-2xl font-bold mb-4 text-gray-800 text-center">Request a Free Quote</h3>
+        <div className="bg-white bg-opacity-90 p-6 rounded-lg border-[#03989e] border w-full max-w-md">
+          <h3 className="text-2xl font-bold mb-4 text-center text-[#03989e]">Request A Free Quote</h3>
           <form onSubmit={handleSubmit} className="space-y-4">
             {/* Step 1 */}
             {currentStep === 1 && (
@@ -83,7 +83,7 @@ const ContactUs = () => {
                   required
                   value={leadForm.firstName}
                   onChange={handleFormChange}
-                  className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#03989e]"
+                  className="w-full px-4 py-2 rounded border-[#03989e] border focus:outline-none focus:ring-2 focus:ring-[#03989e]"
                 />
                 <input
                   type="text"
@@ -91,7 +91,7 @@ const ContactUs = () => {
                   placeholder="Surname"
                   value={leadForm.surname}
                   onChange={handleFormChange}
-                  className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#03989e]"
+                  className="w-full px-4 py-2 rounded border-[#03989e] border focus:outline-none focus:ring-2 focus:ring-[#03989e]"
                 />
                 <input
                   type="email"
@@ -100,7 +100,7 @@ const ContactUs = () => {
                   required
                   value={leadForm.emailAddress}
                   onChange={handleFormChange}
-                  className="w-full px-4 py-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#03989e]"
+                  className="w-full px-4 py-2 rounded border-[#03989e] border focus:outline-none focus:ring-2 focus:ring-[#03989e]"
                 />
               </>
             )}

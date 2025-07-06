@@ -97,7 +97,7 @@ const Hero = () => {
 
         {/* Multi-Step Form Section */}
         <div className="bg-white bg-opacity-90 p-6 rounded-lg shadow-lg w-full max-w-md">
-          <h3 className="text-2xl font-bold mb-4 text-gray-800 text-center">Request a Free Quote</h3>
+          <h3 className="text-2xl font-bold mb-4 text-gray-800 text-center">Request A Free Quote</h3>
           <form onSubmit={handleSubmit} className="space-y-4">
 
             {/* Step 1 */}

@@ -27,7 +27,7 @@ const ViewLeads = () => {
     <div className="p-6 h-[90vh]">
       <div className="flex mt-24 justify-between items-center mb-6">
         <h1 className="text-2xl font-bold text-gray-800">
-          {service.toUpperCase()} Leads
+          {service.toUpperCase()} LEADS
         </h1>
         <button className="bg-[#03989e] text-white font-semibold py-2 px-4 rounded">
           Export
