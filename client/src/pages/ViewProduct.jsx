@@ -53,22 +53,22 @@ const ViewProduct = () => {
     };
 
     return (
-        <div className='mx-10 my-10 mt-[100px]'>
+        <div className='mx-10 my-8 mt-[50px]'>
             {/* <div className='text-xl my-4'>ViewProduct: {productInfo.productName}</div> */}
             <div className='grid grid-cols-5 gap-4 my-8'>
             <div className="col-span-5 lg:col-span-3 gap-4 px-2">
   {/* Main Image */}
   <div className="flex flex-col lg:flex-row-reverse justify-center">
-    <div className="lg:w-[70%]">
+    <div className="lg:w-[90%]">
       <img
-        className="w-full md:w-[80%] max-h-[500px] object-cover m-auto border border-2 rounded-md"
+        className="w-full md:w-[80%] max-h-[600px] object-cover m-auto border border-2 rounded-md"
         src={selectedImg || productInfo.imageUrls[0]}
         alt={productInfo.productName}
       />
     </div>
 
     {/* Thumbnails */}
-    <div className="flex lg:flex-col flex-wrap lg:ml-4 justify-center gap-2 mt-2 lg:mt-0">
+    {/* <div className="flex lg:flex-col flex-wrap lg:ml-4 justify-center gap-2 mt-2 lg:mt-0">
       {productInfo.imageUrls.map((imgUrl, index) => (
         <img
           key={index}
@@ -78,7 +78,7 @@ const ViewProduct = () => {
           alt={productInfo.productName}
         />
       ))}
-    </div>
+    </div> */}
   </div>
 </div>
                 <div className='col-span-5 lg:col-span-2 px-4'>
@@ -90,7 +90,7 @@ const ViewProduct = () => {
                     </div>
                     <div className='flex'>
                        <button 
-                        className='my-4 h-[50px] w-[100%] my-3 text-white rounded-full bg-gradient-to-r from-purple-500 to-pink-500'
+                        className='my-4 h-[50px] w-[100%] my-3 text-black rounded-full border border-black hover:bg-gray-300'
                         onClick={goToCheckout}
                         >
                             {/* {isProductInCart(productInfo._id) ? 'Remove from Cart' : 'Add to Cart'} */}

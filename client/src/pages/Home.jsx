@@ -35,13 +35,13 @@ const Home = () => {
   return (
     <div className="">
 
-      <Hero/>
+      <Hero products={products}/>
 
           
 
       <div className='m-14'>
         <div className='mb-8'>
-          <h2 className="text-3xl font-bold uppercase mb-4 text-center">Explore My Fitness Program</h2>
+          <h2 className="text-3xl font-bold uppercase mb-4 text-center">Explore Program</h2>
         </div>
 
         <Products products={products}/>
@@ -80,7 +80,7 @@ const Home = () => {
 
      {/* Why Choose Us Section */}
      <div className="my-14 flex flex-col items-center bg-gray-100 py-10 px-6 rounded-lg">
-        <h2 className="text-3xl font-bold  mb-4 text-center uppercase">WANT YOUR DREAM BODY?</h2>
+        <h2 className="text-3xl font-bold  mb-4 text-center uppercase">What I Do to Stay Lean — Made Simple for You.</h2>
         <div className="list-disc text-gray-700 space-y-4 text-center">
           <p>Transform your fitness journey with proven workout plans, meal guides, and tools that deliver real results.</p>
           <p>Save time and eliminate guesswork with step-by-step plans tailored to your goals—whether it’s fat loss, muscle gain, or staying active.</p>
@@ -90,19 +90,19 @@ const Home = () => {
       </div>
 
     {/* Testimonials Section */}
-    <div className="m-12">
-      <h2 className="text-3xl font-bold uppercase text-center mb-6">What Our Users Are Saying</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-        <div className="p-6 bg-gray-100 rounded-lg">
-          <p className="text-gray-700">"The tracker has been a game-changer. I can finally see how my food choices affect my glucose, making healthy changes easier than ever!"</p>
-          <p className="mt-4 text-sm font-semibold">- Alex, Wellness Advocate</p>
-        </div>
-        <div className="p-6 bg-gray-100 rounded-lg">
-          <p className="text-gray-700">"Such a easy tracker to use! Tracking my sugar levels feels less like a chore and more like a step toward a healthier me."</p>
-          <p className="mt-4 text-sm font-semibold">- Maria, Happy User</p>
-        </div>
-      </div>
+<div className="m-12">
+  <h2 className="text-3xl font-bold uppercase text-center mb-6">What People Are Saying</h2>
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+    <div className="p-6 bg-gray-100 rounded-lg">
+      <p className="text-gray-700">"I stopped overthinking my workouts. I just follow the plan, and I’ve never felt stronger or more consistent."</p>
+      <p className="mt-4 text-sm font-semibold">- Alex, Everyday Athlete</p>
     </div>
+    <div className="p-6 bg-gray-100 rounded-lg">
+      <p className="text-gray-700">"The meal plan is super straightforward. No crazy recipes — just food I actually enjoy and can prep easily."</p>
+      <p className="mt-4 text-sm font-semibold">- Maria, Busy Mom</p>
+    </div>
+  </div>
+</div>
 
     {/* Why Choose Us Section */}
     <Subscribe />

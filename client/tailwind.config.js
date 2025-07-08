@@ -8,6 +8,8 @@ module.exports = {
       fontFamily: {
         'dancing-script': ['"Dancing Script"', 'serif'],
         'bebas-neue': ['"Bebas Neue", serif '],
+        'anton': ['Anton', 'sans-serif'],
+        'spartan': ['League Spartan', 'sans-serif'],
       },
     },
   },

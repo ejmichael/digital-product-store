@@ -20,16 +20,16 @@ const Navbar = () => {
   
 
   return (
-    <div className=' w-full p-4 flex justify-between  absolute  items-center top-0 z-20 '>
+    <div className=' w-full px-4 py-2 flex justify-between items-center top-0 z-20 shadow-md'>
         <div className='border-sm py-2 px-4 font-bold '>
-          <Link to='/' className=' text-xl text-pink-600'>MLG Fitness</Link>
+          <Link to='/' className=' text-xl '>MLG Fitness</Link>
         </div>
         {/* <div className='border-sm '>
             <input className='rounded-full bg-white py-2 px-4 w-[300px]' type='text' placeholder='Search for item' />
         </div> */}
         <div className='relative border-sm flex gap-4'>
             <Link to='/cart'>
-              <button className='relative p-3 bg-white rounded-full hover:font-semibold hover:cursor-pointer hover:bg-gradient-to-r from-purple-600 to-pink-500 hover:text-white'>
+              <button className='relative p-3  text-black rounded-full hover:font-semibold hover:cursor-pointer hover:bg-slate-300 '>
                   <FaCartShopping/>
                   {cart.products.length !== 0  && (
                     <div className='absolute right-[-5px] top-[-15%] m-1 rounded-full bg-blue-600 text-white'>
@@ -41,7 +41,7 @@ const Navbar = () => {
             
             {user && (
               <Link to="/profile">
-              <button className='p-3 bg-white rounded-full hover:font-semibold hover:cursor-pointer hover:bg-gradient-to-r from-purple-600 to-pink-500 hover:text-white'>
+              <button className='p-3  rounded-full hover:font-semibold hover:cursor-pointer hover:bg-slate-300'>
                   <FaCircleUser/>
               </button>
             </Link>
@@ -49,7 +49,7 @@ const Navbar = () => {
             
               
             {user ? (
-              <button onClick={logout} className='p-3 bg-white rounded-full hover:font-semibold hover:cursor-pointer hover:bg-gradient-to-r from-purple-600 to-pink-500 hover:text-white'>
+              <button onClick={logout} className='p-3 bg-white rounded-full hover:font-semibold hover:bg-slate-300'>
                 <FaArrowRightFromBracket />
               </button>
             ) : (
