@@ -10,8 +10,8 @@ const Products = () => {
     },
     {
       name: 'Workout Plan',
-      image: 'https://res.cloudinary.com/dwvrx1rhr/image/upload/v1751983861/Untitled_design_pjqixl.jpg', // Replace with your actual image path
-      // image: 'https://res.cloudinary.com/dwvrx1rhr/image/upload/v1751983174/workout-img-to-use2_ia4klt.png', // Replace with your actual image path
+      //image: 'https://res.cloudinary.com/dwvrx1rhr/image/upload/v1751983861/Untitled_design_pjqixl.jpg', // Replace with your actual image path
+      image: 'https://res.cloudinary.com/dwvrx1rhr/image/upload/v1751983174/workout-img-to-use2_ia4klt.png', // Replace with your actual image path
       link: '/workout-plan',
     },
   ];
@@ -20,13 +20,13 @@ const Products = () => {
     <div className="flex flex-wrap lg:max-w-[70%] mx-auto">
       {items.map((item, index) => (
         <Link key={index} to={item.link} className="w-full sm:w-1/2 p-4">
-          <div className="relative group aspect-square rounded-xl overflow-hidden shadow-lg">
+          <div className="relative group aspect-square rounded-lg overflow-hidden shadow-lg">
             <img
               src={item.image}
               alt={item.name}
               className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
+            <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
               <button className="rounded rounded-full p-3 bg-white lg:text-lg sm:text-2xl font-bold hover:bg-gray-300 text-center">
                 View {item.name}
               </button>
