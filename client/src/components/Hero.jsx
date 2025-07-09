@@ -7,10 +7,10 @@ const Hero = ({products}) => {
   console.log(products);
   
   return (
-    <div className="relative w-full h-screen overflow-hidden">
+    <div className="relative w-full h-screen  overflow-hidden">
             {/* Background Video */}
             <video
-              className="absolute top-0 left-0 w-full h-full object-cover inset-0 bg-black bg-opacity-70"
+              className="absolute top-0 left-0 w-full h-full object-cover sm:object-center  object-[65%] inset-0 bg-black bg-opacity-70"
               autoPlay
               loop
               muted>

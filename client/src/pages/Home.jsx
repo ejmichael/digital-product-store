@@ -39,43 +39,12 @@ const Home = () => {
 
           
 
-      <div className='m-14'>
+      <div className='lg:m-14 m-10'>
         <div className='mb-8'>
           <h2 className="text-3xl font-bold uppercase mb-4 text-center">Explore Program</h2>
         </div>
 
         <Products products={products}/>
-
-        {/* <div className=" grid grid-cols-1 md:grid-cols-4 gap-6">
-          <div className="bg-gray-100 p-8 relative min-h-[300px]  border-8 border-indigo-600 ">
-            <img src={Transfrom} alt="" className='absolute top-0 left-0 w-full h-full object-cover' />
-            <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-40"></div>
-            <div className='relative h-full z-10 flex flex-col items-center justify-center'>
-              <h3 className="lg:text-3xl sm:text-xl font-bold text-white uppercase mb-4 text-center">Body Transformation</h3>
-            </div>
-          </div>
-          <div className="bg-gray-100 p-8 relative border-8 border-lime-500">
-            <img src={Weight} alt="" className='absolute top-0 left-0 w-full h-full object-cover' />
-            <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50"></div>
-            <div className='relative h-full z-10 flex flex-col items-center justify-center'>
-              <h3 className="text-3xl font-bold text-white mb-4 text-center">WEIGHT LOSS</h3>
-            </div>
-          </div>
-          <div className="bg-gray-100 p-8  relative border-8 border-fuchsia-500">
-            <img src={Muscle} alt="" className='absolute top-0 left-0 w-full h-full object-cover' />
-            <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50"></div>
-            <div className='relative h-full z-10 flex flex-col items-center justify-center'>
-              <h3 className="text-3xl font-bold text-white mb-4 text-center">BUILD MUSCLE</h3>
-            </div>
-          </div>
-          <div className="bg-gray-100 p-8 relative border-8 border-cyan-400">
-            <img src={Flexible} alt="" className='absolute top-0 left-0 w-full h-full object-cover' />
-            <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50"></div>
-            <div className='relative h-full z-10 flex flex-col items-center justify-center'>
-              <h3 className="text-3xl font-bold text-white mb-4 text-center">FLEXIBILITY & MOBILITIY</h3>
-            </div>
-          </div>
-        </div>*/}
       </div> 
 
      {/* Why Choose Us Section */}
