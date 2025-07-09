@@ -53,7 +53,7 @@ const ViewProduct = () => {
     };
 
     return (
-        <div className='mx-10 my-8 mt-[50px]'>
+        <div className='mx-10 my-8 mt-[80px]'>
             {/* <div className='text-xl my-4'>ViewProduct: {productInfo.productName}</div> */}
             <div className='grid grid-cols-5 gap-4 my-8'>
             <div className="col-span-5 lg:col-span-3 gap-4 px-2">
@@ -106,9 +106,9 @@ const ViewProduct = () => {
                             <p className='my-4 font-thin'>
                                 All files will be made available for download once payment has been made. 
                             </p>
-                            <p className='my-4 font-thin'>
+                            {/* <p className='my-4 font-thin'>
                                 The download will be availble in the Orders section on the Profile page. 
-                            </p>
+                            </p> */}
                         </div>
                     </div>
                 </div>

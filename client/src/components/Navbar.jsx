@@ -1,65 +1,104 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { FaCircleUser, FaCartShopping, FaArrowRightFromBracket, FaArrowRightToBracket } from "react-icons/fa6";
-import { CartContext } from '../context/CartContext';
-import { AuthContext } from '../context/AuthContext';
-
+import { FaCircleUser, FaCartShopping, FaArrowRightFromBracket, FaArrowRightToBracket, FaBars, FaXmark } from "react-icons/fa6"
+import { CartContext } from '../context/CartContext'
+import { AuthContext } from '../context/AuthContext'
 
 const Navbar = () => {
-
-  const { cart } = useContext(CartContext);
-  const { user, dispatch } = useContext(AuthContext);
-
-  // console.log(cart);
+  const { cart } = useContext(CartContext)
+  const { user, dispatch } = useContext(AuthContext)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const logout = () => {
     localStorage.removeItem('user')
+    dispatch({ type: 'LOGOUT' })
+    setIsMenuOpen(false)
+  }
 
-    dispatch({type: 'LOGOUT',})
-}
-  
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen)
+  }
 
   return (
-    <div className=' w-full px-4 py-2 absolute flex justify-between items-center top-0 z-20 '>
-        <div className='border-sm py-2 px-4 font-bold '>
-          <Link to='/' className='font-bebas-neue text-black text-2xl p-2 tracking-wider text-shadow bg-white'>MLG Fitness</Link>
-        </div>
-        {/* <div className='border-sm '>
-            <input className='rounded-full bg-white py-2 px-4 w-[300px]' type='text' placeholder='Search for item' />
-        </div> */}
-        <div className='relative border-sm flex gap-4'>
-            <Link to='/cart'>
-              <button className='relative p-3 bg-white text-black rounded-full hover:font-semibold hover:cursor-pointer hover:bg-slate-300 '>
-                  <FaCartShopping/>
-                  {cart.products.length !== 0  && (
-                    <div className='absolute right-[-5px] top-[-15%] m-1 rounded-full bg-blue-600 text-white'>
-                      <p className='rounded-full bg-blue-600 text-white py-1 px-2 text-xs'>{cart?.products.length}</p>
-                    </div>
-                  )}
-              </button>
-            </Link>
-            
-            {user && (
-              <Link to="/profile">
-              <button className='p-3 bg-white rounded-full hover:font-semibold hover:cursor-pointer hover:bg-slate-300'>
-                  <FaCircleUser/>
-              </button>
-            </Link>
+    <div className='w-full px-4 py-2 absolute flex justify-between items-center top-0 z-20 bg-transparent'>
+      <div className='py-2 px-3 font-bold'>
+        <Link to='/' className='font-bebas-neue text-black text-2xl p-2 tracking-wider text-shadow bg-white'>
+          MLG Fitness
+        </Link>
+      </div>
+
+      {/* Desktop Nav */}
+      <div className='hidden md:flex items-center gap-4'>
+        <Link to='/cart'>
+          <button className='relative p-3 bg-white text-black rounded-full hover:font-semibold hover:bg-slate-300'>
+            <FaCartShopping />
+            {cart.products.length !== 0 && (
+              <div className='absolute right-[-5px] top-[-15%] m-1 rounded-full bg-blue-600 text-white'>
+                <p className='rounded-full bg-blue-600 text-white py-1 px-2 text-xs'>
+                  {cart?.products.length}
+                </p>
+              </div>
             )}
-            
-              
-            {user ? (
-              <button onClick={logout} className='p-3 bg-white rounded-full hover:font-semibold hover:bg-slate-300'>
-                <FaArrowRightFromBracket />
-              </button>
-            ) : (
-              <Link to="/login">
-                <button className='p-3 bg-white rounded-full hover:font-semibold hover:cursor-pointer hover:bg-gradient-to-r from-purple-600 to-pink-500 hover:text-white'>
-                <FaArrowRightToBracket />
-                </button>
-            </Link>
+          </button>
+        </Link>
+
+        {/* {user && (
+          <Link to="/profile">
+            <button className='p-3 bg-white rounded-full hover:font-semibold hover:cursor-pointer hover:bg-slate-300'>
+              <FaCircleUser />
+            </button>
+          </Link>
+        )} */}
+
+        {/* {user ? (
+          <button onClick={logout} className='p-3 bg-white rounded-full hover:font-semibold hover:bg-slate-300'>
+            <FaArrowRightFromBracket />
+          </button>
+        ) : (
+          <Link to="/login">
+            <button className='p-3 bg-white rounded-full hover:font-semibold hover:bg-gradient-to-r from-purple-600 to-pink-500 hover:text-white'>
+              <FaArrowRightToBracket />
+            </button>
+          </Link>
+        )} */}
+      </div>
+
+      {/* Hamburger Menu (Mobile) */}
+      <div className="md:hidden">
+        <button onClick={toggleMenu} className="p-3 bg-white rounded-full">
+          {isMenuOpen ? <FaXmark /> : <FaBars />}
+        </button>
+      </div>
+
+      {/* Mobile Dropdown Menu */}
+      {isMenuOpen && (
+        <div className="absolute top-[70px] right-4 bg-white rounded-lg shadow-lg p-4 flex flex-col gap-3 z-30 w-48">
+          <Link to='/cart' onClick={toggleMenu} className='flex items-center gap-2'>
+            <FaCartShopping /> Cart
+            {cart.products.length !== 0 && (
+              <span className='ml-auto bg-blue-600 text-white text-xs px-2 py-0.5 rounded-full'>
+                {cart.products.length}
+              </span>
             )}
+          </Link>
+
+          {user && (
+            <Link to="/profile" onClick={toggleMenu} className='flex items-center gap-2'>
+              <FaCircleUser /> Profile
+            </Link>
+          )}
+
+          {/* {user ? (
+            <button onClick={logout} className='flex items-center gap-2 text-left'>
+              <FaArrowRightFromBracket /> Logout
+            </button>
+          ) : (
+            <Link to="/login" onClick={toggleMenu} className='flex items-center gap-2'>
+              <FaArrowRightToBracket /> Login
+            </Link>
+          )} */}
         </div>
+      )}
     </div>
   )
 }
