@@ -5,7 +5,7 @@ const Products = () => {
   const items = [
     {
       name: 'Meal Plan',
-      image: 'https://res.cloudinary.com/dwvrx1rhr/image/upload/v1751985462/Untitled_design_1_opsv1o.png', // Replace with your actual image path
+      image: 'https://res.cloudinary.com/dwvrx1rhr/image/upload/v1752140911/Untitled_design_2_jmawhn.jpg', // Replace with your actual image path
       link: '/meal-plan',
     },
     {
