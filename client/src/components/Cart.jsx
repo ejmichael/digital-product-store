@@ -60,7 +60,7 @@ const Cart = () => {
           </div>
           <div className='flex justify-between  my-2'>
              <p>Discount:</p>
-             <p className='text-lg text-green-500'>- R {399.00 - cart.total.toFixed(2)}</p>
+             <p className='text-lg text-green-500'>- R {599.99 - cart.total.toFixed(2)}</p>
           </div>
           <div className='flex justify-between my-2'>
              <p>Total:</p>
