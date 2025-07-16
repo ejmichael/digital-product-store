@@ -15,7 +15,7 @@ const createUser = async(req, res) => {
         res.status(400).json({message: 'Please enter all the required fields.'})
     }
 
-    const userExists = await User.findOne({email})
+    const userExists = await User.findOne({emailAddress: email})
 
     if(userExists) {
         res.status(400).json({message: 'User already exists!'})
@@ -28,7 +28,7 @@ const createUser = async(req, res) => {
     const user = await User.create({
         name: firstName, 
         surname, 
-        email, 
+        emailAddress: email, 
         phoneNumber, 
         password: hashedPW
     })
@@ -38,7 +38,7 @@ const createUser = async(req, res) => {
             _id: user.id,
             name: user.name,
             surname: user.surname,
-            email: user.email,
+            email: user.emailAddress,
             phoneNumber: user.phoneNumber,
             token: generateToken(user._id)
         })

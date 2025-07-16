@@ -33,12 +33,8 @@ const Hero = ({products}) => {
                 <p className="text-white font-medium text-lg text-center md:text-xl max-w-2xl mb-8 p-3 ">
                   Follow the exact workouts and meals I use to stay lean and strong — no confusion, no guesswork. Just a healthy, stronger you.
                 </p>
-                <Link to={`/product/${products[0]?._id}`}>
-                  <div>
-                    <button className="bg-white text-black font-semibold px-6 py-3 rounded hover:bg-gray-200">
-                      Get My Plan – 75% Off
-                    </button>
-                  </div>
+                <Link to={`/product/${products[0]?._id}`} className="inline-block bg-white text-black font-semibold px-6 py-3 rounded hover:bg-gray-600 hover:text-white">
+                      Get My Full Plan – 75% Off
                 </Link>
               </div>
           </div>

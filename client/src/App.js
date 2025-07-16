@@ -23,6 +23,8 @@ import ReactGA from 'react-ga4';
 import AnalyticsTracker from './AnalyticsTracker';
 import PaymentSuccess from './pages/PaymentSuccess';
 import PaymentCancelled from './pages/PaymentCancelled';
+import MealPlanInfo from './pages/plans/MealPlanInfo';
+import WorkoutPlanInfo from './pages/plans/WorkoutPlanInfo';
 
 function App() {
 
@@ -53,6 +55,8 @@ function App() {
         <Route path='/contact' element={<ContactUs/>} />
         <Route path="/success" element={<PaymentSuccess />} />
         <Route path="/cancel" element={<PaymentCancelled />} />
+        <Route path="/meal-plan" element={<MealPlanInfo />} />
+        <Route path="/workout-plan" element={<WorkoutPlanInfo />} />
       </Routes>
     </div>
     <div className="py-6 text-center bg-gray-900 text-white ">

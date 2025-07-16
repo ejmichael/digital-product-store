@@ -54,7 +54,7 @@ const ViewProduct = () => {
 
     return (
         <div className='mx-10 my-8 mt-[80px]'>
-            {/* <div className='text-xl my-4'>ViewProduct: {productInfo.productName}</div> */}
+            {/* <div className='text-xl my-4'>ViewProduct: {productInfo.productName}</div> */} 
             <div className='grid grid-cols-5 gap-4 my-8'>
             <div className="col-span-5 lg:col-span-3 gap-4 px-2">
   {/* Main Image */}
@@ -86,11 +86,12 @@ const ViewProduct = () => {
                     <p className='text-slate-600 my-4'>{productInfo.productDescription}</p>
                     <div className='flex items-end gap-2'>
                         <p className='my-4 text-2xl text-green-600'>R {(productInfo.price).toFixed(2)}</p>
-                        <p className='my-4 text-slate-500 line-through'>R {(productInfo.price*2.21667).toFixed(2)}</p>
+                        <p className='my-4 text-slate-500 line-through'>R 599.99</p>
+                        {/* <p className='my-4 text-slate-500 line-through'>R {(productInfo.price*2.21667).toFixed(2)}</p> */}
                     </div>
                     <div className='flex'>
                        <button 
-                        className='my-4 h-[50px] w-[100%] my-3 text-black rounded-full border border-black hover:bg-gray-300'
+                        className='my-4 h-[50px] w-[100%] my-3 inline-block bg-black text-white font-semibold px-6 py-3 rounded hover:bg-gray-600 hover:text-white'
                         onClick={goToCheckout}
                         >
                             {/* {isProductInCart(productInfo._id) ? 'Remove from Cart' : 'Add to Cart'} */}

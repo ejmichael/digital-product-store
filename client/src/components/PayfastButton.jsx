@@ -20,7 +20,7 @@ const PayfastButton = () => {
         // Step 1: Initiate Payment with PayFast
         const paymentResponse = await axios.post(`${domain}/payfast/payfast-initiate`, {
           amount: cart.total,
-          item_name: "Blood Sugar Tracker",
+          item_name: "12 Week Body Transformation",
           email: user.email, // Replace with the actual email of the user
         });
     
