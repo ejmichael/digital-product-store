@@ -5,13 +5,13 @@ const WorkoutPlanInfo = () => {
 
 
   return (
- <div className="mt-16 px-6 lg:px-20 py-10 text-center">
+ <div className="md:mt-16 px-6 lg:px-20 py-10 text-center">
       <h1 className="text-4xl md:text-5xl font-bold uppercase mb-4">Weekly Workout Split</h1>
       <p className="text-lg text-gray-700 mb-8 max-w-3xl mx-auto">
         Train smarter, not harder. This weekly workout plan combines leg day workouts with dumbbell-based upper body sessions — giving you real results with no guesswork.
       </p>
 
-      {/* <img src={WorkoutImage} alt="Workout plan preview" className="rounded-lg shadow-lg mx-auto mb-8 max-w-2xl" /> */}
+      {/* <img src="" alt="Workout plan preview" className="rounded-lg shadow-lg mx-auto mb-8 max-w-2xl" /> */}
 
       <div className="bg-gray-100 rounded-lg p-6 mb-10 text-left max-w-4xl mx-auto space-y-4">
         <h2 className="text-2xl font-semibold uppercase text-center mb-4">Weekly Routine</h2>

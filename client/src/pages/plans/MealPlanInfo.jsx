@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 
 const MealPlanInfo = () => {
   return (
-<div className="mt-16 px-6 lg:px-20 py-10 text-center">
-      <h1 className="text-4xl md:text-5xl font-bold uppercase mb-4">Simple, Satisfying Meal Plan</h1>
+<div className="md:mt-16 px-6 lg:px-20 py-10 text-center">
+      <h1 className="text-4xl md:text-5xl font-bold uppercase mb-4">Simple, Delicious Meal Plan</h1>
       <p className="text-lg text-gray-700 mb-8 max-w-3xl mx-auto">
         No complicated recipes, no starving. Just real meals that fuel your goals — fat loss, energy, and muscle tone.
       </p>

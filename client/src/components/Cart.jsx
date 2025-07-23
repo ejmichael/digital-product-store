@@ -18,9 +18,9 @@ const Cart = () => {
     <div className='m-10 min-h-[75vh] mt-[100px]'>
     {cart.products.length === 0 ? (
       <div className='w-full text-center'>
-        <p className="text-4xl font-semibold mb-6 text-pink-600">Oops!</p>
+        <p className="text-4xl font-semibold mb-6 text-blaxk">Oops!</p>
         <p>You do not have anything in your cart.</p>
-        <button className='px-6 py-2 my-4 rounded-full text-white font-medium bg-gradient-to-r  from-purple-500 to-pink-500 '>
+        <button className='px-6 py-2 my-4 text-white font-medium bg-black hover:bg-slate-600 rounded'>
           <Link to='/'>Back</Link>
         </button>
       </div>
@@ -56,7 +56,7 @@ const Cart = () => {
           <p className='text-xl'>Payment Information</p>
           <div className='flex justify-between my-2'>
              <p>Subtotal:</p>
-             <p className='text-lg'>R 399.00</p>
+             <p className='text-lg'>R 599.00</p>
           </div>
           <div className='flex justify-between  my-2'>
              <p>Discount:</p>

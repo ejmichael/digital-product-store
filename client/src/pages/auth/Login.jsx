@@ -66,10 +66,10 @@ const Login = () => {
   
 
   return (
-    <div className='w-full h-[calc(100vh-80px)] bg-slate-100 py-12'>
-      <div className="m-auto flex-col shadow rounded-md lg:w-[30%] md:w-[50%] p-4 bg-white">
+    <div className='w-full h-[calc(100vh-80px)] bg-slate-100  py-20 px-6 '>
+      <div className="m-auto flex-col shadow rounded-md lg:w-[30%] md:w-[50%]  p-4 bg-white">
         <div className="flex items-center gap-1 justify-center p-2">
-          <span className='font-medium text-3xl text-pink-500'>Login</span>
+          <span className='font-medium text-3xl text-black'>Login</span>
         </div>
         <div className="flex justify-center">
           <p className='font-medium text-gray-500 text-lg'>Sign in to your account</p>
@@ -98,8 +98,8 @@ const Login = () => {
                 onChange={handleChange}
               />
             </div>
-            <div className='my-4 w-full border text-center rounded text-white font-semibold'>
-              <button type="submit" className="text-white py-2 hover:shadow-md bg-gradient-to-r from-purple-500 to-pink-500 w-full">Login</button>
+            <div className='my-4 w-full border text-center rounded  font-semibold'>
+              <button type="submit" className="text-white py-2 hover:shadow-md bg-black text-white  hover:bg-gray-600 hover:text-white w-full">Login</button>
             </div>
             <div className='my-4 w-full flex gap-1 justify-center items-center text-sm'>
               <p>Don't have an account yet? </p>

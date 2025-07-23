@@ -57,15 +57,15 @@ const ViewProduct = () => {
             {/* <div className='text-xl my-4'>ViewProduct: {productInfo.productName}</div> */} 
             <div className='grid grid-cols-5 gap-4 my-8'>
             <div className="col-span-5 lg:col-span-3 gap-4 px-2">
-  {/* Main Image */}
-  <div className="flex flex-col lg:flex-row-reverse justify-center">
-    <div className="lg:w-[90%]">
-      <img
-        className="w-full md:w-[80%] max-h-[600px] object-cover m-auto border border-2 rounded-md"
-        src={selectedImg || productInfo.imageUrls[0]}
-        alt={productInfo.productName}
-      />
-    </div>
+            {/* Main Image */}
+            <div className="flex flex-col lg:flex-row-reverse justify-center">
+                <div className="lg:w-[90%]">
+                <img
+                    className="w-full md:w-[80%] max-h-[600px] xl:max-h-[800px] object-cover m-auto border border-2 rounded-md"
+                    src={selectedImg || productInfo.imageUrls[0]}
+                    alt={productInfo.productName}
+                />
+                </div>
 
     {/* Thumbnails */}
     {/* <div className="flex lg:flex-col flex-wrap lg:ml-4 justify-center gap-2 mt-2 lg:mt-0">

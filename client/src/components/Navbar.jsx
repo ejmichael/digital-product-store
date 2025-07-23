@@ -1,6 +1,13 @@
 import React, { useContext, useState } from 'react'
-import { Link } from 'react-router-dom'
-import { FaCircleUser, FaCartShopping, FaArrowRightFromBracket, FaArrowRightToBracket, FaBars, FaXmark } from "react-icons/fa6"
+import { Link, useLocation } from 'react-router-dom'
+import {
+  FaCircleUser,
+  FaCartShopping,
+  FaArrowRightFromBracket,
+  FaArrowRightToBracket,
+  FaBars,
+  FaXmark
+} from "react-icons/fa6"
 import { CartContext } from '../context/CartContext'
 import { AuthContext } from '../context/AuthContext'
 
@@ -8,6 +15,8 @@ const Navbar = () => {
   const { cart } = useContext(CartContext)
   const { user, dispatch } = useContext(AuthContext)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+   const location = useLocation();
+  const isHomePage = location.pathname === '/'; 
 
   const logout = () => {
     localStorage.removeItem('user')
@@ -20,14 +29,22 @@ const Navbar = () => {
   }
 
   return (
-    <div className='w-full px-4 py-2 absolute flex justify-between items-center top-0 z-20 bg-transparent'>
+    <div className={`font-bebas-neue w-full px-4 py-2 ${isHomePage ? 'bg-transparent text-white absolute' : 'bg-white text-black shadow-md'} flex justify-between items-center top-0 z-20`}>
+      {/* Logo */}
       <div className='py-2 px-3 font-bold'>
         <Link to='/' className='font-bebas-neue text-black text-2xl p-2 tracking-wider text-shadow bg-white'>
           MLG Fitness
         </Link>
       </div>
 
-      {/* Desktop Nav */}
+      {/* Center Nav Links (Desktop Only) */}
+      <div className=' text-xl tracking-wide hidden md:flex gap-6 font-medium'>
+        <Link to="/about" className="hover:text-gray-300">About</Link>
+        <Link to="/meal-plan" className="hover:text-gray-300">Meal Plan</Link>
+        <Link to="/workout-plan" className="hover:text-gray-300">Workout Plan</Link>
+      </div>
+
+      {/* Right Icons (Desktop Only) */}
       <div className='hidden md:flex items-center gap-4'>
         <Link to='/cart'>
           <button className='relative p-3 bg-white text-black rounded-full hover:font-semibold hover:bg-slate-300'>
@@ -44,7 +61,7 @@ const Navbar = () => {
 
         {/* {user && (
           <Link to="/profile">
-            <button className='p-3 bg-white rounded-full hover:font-semibold hover:cursor-pointer hover:bg-slate-300'>
+            <button className='p-3 bg-white rounded-full hover:font-semibold hover:bg-slate-300'>
               <FaCircleUser />
             </button>
           </Link>
@@ -63,16 +80,26 @@ const Navbar = () => {
         )} */}
       </div>
 
-      {/* Hamburger Menu (Mobile) */}
+      {/* Hamburger (Mobile Only) */}
       <div className="md:hidden">
         <button onClick={toggleMenu} className="p-3 bg-white rounded-full">
           {isMenuOpen ? <FaXmark /> : <FaBars />}
         </button>
       </div>
 
-      {/* Mobile Dropdown Menu */}
+      {/* Mobile Dropdown */}
       {isMenuOpen && (
         <div className="absolute top-[70px] right-4 bg-white rounded-lg shadow-lg p-4 flex flex-col gap-3 z-30 w-48">
+          <Link to="/about" onClick={toggleMenu} className='flex items-center gap-2'>
+            About
+          </Link>
+          <Link to="/meal-plan" onClick={toggleMenu} className='flex items-center gap-2'>
+            Meal Plan
+          </Link>
+          <Link to="/workout-plan" onClick={toggleMenu} className='flex items-center gap-2'>
+            Workout Plan
+          </Link>
+
           <Link to='/cart' onClick={toggleMenu} className='flex items-center gap-2'>
             <FaCartShopping /> Cart
             {cart.products.length !== 0 && (
@@ -82,11 +109,11 @@ const Navbar = () => {
             )}
           </Link>
 
-          {user && (
+          {/* {user && (
             <Link to="/profile" onClick={toggleMenu} className='flex items-center gap-2'>
               <FaCircleUser /> Profile
             </Link>
-          )}
+          )} */}
 
           {/* {user ? (
             <button onClick={logout} className='flex items-center gap-2 text-left'>
