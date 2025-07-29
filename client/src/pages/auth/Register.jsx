@@ -72,7 +72,7 @@ const Register = () => {
     <div className='w-full h-[calc(100vh-80px)] bg-slate-100 py-20 px-6'>
       <div className="m-auto flex-col shadow rounded-md lg:w-[30%] md:w-[50%] p-4 bg-white">
         <div className="flex items-center gap-1 justify-center p-2">
-          <span className='font-medium text-3xl text-black'>Create an account</span>
+          <span className='font-medium text-3xl text-black font-bebas-neue tracking-wider'>Create an account</span>
         </div>
         {/* <div className="flex justify-center">
           <p className='font-medium text-gray-500 text-lg'>Sign in to your account</p>

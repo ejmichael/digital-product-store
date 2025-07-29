@@ -86,7 +86,7 @@ const ViewProduct = () => {
                     <p className='text-slate-600 my-4'>{productInfo.productDescription}</p>
                     <div className='flex items-end gap-2'>
                         <p className='my-4 text-2xl text-green-600'>R {(productInfo.price).toFixed(2)}</p>
-                        <p className='my-4 text-slate-500 line-through'>R 599.99</p>
+                        <p className='my-4 text-slate-500 line-through'>R 795.99</p>
                         {/* <p className='my-4 text-slate-500 line-through'>R {(productInfo.price*2.21667).toFixed(2)}</p> */}
                     </div>
                     <div className='flex'>

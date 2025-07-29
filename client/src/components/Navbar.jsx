@@ -82,14 +82,14 @@ const Navbar = () => {
 
       {/* Hamburger (Mobile Only) */}
       <div className="md:hidden">
-        <button onClick={toggleMenu} className="p-3 bg-white rounded-full">
+        <button onClick={toggleMenu} className="p-3 text-black bg-white rounded-full">
           {isMenuOpen ? <FaXmark /> : <FaBars />}
         </button>
       </div>
 
       {/* Mobile Dropdown */}
       {isMenuOpen && (
-        <div className="absolute top-[70px] right-4 bg-white rounded-lg shadow-lg p-4 flex flex-col gap-3 z-30 w-48">
+        <div className="absolute top-[70px] right-4 bg-white text-black rounded-lg shadow-lg p-4 flex flex-col gap-3 z-30 w-48">
           <Link to="/about" onClick={toggleMenu} className='flex items-center gap-2'>
             About
           </Link>

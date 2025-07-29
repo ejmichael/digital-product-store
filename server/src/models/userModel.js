@@ -16,7 +16,8 @@ const userSchema = mongoose.Schema({
     emailAddress: {
         type: String,
         required: [true, "Please enter a valid email address."],
-        unique: true
+        unique: true,
+        lowercase: true,
     },
     phoneNumber:{
         type: String,

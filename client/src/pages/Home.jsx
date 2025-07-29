@@ -15,7 +15,7 @@ const Home = () => {
   const domain = window.location.href.includes('localhost') ? "http://localhost:5000" : "https://miranda-fitness-backend.onrender.com";
 
   const getProducts = async () => {
-    const productsData = await axios.get(domain + '/api/products/get-products');
+    const productsData = await axios.get(domain + '/api/products/get-products'); 
 
     if (productsData?.data) {
       setProducts(productsData.data);
@@ -37,8 +37,6 @@ const Home = () => {
 
       <Hero products={products}/>
 
-          
-
       <div className='lg:m-14 m-10'>
         <div className='mb-8'>
           <h2 className="text-3xl font-bold uppercase mb-4 text-center">Explore Program</h2>
@@ -59,19 +57,19 @@ const Home = () => {
       </div>
 
     {/* Testimonials Section */}
-<div className="m-12">
-  <h2 className="text-3xl font-bold uppercase text-center mb-6">What People Are Saying</h2>
-  <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-    <div className="p-6 bg-gray-100 rounded-lg">
-      <p className="text-gray-700">"I stopped overthinking my workouts. I just follow the plan, and I’ve never felt stronger or more consistent."</p>
-      <p className="mt-4 text-sm font-semibold">- Alex, Everyday Athlete</p>
+    <div className="m-12">
+      <h2 className="text-3xl font-bold uppercase text-center mb-6">What People Are Saying</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div className="p-6 bg-gray-100 rounded-lg">
+          <p className="text-gray-700">"I stopped overthinking my workouts. I just follow the plan, and I’ve never felt stronger or more consistent."</p>
+          <p className="mt-4 text-sm font-semibold">- Alex, Everyday Athlete</p>
+        </div>
+        <div className="p-6 bg-gray-100 rounded-lg">
+          <p className="text-gray-700">"The meal plan is super straightforward. No crazy recipes — just food I actually enjoy and can prep easily."</p>
+          <p className="mt-4 text-sm font-semibold">- Maria, Busy Mom</p>
+        </div>
+      </div>
     </div>
-    <div className="p-6 bg-gray-100 rounded-lg">
-      <p className="text-gray-700">"The meal plan is super straightforward. No crazy recipes — just food I actually enjoy and can prep easily."</p>
-      <p className="mt-4 text-sm font-semibold">- Maria, Busy Mom</p>
-    </div>
-  </div>
-</div>
 
     {/* Why Choose Us Section */}
     <Subscribe />
