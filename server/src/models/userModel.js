@@ -19,14 +19,14 @@ const userSchema = mongoose.Schema({
         unique: true,
         lowercase: true,
     },
-    phoneNumber:{
-        type: String,
-        required: [true, "Please enter a valid phone number."],
-        unique: true
-    },
-    password: {
-        type: String,
-    },
+    // phoneNumber:{
+    //     type: String,
+    //     required: [true, "Please enter a valid phone number."],
+    //     unique: true
+    // },
+    // password: {
+    //     type: String,
+    // },
 }, {
     timestamps: true
 })

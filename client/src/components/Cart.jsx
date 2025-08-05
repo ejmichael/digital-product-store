@@ -1,17 +1,71 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { CartContext } from '../context/CartContext';
 import PaystackPayment from './PaystackPayment';
 import { AuthContext } from '../context/AuthContext';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import PayfastButton from './PayfastButton';
+import { toast } from 'react-toastify';
+import axios from 'axios';
 //import { PaystackButton } from 'react-paystack';
 
 const Cart = () => {
 
   const { cart, removeFromCart } = useContext(CartContext);
-  const { user } = useContext(AuthContext);
+  const { user, dispatch } = useContext(AuthContext);
+
+  const [formSubmitted, setFormSubmitted] = useState(false);
+
+    const [formData, setFormData] = useState({
+      firstName: '',
+      surname: '',
+      email: '',
+      phoneNumber: '',
+      password: '',
+    });
 
   console.log(cart);
+
+  //const navigate = useNavigate();
+  //const location = useLocation();
+
+  const domain = window.location.href.includes('localhost') ? "http://localhost:5000" : "https://miranda-fitness-backend.onrender.com";
+
+  const { firstName, surname, phoneNumber, email, password } = formData;
+
+  const handleChange = (e) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!email) {
+      toast.error("Enter your email address");
+      return;
+    }
+
+
+    try {
+      const response = await axios.post(domain + '/api/user/create-user', { firstName, surname, phoneNumber, email, password });
+      const user = response.data;
+
+      // Save the user to localStorage
+      localStorage.setItem('user', JSON.stringify(user));
+
+      // Update AuthContext state
+      dispatch({ type: 'REGISTER', payload: user });
+      setFormSubmitted(true);
+
+      // Navigate to the redirect path or home
+
+    } catch (error) {
+      console.error('Register failed', error);
+      toast.error("Register failed. Please try again.");
+    }
+  };
   
 
   return (
@@ -68,25 +122,61 @@ const Cart = () => {
           </div>
           
           {user ? (
-            // <Link to='/checkout'>
-            //     <button className='w-full p-3 my-2 rounded-full text-white font-medium bg-blue-400'>
-            //     Complete checksout
-            //   </button>
-            // </Link>
             <>
-              {/* <div className='inline-block bg-black text-white font-semibold px-6 py-3 rounded hover:bg-gray-600 hover:text-white'>
-                <PaystackPayment/>
-              </div> */}
               <button className='w-full p-3 my-2 inline-block bg-black text-white font-semibold px-6 py-3 rounded hover:bg-gray-600 hover:text-white'>
                 <PayfastButton />
               </button>
             </>
-          ) : (
-            <Link to='/login'>
-              <button className='w-full p-3 my-2 inline-block bg-black text-white font-semibold px-6 py-3 rounded hover:bg-gray-600 hover:text-white'>
-                Login to complete
-              </button>
-            </Link>
+            )
+           : (
+            <>
+              <div className="flex justify-center">
+                <p className='font-medium text-gray-500 text-lg'>Where can we send your plan?</p>
+              </div>
+                    <div className="flex justify-center">
+                      <form onSubmit={handleSubmit} className="my-4 min-w-[300px]">
+                        <div className="my-2 flex gap-2">
+                          <div className="">
+                            <input
+                              type="text"
+                              className="border rounded p-2 w-full"
+                              name="firstName"
+                              id='firstName'
+                              value={firstName}
+                              placeholder="Enter your first name"
+                              onChange={handleChange}
+                            />
+                          </div>
+                          <div className="">
+                            <input
+                              type="text"
+                              className="border rounded p-2 w-full"
+                              name="surname"
+                              id='surname'
+                              value={surname}
+                              placeholder="Enter your surname"
+                              onChange={handleChange}
+                            />
+                          </div>
+                        </div>
+                        <div className="my-2">
+                          <input
+                            type="email"
+                            className="border rounded p-2 w-full"
+                            name="email"
+                            id='email'
+                            value={email}
+                            placeholder="Enter your email"
+                            onChange={handleChange}
+                          />
+                        </div>
+                        <div className='my-4 w-full border text-center rounded font-semibold'>
+                          <button type="submit" className="text-white py-2 hover:shadow-md hover-bg-slate-600 bg-black text-white w-full">Next</button>
+                        </div>
+                      </form>
+                    </div>
+            </>
+                    
           )}
         </div>
       </div>

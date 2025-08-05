@@ -8,12 +8,58 @@ const getUserData = async (req, res) => {
 }
 
 
+// const createUser = async (req, res) => {
+//   const { firstName, surname, email, phoneNumber, password } = req.body;
+
+//   console.log(firstName, surname, email, phoneNumber, password);
+
+//   if (!firstName || !surname || !email || !phoneNumber || !password) {
+//     return res.status(400).json({ message: 'Please enter all the required fields.' });
+//   }
+
+//   try {
+//     const userExists = await User.findOne({emailAddress:email});
+
+//     if (userExists) {
+//       return res.status(400).json({ message: 'User already exists!' });
+//     }
+
+//     // Hash password
+//     const salt = await bcrypt.genSalt(10);
+//     const hashedPW = await bcrypt.hash(password, salt);
+
+//     const user = await User.create({
+//       name: firstName,
+//       surname,
+//       emailAddress:email,
+//       phoneNumber,
+//       password: hashedPW,
+//     });
+
+//     if (user) {
+//       return res.status(201).json({
+//         _id: user.id,
+//         name: user.name,
+//         surname: user.surname,
+//         email: user.emailAddress,
+//         phoneNumber: user.phoneNumber,
+//         token: generateToken(user._id),
+//       });
+//     } else {
+//       return res.status(400).json({ message: 'Invalid user data.' });
+//     }
+//   } catch (err) {
+//     console.error(err);
+//     return res.status(500).json({ message: 'Server error', error: err.message });
+//   }
+// };
+
 const createUser = async (req, res) => {
-  const { firstName, surname, email, phoneNumber, password } = req.body;
+  const { firstName, surname, email } = req.body;
 
-  console.log(firstName, surname, email, phoneNumber, password);
+  console.log(firstName, surname, email);
 
-  if (!firstName || !surname || !email || !phoneNumber || !password) {
+  if (!firstName || !surname || !email ) {
     return res.status(400).json({ message: 'Please enter all the required fields.' });
   }
 
@@ -25,15 +71,13 @@ const createUser = async (req, res) => {
     }
 
     // Hash password
-    const salt = await bcrypt.genSalt(10);
-    const hashedPW = await bcrypt.hash(password, salt);
+    //const salt = await bcrypt.genSalt(10);
+    //const hashedPW = await bcrypt.hash(password, salt);
 
     const user = await User.create({
       name: firstName,
       surname,
-      emailAddress:email,
-      phoneNumber,
-      password: hashedPW,
+      emailAddress:email
     });
 
     if (user) {
@@ -42,7 +86,6 @@ const createUser = async (req, res) => {
         name: user.name,
         surname: user.surname,
         email: user.emailAddress,
-        phoneNumber: user.phoneNumber,
         token: generateToken(user._id),
       });
     } else {

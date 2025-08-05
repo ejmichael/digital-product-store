@@ -13,15 +13,15 @@ payfastRouter.post("/payfast-initiate", (req, res) => {
     const paymentReference = uuidv4(); 
   
     // Your PayFast merchant credentials
-    const payfastUrl = "https://sandbox.payfast.co.za/eng/process"; // Testing URL 
-    const merchantId = "10039862"; // Replace with actual Merchant ID
-    const merchantKey = "ddrsjo9ep59vx"; // Replace with actual Merchant Key
-    // const payfastUrl = "https://www.payfast.co.za/eng/process"; // Live URL
-    // const merchantId = process.env.PAYFAST_MERCHANT_ID; // Replace with actual Merchant ID
-    // const merchantKey = process.env.PAYFAST_MERCHANT_KEY; // Replace with actual Merchant Key
-    const returnUrl = "https://www.bloodsugartracker.co.za/success";
-    const cancelUrl = "https://www.bloodsugartracker.co.za/cancel";
-    const notifyUrl = "https://www.bloodsugartracker.co.za/notify";
+    // const payfastUrl = "https://sandbox.payfast.co.za/eng/process"; // Testing URL 
+    // const merchantId = "10039862"; // Replace with actual Merchant ID
+    // const merchantKey = "ddrsjo9ep59vx"; // Replace with actual Merchant Key
+    const payfastUrl = "https://www.payfast.co.za/eng/process"; // Live URL
+    const merchantId = process.env.PAYFAST_MERCHANT_ID; // Replace with actual Merchant ID
+    const merchantKey = process.env.PAYFAST_MERCHANT_KEY; // Replace with actual Merchant Key
+    const returnUrl = "https://miranda-fitness.onrender.com/success";
+    const cancelUrl = "https://miranda-fitness.onrender.com/cancel";
+    const notifyUrl = "https://miranda-fitness.onrender.com/notify";
   
     // Construct the query string
     const queryParams = new URLSearchParams({
