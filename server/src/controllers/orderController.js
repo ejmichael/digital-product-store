@@ -1,6 +1,7 @@
 const Order = require('../models/orderModel')
 const Product = require('../models/productModel')
-const axios = require('axios')
+const axios = require('axios');
+const sendEmail = require('../utils/sendEmail');
 
 const createOrder = async (req, res) => {
     
@@ -32,52 +33,43 @@ const createOrder = async (req, res) => {
             }
         }
 
-        // const response = await axios.get(`https://api.paystack.co/transaction/verify/${orderRef}`, {
-        //   headers: {
-        //     Authorization: `Bearer sk_test_fb24be38e84cb21a19390d38ae1441af4cbd5aa6` // Replace with your Paystack secret key
-        //   }
-        // });
-        // console.log(response.data);
-
         console.log(req.user);
-        
 
         let pendingOrder = await Order.create({
           user: req.user.id,
           products: products.map(product => product._id),
           totalAmount: total,
           status: 'pending',
-          orderRef,
-          // streetAddress,
-          // city,
-          // postCode
+          orderRef
       })
 
       res.status(201).json(pendingOrder)
-    
-        // if (response.data.status) {
-        //   // Payment verified, handle success logic here
-        //   let newOrder = await Order.create({
-        //     user: req.user.id,
-        //     products: products.map(product => product._id),
-        //     totalAmount: total,
-        //     status: 'placed',
-        //     orderRef,
-        //     // streetAddress,
-        //     // city,
-        //     // postCode
-        // })
-    
-        //   res.status(200).json(newOrder)
-        //   //res.status(200).json({ success: true, data: response.data });
-        // } else {
-        //   res.status(400).json({ success: false, message: 'Payment not verified' });
-        // }
+
       } catch (error) {
         console.error(error);
         res.status(500).json({ success: false, message: 'Something went wrong' });
       }    
 }
+
+const confirmOrderPaid = async (req, res) => {
+  const { orderRef } = req.params;
+
+  try {
+    const order = await Order.findOne({ orderRef }).populate("user");
+    if (!order) return res.status(404).json({ message: "Order not found" });
+
+    order.status = "completed";
+    order.paidAt = new Date();
+    await order.save();
+
+    await sendEmail(order); // optional
+
+    res.status(200).json({ success: true, message: "Order confirmed as paid" });
+  } catch (err) {
+    console.error("Error confirming order:", err);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
 
 const getOrderById = async (req, res) => {
     const { orderId } = req.params;
@@ -107,5 +99,6 @@ const updateOrderStatus = async (req, res) => {}
 module.exports = {
     createOrder,
     getOrderById,
-    getAllOrders
+    getAllOrders,
+    confirmOrderPaid
 }

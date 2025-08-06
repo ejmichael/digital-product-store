@@ -1,5 +1,5 @@
 const express = require('express');
-const { createOrder, getOrderById, getAllOrders} = require('../controllers/orderController')
+const { createOrder, getOrderById, getAllOrders, confirmOrderPaid} = require('../controllers/orderController')
 const {protect} = require('../middleware/authMiddleware')
 
 const Order = require('../models/orderModel')
@@ -10,6 +10,7 @@ const orderRouter = express.Router();
 orderRouter.post('/create/:orderRef', protect, createOrder) 
 orderRouter.get('/get/:orderId', getOrderById)
 orderRouter.get('/get-all-orders/:userId', getAllOrders)
+orderRouter.get('/confirm/:orderRef', confirmOrderPaid)
 
 
 // Confirm payment via PayFast IPN

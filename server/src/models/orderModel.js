@@ -27,6 +27,9 @@ const OrderSchema = new Schema({
     enum: ['placed', 'pending', 'completed', 'canceled'],
     default: 'placed'
   },
+  paidAt: {
+    type: Date
+  }
   // pdfUrl: {  // New field for the PDF file URL
   //   type: String,
   //   required: true

@@ -19,7 +19,7 @@ payfastRouter.post("/payfast-initiate", (req, res) => {
     const payfastUrl = "https://www.payfast.co.za/eng/process"; // Live URL
     const merchantId = process.env.PAYFAST_MERCHANT_ID; // Replace with actual Merchant ID
     const merchantKey = process.env.PAYFAST_MERCHANT_KEY; // Replace with actual Merchant Key
-    const returnUrl = "https://miranda-fitness.onrender.com/success";
+    const returnUrl = "https://miranda-fitness.onrender.com/success?orderRef=" + paymentReference;
     const cancelUrl = "https://miranda-fitness.onrender.com/cancel";
     const notifyUrl = "https://miranda-fitness.onrender.com/notify";
   

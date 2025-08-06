@@ -1,6 +1,33 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 const PaymentSuccess = () => {
+  const [params] = useSearchParams();
+
+    const domain = window.location.href.includes('localhost') ? "http://localhost:5000" : "https://miranda-fitness-backend.onrender.com";
+
+
+  useEffect(() => {
+    const confirmOrder = async () => {
+      const orderRef = params.get("orderRef");
+
+      if(!orderRef) return;
+
+      try {
+        await axios.post(`${domain}/api/order/confirm/${orderRef}`);
+        console.log("Order marked as paid!");
+        // Optionally: show success message, send email confirmation, etc.
+      } catch (error) {
+        console.error("Error confirming payment:", error);
+      }
+
+    };
+
+    confirmOrder()
+  }, [])
+  
+  
   return (
     <div className="text-center mt-20">
       <h1 className="font-bebas-neue text-3xl font-bold text-green-600 tracking-wider">Payment Successful!</h1>
