@@ -23,7 +23,7 @@ const Footer = () => {
         {/* Social Links */}
         <div className="flex justify-center md:justify-end space-x-6 text-2xl">
           <a
-            href="https://www.instagram.com/yourhandle"
+            href="https://www.instagram.com/miranda_leigh_ghirdari"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-pink-500 transition"
@@ -31,7 +31,7 @@ const Footer = () => {
             <FaInstagram />
           </a>
           <a
-            href="https://www.tiktok.com/@yourhandle"
+            href="https://www.tiktok.com/@miranda_leigh16"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-white transition"
