@@ -1,8 +1,24 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const WorkoutPlanInfo = () => {
 
+    const [products, setProducts] = useState([]);
+
+    const domain = window.location.href.includes('localhost') ? "http://localhost:5000" : "https://miranda-fitness-backend.onrender.com";
+  
+    const getProducts = async () => {
+      const productsData = await axios.get(domain + '/api/products/get-products'); 
+  
+      if (productsData?.data) {
+        setProducts(productsData.data);
+      }
+    };
+  
+    useEffect(() => {
+      getProducts();
+    }, []);
 
   return (
  <div className="md:mt-16 px-6 lg:px-20 py-10 text-center">
@@ -26,7 +42,7 @@ const WorkoutPlanInfo = () => {
         Every workout includes images to guide you, and they're optimized for home or gym — no confusion, just action.
       </p>
 
-      <Link to="/product/68783179d805cc7160e55f4f" className="inline-block bg-black text-white font-semibold px-6 py-3 rounded hover:bg-gray-800">
+      <Link to={`/product/${products[0]?._id}`} className="inline-block bg-black text-white font-semibold px-6 py-3 rounded hover:bg-gray-800">
         Get the Full Plan – 75% Off
       </Link>
     </div>

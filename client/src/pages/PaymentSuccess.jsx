@@ -15,7 +15,7 @@ const PaymentSuccess = () => {
       if(!orderRef) return;
 
       try {
-        await axios.post(`${domain}/api/order/confirm/${orderRef}`);
+        await axios.get(`${domain}/api/order/confirm/${orderRef}`);
         console.log("Order marked as paid!");
         // Optionally: show success message, send email confirmation, etc.
       } catch (error) {

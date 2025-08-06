@@ -25,6 +25,7 @@ import PaymentSuccess from './pages/PaymentSuccess';
 import PaymentCancelled from './pages/PaymentCancelled';
 import MealPlanInfo from './pages/plans/MealPlanInfo';
 import WorkoutPlanInfo from './pages/plans/WorkoutPlanInfo';
+import Footer from './components/Footer';
 
 function App() {
   ReactGA.initialize('G-HLWNWMQH98');
@@ -61,15 +62,22 @@ function App() {
             </Routes>
           </main>
 
-          <footer className="py-6 text-center bg-gray-900 text-white">
-            <div className="mb-4 flex flex-wrap justify-center space-x-4">
-              <Link to="/contact" className="hover:text-green-600">Contact</Link>
-              <Link to="/privacy-policy" className="hover:text-green-600">Privacy Policy</Link>
-              <Link to="/refunds" className="hover:text-green-600">Refund Policy</Link>
-              <Link to="/terms" className="hover:text-green-600">Terms of Service</Link>
+          <Footer/>
+
+          {/* <footer className="py-6 text-center bg-gray-900 text-white">
+            <div>
+              <div className="mb-4 flex flex-wrap justify-center space-x-4">
+                <Link to="/contact" className="hover:text-green-600">Contact</Link>
+                <Link to="/privacy-policy" className="hover:text-green-600">Privacy Policy</Link>
+                <Link to="/refunds" className="hover:text-green-600">Refund Policy</Link>
+                <Link to="/terms" className="hover:text-green-600">Terms of Service</Link>
+              </div>
+              <div>
+
+              </div>
             </div>
             <p className="italic">© 2025 MLG Fitness. All rights reserved.</p>
-          </footer>
+          </footer> */}
         </div>
 
         <ToastContainer
