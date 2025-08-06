@@ -53,8 +53,8 @@ const sendEmail = async (order) => {
             <strong>Miranda</strong>
             <br/>
             MLG Fitness Team
-
-            🌐 <a href="https://miranda-fitness.onrender.com/" target="_blank">easy-outreach.com</a>
+            <br/>
+            🌐 <a href="https://miranda-fitness.onrender.com/" target="_blank">MLGFitness.com</a>
             </div>`
         };
 
