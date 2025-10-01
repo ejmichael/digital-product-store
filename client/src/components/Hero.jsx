@@ -13,9 +13,11 @@ const Hero = () => {
     surfaceType: '',
     preferredDate: '',
     description: '',
-    service: 'pressure-washing'
+    service: 'pressure-washing',
+    photos: []
   });
 
+  const [uploading, setUploading] = useState(false);
   const [currentStep, setCurrentStep] = useState(1);
   const [leadCaptured, setLeadCaptured] = useState(false);
   const navigate = useNavigate();
@@ -29,6 +31,46 @@ const Hero = () => {
   };
 
   console.log(leadForm);
+
+  const handleFileUpload = async(e) => {
+    const files = e.target.files;
+
+    if(!files) return;
+
+    setUploading(true);
+
+    const uploadUrls = [];
+
+    for (let i = 0; i < files.length; i++) {
+      const formData = new FormData();
+      formData.append("file", files[i]);
+      formData.append("upload_preset", "my_own_preset");
+
+      try {
+        const res = await fetch(`https://api.cloudinary.com/v1_1/dwvrx1rhr/image/upload`, {
+          method: "POST",
+          body: formData
+        });
+
+
+        const data = await res.json();
+        if(data.secure_url) {
+          uploadUrls.push(data.secure_url)
+        }
+      } catch (error) {
+        console.error("Cloudinary upload error:", error);
+        
+      }
+    }
+
+     setLeadForm((prev) => ({
+      ...prev,
+      photos: [...prev.photos, ...uploadUrls],
+    }));
+
+    setUploading(false);
+
+  }
   
 
   const domain = window.location.href.includes('localhost')
@@ -58,7 +100,8 @@ const Hero = () => {
           surfaceType: '',
           preferredDate: '',
           description: '',
-          service: 'pressure-washing'
+          service: 'pressure-washing',
+          photos: []
         });
       }
       navigate('/thank-you');
@@ -67,7 +110,7 @@ const Hero = () => {
     }
   };
 
-  const nextStep = () => setCurrentStep((prev) => Math.min(prev + 1, 3));
+  const nextStep = () => setCurrentStep((prev) => Math.min(prev + 1, 4));
   const prevStep = () => setCurrentStep((prev) => Math.max(prev - 1, 1));
 
   return (
@@ -194,6 +237,27 @@ const Hero = () => {
               </>
             )}
 
+            {currentStep === 4 && (
+              <>
+                <label className="block text-gray-700 mb-2">Upload Photos (optional)</label>
+                <input
+                  type="file"
+                  multiple
+                  accept="image/*"
+                  onChange={handleFileUpload}
+                  className="w-full"
+                />
+                {uploading && <p className="text-sm text-gray-500">Uploading...</p>}
+                {leadForm.photos.length > 0 && (
+                  <div className="grid grid-cols-3 gap-2 mt-2">
+                    {leadForm.photos.map((url, idx) => (
+                      <img key={idx} src={url} alt="uploaded" className="w-full h-20 object-cover rounded" />
+                    ))}
+                  </div>
+                )}
+              </>
+            )}
+
             {/* Step Controls */}
             <div className="flex justify-between pt-2">
               {currentStep > 1 && (
@@ -205,7 +269,7 @@ const Hero = () => {
                   Back
                 </button>
               )}
-              {currentStep < 3 ? (
+              {currentStep < 4 ? (
                 <button
                   type="button"
                   onClick={nextStep}

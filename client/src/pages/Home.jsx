@@ -13,8 +13,7 @@ const Home = () => {
           content="Fast, affordable pressure washing for driveways, patios, walls, and roofs. Get a free quote from our local pros today!"
         />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://yourdomain.com/" />
-        <link rel="canonical" href="https://yourdomain.com/" />
+        <link rel="canonical" href="https://sapressurewasher.co.za/" />
         <meta property="og:title" content="Pressure Washing Services in Your Area" />
         <meta property="og:description" content="Boost curb appeal with expert cleaning. Fast & reliable." />
         <meta property="og:image" content="https://i.postimg.cc/hP08GrNC/Power-Wash.jpg" />
@@ -25,14 +24,14 @@ const Home = () => {
       {/* Services Section */}
       <section>
         <div className="m-8 md:m-14">
-          <div className="mb-8">
+          <section aria-labelledby="services-heading" className="mb-8">
             <h2 className="text-3xl font-bold uppercase mb-4 text-center">
               What We Clean
             </h2>
             <p className="text-center text-gray-600 max-w-3xl mx-auto">
               Restore your property's shine with professional pressure washing for driveways, walls, roofs, patios, and more. We handle residential and commercial projects with care and precision.
             </p>
-          </div>
+          </section>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="bg-white p-8 relative min-h-[300px] border-8 border-[#03989e] rounded-lg shadow-lg overflow-hidden">
