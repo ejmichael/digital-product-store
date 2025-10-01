@@ -15,7 +15,7 @@ const uploadPDF = async (req, res) => {
     const newDocument = {
         filename: req.file.originalname,
         contentType: req.file.mimetype,
-        data: base64File, // Store as Base64 string
+        data: base64File, // Store as Base64 string 
     };
 
     try {

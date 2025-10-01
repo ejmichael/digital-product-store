@@ -6,6 +6,9 @@ const ViewLeads = () => {
   const [leads, setLeads] = useState(null);
   const { service } = useParams();
 
+  console.log(leads);
+  
+
   const domain = window.location.href.includes('localhost')
     ? 'http://localhost:5000'
     : 'https://lead-generation-backend-np2g.onrender.com';
@@ -55,7 +58,7 @@ const ViewLeads = () => {
                   <td className="text-sm px-6 py-4 border-b">{`${lead.firstName} ${lead.surname}`}</td>
                   <td className="text-sm px-6 py-4 border-b">{lead.surfaceType}</td>
                   <td className="text-sm px-6 py-4 border-b">{lead.propertyType}</td>
-                  <td className="text-sm px-6 py-4 border-b">{lead.area}</td>
+                  <td className="text-sm px-6 py-4 border-b">{lead.location}</td>
                   <td className="text-sm px-6 py-4 border-b">{lead.description}</td>
                   <td className="text-sm px-6 py-4 border-b">{lead.emailAddress}</td>
                   <td className="text-sm px-6 py-4 border-b">{lead.phoneNumber}</td>
